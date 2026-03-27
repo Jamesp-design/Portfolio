@@ -236,41 +236,6 @@
     });
   }
 
-  function initLogoLens() {
-    const section = document.querySelector(".logos-section");
-    if (!section) return;
-
-    function setLens(clientX, clientY) {
-      section.querySelectorAll("[data-logos-lens]").forEach((lens) => {
-        const r = lens.getBoundingClientRect();
-        if (!r.width || !r.height) return;
-        const x = ((clientX - r.left) / r.width) * 100;
-        const y = ((clientY - r.top) / r.height) * 100;
-        lens.style.setProperty("--lx", `${Math.max(0, Math.min(100, x))}%`);
-        lens.style.setProperty("--ly", `${Math.max(0, Math.min(100, y))}%`);
-      });
-    }
-
-    section.addEventListener(
-      "pointermove",
-      (e) => {
-        setLens(e.clientX, e.clientY);
-      },
-      { passive: true }
-    );
-
-    section.addEventListener(
-      "pointerleave",
-      () => {
-        section.querySelectorAll("[data-logos-lens]").forEach((lens) => {
-          lens.style.setProperty("--lx", "50%");
-          lens.style.setProperty("--ly", "50%");
-        });
-      },
-      { passive: true }
-    );
-  }
-
   function initSkillPills() {
     const wrap = document.querySelector("[data-skill-pills]");
     const status = document.querySelector("[data-skill-status]");
@@ -302,7 +267,6 @@
   initCursor(document.querySelector(".cursor"));
   initReveal(document.querySelectorAll("[data-reveal]"));
   initWorkPreview(document.querySelector("[data-work-preview]"));
-  initLogoLens();
   initSkillPills();
 
   if (!reduceMotion) {
