@@ -116,6 +116,7 @@
 
   if (!reduceMotion) {
     document.querySelectorAll(".work-list .work-row").forEach((row) => {
+      const thumb = row.querySelector(".work-row__thumb");
       row.addEventListener(
         "pointermove",
         (e) => {
@@ -124,9 +125,20 @@
           const py = ((e.clientY - r.top) / r.height) * 100;
           row.style.setProperty("--px", `${px}%`);
           row.style.setProperty("--py", `${py}%`);
+          if (!thumb) return;
+          const tr = thumb.getBoundingClientRect();
+          const nx = (e.clientX - tr.left) / tr.width - 0.5;
+          const ny = (e.clientY - tr.top) / tr.height - 0.5;
+          thumb.style.setProperty("--thumb-shift", `${nx * 12}px`);
+          thumb.style.setProperty("--thumb-lift", `${ny * -10}px`);
         },
         { passive: true }
       );
+      row.addEventListener("pointerleave", () => {
+        if (!thumb) return;
+        thumb.style.setProperty("--thumb-shift", "0px");
+        thumb.style.setProperty("--thumb-lift", "0px");
+      });
     });
   }
 })();
