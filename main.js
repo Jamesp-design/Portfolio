@@ -61,7 +61,7 @@
         el &&
         el.closest &&
         el.closest(
-          "a, button, [role='button'], input, textarea, select, label, summary, .work-row, .nav-icon, .skill-pill, .logo-img, .role-row, .photo-slot"
+          "a, button, [role='button'], input, textarea, select, label, summary, .work-row, .nav-icon, .logo-img, .role-row, .photo-slot, .hi-card__link"
         );
       cursor.classList.toggle("is-hover", !!interactive);
     }
@@ -317,29 +317,32 @@
     });
   }
 
-  function initSkillPills() {
-    const wrap = document.querySelector("[data-skill-pills]");
-    const status = document.querySelector("[data-skill-status]");
-    if (!wrap || !status) return;
+  /** @param {HTMLElement | null} section */
+  function initPhotoStripScroll(section) {
+    if (!section) return;
+    const rows = section.querySelectorAll("[data-photo-row]");
 
-    const lines = [
-      "That’s the spine of how I ship.",
-      "Big part of my process — talk to me about it.",
-      "One of my favourite tools in the kit.",
-      "Where clarity compounds over time.",
-      "The fun bit — motion with purpose.",
-      "I tinker so interfaces feel alive.",
-      "Words are interface, too.",
-      "Facilitation > hero design.",
-    ];
-
-    wrap.querySelectorAll("[data-skill]").forEach((btn, i) => {
-      btn.addEventListener("click", () => {
-        wrap.querySelectorAll(".is-picked").forEach((b) => b.classList.remove("is-picked"));
-        btn.classList.add("is-picked");
-        status.textContent = lines[i % lines.length];
+    function update() {
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const denom = Math.max(1, vh + rect.height);
+      const progress = Math.min(1, Math.max(0, (vh - rect.top) / denom));
+      rows.forEach((row) => {
+        const dir = row.getAttribute("data-photo-row") === "left" ? -1 : 1;
+        const track = row.querySelector(".photo-strip-track");
+        if (!track) return;
+        if (reduceMotion) {
+          track.style.transform = "";
+          return;
+        }
+        const shift = progress * dir * 40;
+        track.style.transform = `translateX(${shift}vw)`;
       });
-    });
+    }
+
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
   }
 
   const nav = document.querySelector("[data-nav]");
@@ -348,8 +351,8 @@
   initCursor(document.querySelector(".cursor"));
   initReveal(document.querySelectorAll("[data-reveal]"));
   initWorkPreview(document.querySelector("[data-work-preview]"));
-  initSkillPills();
   initExperience(document.querySelector("[data-experience-wrap]"));
+  initPhotoStripScroll(document.querySelector("[data-photo-strip-section]"));
 
   if (!reduceMotion) {
     function bindWorkRowSpotlight(row) {
