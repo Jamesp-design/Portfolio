@@ -1236,6 +1236,10 @@ html.theme-light .skill-pill:hover {
   cursor: pointer;
   font: inherit;
   color: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border-style: solid;
 }
 
 @media (min-width: 820px) {
