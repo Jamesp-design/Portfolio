@@ -57,7 +57,9 @@
       const interactive =
         el &&
         el.closest &&
-        el.closest("a, button, [role='button'], input, textarea, select, label, .work-row");
+        el.closest(
+          "a, button, [role='button'], input, textarea, select, label, summary, .work-row, .nav-icon, .skill-pill, .logo-img"
+        );
       cursor.classList.toggle("is-hover", !!interactive);
     }
 
@@ -94,32 +96,13 @@
       cursor.style.setProperty("--ry", `${ry}px`);
 
       const hovering = cursor.classList.contains("is-hover");
-      const ringScale = hovering ? 1.52 : isDown ? 0.9 : 1;
+      const ringScale = hovering ? 1.6 : isDown ? 0.9 : 1;
       cursor.style.setProperty("--rs", String(ringScale));
-      cursor.style.setProperty("--ds", hovering ? "0.28" : "1");
+      cursor.style.setProperty("--ds", hovering ? "0.26" : "1");
 
       window.requestAnimationFrame(tick);
     }
     tick();
-  }
-
-  /** @param {NodeListOf<HTMLElement>} nodes */
-  function initMagnetic(nodes) {
-    if (!nodes.length || reduceMotion) return;
-    nodes.forEach((el) => {
-      const strength = Number(el.dataset.strength || "0.3");
-      el.addEventListener("pointermove", (e) => {
-        const r = el.getBoundingClientRect();
-        const ox = (e.clientX - (r.left + r.width / 2)) * strength;
-        const oy = (e.clientY - (r.top + r.height / 2)) * strength;
-        el.style.setProperty("--mx", `${ox}px`);
-        el.style.setProperty("--my", `${oy}px`);
-      });
-      el.addEventListener("pointerleave", () => {
-        el.style.setProperty("--mx", "0px");
-        el.style.setProperty("--my", "0px");
-      });
-    });
   }
 
   /** @param {NodeListOf<HTMLElement>} items */
@@ -142,11 +125,12 @@
   /** @param {HTMLElement} preview */
   function initWorkPreview(preview) {
     const wrap = document.querySelector(".work-wrap");
+    const stack = preview && preview.querySelector(".work-preview__stack");
     const rows = document.querySelectorAll(".work-list .work-row");
-    if (!preview || !wrap || !rows.length) return;
+    if (!preview || !wrap || !stack || !rows.length) return;
 
-    const imgs = preview.querySelectorAll(".work-preview__card img");
-    if (imgs.length !== 3) return;
+    const figures = preview.querySelectorAll(".work-preview__card");
+    if (figures.length !== 3) return;
 
     /** @type {{ src: string; title: string }[]} */
     const slides = Array.from(rows).map((row) => ({
@@ -164,12 +148,19 @@
     let hover = null;
     let timer = null;
 
+    function deal() {
+      if (reduceMotion) return;
+      const front = stack.lastElementChild;
+      if (front) stack.insertBefore(front, stack.firstElementChild);
+    }
+
     function apply() {
       const start = hover !== null ? hover : base;
+      const ordered = [...figures];
       for (let d = 0; d < 3; d++) {
         const item = slides[norm(start + d)];
-        const im = imgs[d];
-        if (!item.src) continue;
+        const im = ordered[d] && ordered[d].querySelector("img");
+        if (!im || !item.src) continue;
         im.src = item.src;
         im.alt = item.title ? `Preview — ${item.title}` : "";
       }
@@ -178,9 +169,10 @@
 
     function step() {
       preview.classList.add("is-tick");
+      deal();
       base = norm(base + 1);
       apply();
-      window.setTimeout(() => preview.classList.remove("is-tick"), 420);
+      window.setTimeout(() => preview.classList.remove("is-tick"), 480);
     }
 
     function startAuto() {
@@ -217,13 +209,74 @@
     });
   }
 
+  function initLogoLens() {
+    const section = document.querySelector(".logos-section");
+    if (!section) return;
+
+    function setLens(clientX, clientY) {
+      section.querySelectorAll("[data-logos-lens]").forEach((lens) => {
+        const r = lens.getBoundingClientRect();
+        if (!r.width || !r.height) return;
+        const x = ((clientX - r.left) / r.width) * 100;
+        const y = ((clientY - r.top) / r.height) * 100;
+        lens.style.setProperty("--lx", `${Math.max(0, Math.min(100, x))}%`);
+        lens.style.setProperty("--ly", `${Math.max(0, Math.min(100, y))}%`);
+      });
+    }
+
+    section.addEventListener(
+      "pointermove",
+      (e) => {
+        setLens(e.clientX, e.clientY);
+      },
+      { passive: true }
+    );
+
+    section.addEventListener(
+      "pointerleave",
+      () => {
+        section.querySelectorAll("[data-logos-lens]").forEach((lens) => {
+          lens.style.setProperty("--lx", "50%");
+          lens.style.setProperty("--ly", "50%");
+        });
+      },
+      { passive: true }
+    );
+  }
+
+  function initSkillPills() {
+    const wrap = document.querySelector("[data-skill-pills]");
+    const status = document.querySelector("[data-skill-status]");
+    if (!wrap || !status) return;
+
+    const lines = [
+      "That’s the spine of how I ship.",
+      "Big part of my process — talk to me about it.",
+      "One of my favourite tools in the kit.",
+      "Where clarity compounds over time.",
+      "The fun bit — motion with purpose.",
+      "I tinker so interfaces feel alive.",
+      "Words are interface, too.",
+      "Facilitation > hero design.",
+    ];
+
+    wrap.querySelectorAll("[data-skill]").forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        wrap.querySelectorAll(".is-picked").forEach((b) => b.classList.remove("is-picked"));
+        btn.classList.add("is-picked");
+        status.textContent = lines[i % lines.length];
+      });
+    });
+  }
+
   const nav = document.querySelector("[data-nav]");
   initNavScroll(nav);
   initScrollProgress(document.querySelector(".scroll-progress"));
   initCursor(document.querySelector(".cursor"));
-  initMagnetic(document.querySelectorAll(".magnetic"));
   initReveal(document.querySelectorAll("[data-reveal]"));
   initWorkPreview(document.querySelector("[data-work-preview]"));
+  initLogoLens();
+  initSkillPills();
 
   if (!reduceMotion) {
     document.querySelectorAll(".work-list .work-row").forEach((row) => {
