@@ -3,23 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sync - James Phillips</title>
+    <title>Sync — James Phillips</title>
     <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body>
-    <main class="container project-page">
-      <a class="back-link" href="../index.html">← Back</a>
+  <body class="project-shell">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="nav" data-nav>
+      <a class="nav-brand" href="../index.html">
+        <span class="nav-brand__mark">JP</span>
+        <span class="nav-brand__text">James Phillips</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link" href="../index.html#work">Work</a>
+        <a class="nav-link" href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="main" class="project-page">
+      <a class="back-link" href="../index.html#work">← All work</a>
       <h1>Sync</h1>
       <p class="lead">An innovative new way to interact with music and the space around you.</p>
-      <ul class="pill-list"><li>VR Experience</li><li>Audio-visual</li></ul>
+      <ul class="pill-list">
+        <li>VR Experience</li>
+        <li>Audio-visual</li>
+      </ul>
       <section class="content">
         <h3>Brief</h3>
-        <p>Create a sensor-based interface to let users interact with an audio-visual environment, using either physical computing or motion tracking.</p>
+        <p>
+          Create a sensor-based interface to let users interact with an audio-visual environment, using either physical
+          computing or motion tracking.
+        </p>
         <h3>Solution</h3>
-        <p>I built a VR game where player position changed the soundscape. The goal was to find where distorted tracks synchronized and sounded normal, using Unity and HTC Vive.</p>
+        <p>
+          I built a VR game where player position changed the soundscape. The goal was to find where distorted tracks
+          synchronized and sounded normal, using Unity and HTC Vive.
+        </p>
         <h3>Outcome</h3>
-        <p>I expanded the concept with mapped playspace safety, additional object-based levels, and a complete in-game UI for a stand-alone product feel.</p>
+        <p>
+          I expanded the concept with mapped playspace safety, additional object-based levels, and a complete in-game
+          UI for a stand-alone product feel.
+        </p>
       </section>
     </main>
+
+    <script src="../main.js" defer></script>
   </body>
 </html>

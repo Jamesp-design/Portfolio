@@ -3,51 +3,152 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>James Phillips</title>
+    <title>James Phillips — Product Designer</title>
+    <meta
+      name="description"
+      content="James Phillips — product designer in Newcastle. Fintech, systems, motion, and craft."
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <main class="container">
-      <header class="site-header">
-        <h1>James Phillips</h1>
-      </header>
+  <body class="shell">
+    <a class="skip-link" href="#main">Skip to content</a>
 
-      <section class="intro">
-        <h2>Hi, I'm James. A Product Designer based in Newcastle, working in Fintech.</h2>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor" aria-hidden="true"><span class="cursor-dot"></span></div>
+
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <header class="nav" data-nav>
+      <a class="nav-brand magnetic" href="./" data-strength="0.35">
+        <span class="nav-brand__mark">JP</span>
+        <span class="nav-brand__text">James Phillips</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link magnetic" href="#work" data-strength="0.28">Work</a>
+        <a class="nav-link magnetic" href="#contact" data-strength="0.28">Contact</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <p class="hero-kicker reveal" data-reveal>Product design · Fintech · Newcastle, UK</p>
+        <h1 class="hero-title">
+          <span class="hero-line reveal" data-reveal>
+            <span class="hero-word hero-word--serif">Ideas</span>
+            <span class="hero-word">that</span>
+          </span>
+          <span class="hero-line reveal" data-reveal>
+            <span class="hero-word">ship</span>
+            <span class="hero-word hero-word--serif hero-word--accent">with feeling.</span>
+          </span>
+        </h1>
+        <p class="hero-sub reveal" data-reveal>
+          I design end-to-end product experiences — systems, interfaces, and motion — for teams who care
+          about clarity <em>and</em> delight.
+        </p>
+
+        <div class="hero-marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span>NYDIG · Hive · Sync · Bottlepay · Myndr · Loko · Fintech · VR · Design systems</span>
+            <span>NYDIG · Hive · Sync · Bottlepay · Myndr · Loko · Fintech · VR · Design systems</span>
+          </div>
+        </div>
+
+        <a class="hero-scroll magnetic" href="#work" data-strength="0.22">
+          <span class="hero-scroll__label">Explore work</span>
+          <span class="hero-scroll__ic" aria-hidden="true">↓</span>
+        </a>
       </section>
 
-      <section class="projects">
-        <a href="./projects/cryptocurrency-platform-integration-site.html" class="project-card">
-          <span class="project-title">NYDIG</span>
-          <span class="project-meta">Mobile App. API Integration.</span>
-        </a>
-        <a href="./projects/hive-exports.html" class="project-card">
-          <span class="project-title">Hive</span>
-          <span class="project-meta">UX/UI Design. Accessibilty. Design Systems</span>
-        </a>
-        <a href="./projects/sync-vr.html" class="project-card">
-          <span class="project-title">Sync</span>
-          <span class="project-meta">Games Development. VR.</span>
-        </a>
-        <a href="./projects/bitcoin-payments-app-redesign.html" class="project-card">
-          <span class="project-title">Bottlepay</span>
-          <span class="project-meta">Mobile App. Fintech.</span>
-        </a>
-        <a href="./projects/myndr-microinteractions.html" class="project-card">
-          <span class="project-title">Myndr</span>
-          <span class="project-meta">Microinteractions. Animation.</span>
-        </a>
-        <a href="./projects/loko-mobile-app.html" class="project-card">
-          <span class="project-title">Loko</span>
-          <span class="project-meta">UX/UI Design. Mobile App.</span>
-        </a>
+      <section id="work" class="work">
+        <div class="work-header reveal" data-reveal>
+          <h2 class="work-heading">Selected work</h2>
+          <p class="work-lede">
+            Case studies across integration tooling, HR platforms, consumer fintech, and playful experiments
+            — always with craft in the details.
+          </p>
+        </div>
+
+        <ul class="work-list">
+          <li class="reveal" data-reveal>
+            <a
+              class="work-row"
+              href="./projects/cryptocurrency-platform-integration-site.html"
+              data-color="cyan"
+            >
+              <span class="work-row__idx">01</span>
+              <span class="work-row__title">NYDIG</span>
+              <span class="work-row__meta">Mobile · API integration · Design system</span>
+              <span class="work-row__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="reveal" data-reveal>
+            <a class="work-row" href="./projects/hive-exports.html" data-color="violet">
+              <span class="work-row__idx">02</span>
+              <span class="work-row__title">Hive</span>
+              <span class="work-row__meta">UX/UI · Accessibility · Systems</span>
+              <span class="work-row__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="reveal" data-reveal>
+            <a class="work-row" href="./projects/sync-vr.html" data-color="amber">
+              <span class="work-row__idx">03</span>
+              <span class="work-row__title">Sync</span>
+              <span class="work-row__meta">VR · Game feel · Audio‑visual</span>
+              <span class="work-row__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="reveal" data-reveal>
+            <a class="work-row" href="./projects/bitcoin-payments-app-redesign.html" data-color="rose">
+              <span class="work-row__idx">04</span>
+              <span class="work-row__title">Bottlepay</span>
+              <span class="work-row__meta">Consumer app · Redesign · Strategy</span>
+              <span class="work-row__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="reveal" data-reveal>
+            <a class="work-row" href="./projects/myndr-microinteractions.html" data-color="lime">
+              <span class="work-row__idx">05</span>
+              <span class="work-row__title">Myndr</span>
+              <span class="work-row__meta">Micro-interactions · Motion</span>
+              <span class="work-row__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="reveal" data-reveal>
+            <a class="work-row" href="./projects/loko-mobile-app.html" data-color="sky">
+              <span class="work-row__idx">06</span>
+              <span class="work-row__title">Loko</span>
+              <span class="work-row__meta">AR · Mobile · End-to-end</span>
+              <span class="work-row__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
       </section>
 
-      <footer class="site-footer">
-        <h2>Get in touch</h2>
-        <p class="or">or</p>
-        <p><a href="#" aria-label="Download resume">download my resume</a></p>
+      <footer id="contact" class="footer">
+        <div class="footer-orbit" aria-hidden="true"></div>
+        <div class="footer-inner reveal" data-reveal>
+          <h2 class="footer-title">Let’s build something bold.</h2>
+          <p class="footer-copy">
+            Tell me about your product, your users, and the story you want the interface to tell.
+          </p>
+          <div class="footer-actions">
+            <a
+              class="btn btn--primary magnetic"
+              href="mailto:phillips.james99@hotmail.com"
+              data-strength="0.32"
+            >
+              <span>Email me</span>
+            </a>
+            <a class="btn btn--ghost magnetic" href="#" data-strength="0.26">
+              <span>Download résumé</span>
+            </a>
+          </div>
+          <p class="footer-fineprint">© <span data-year></span> James Phillips. Crafted with curiosity.</p>
+        </div>
       </footer>
     </main>
+
+    <script src="./main.js" defer></script>
   </body>
 </html>
