@@ -1,9 +1,8 @@
 (function () {
   "use strict";
 
-  const root = document.documentElement;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  root.classList.toggle("reduce-motion", reduceMotion);
+  document.body.classList.toggle("reduce-motion", reduceMotion);
 
   const yearEl = document.querySelector("[data-year]");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
@@ -129,8 +128,7 @@
     const rows = document.querySelectorAll(".work-list .work-row");
     if (!preview || !wrap || !stack || !rows.length) return;
 
-    const figures = preview.querySelectorAll(".work-preview__card");
-    if (figures.length !== 3) return;
+    if (stack.querySelectorAll(".work-preview__card").length !== 3) return;
 
     /** @type {{ src: string; title: string }[]} */
     const slides = Array.from(rows).map((row) => ({
@@ -143,10 +141,17 @@
       return ((i % n) + n) % n;
     }
 
+    /** DOM order changes after each deal(); always read fresh. */
+    function getOrderedFigures() {
+      return [...stack.querySelectorAll(".work-preview__card")];
+    }
+
     let base = 0;
     /** @type {number | null} */
     let hover = null;
     let timer = null;
+    let stepLock = false;
+    const tickMs = 520;
 
     function deal() {
       if (reduceMotion) return;
@@ -156,23 +161,45 @@
 
     function apply() {
       const start = hover !== null ? hover : base;
-      const ordered = [...figures];
+      const ordered = getOrderedFigures();
       for (let d = 0; d < 3; d++) {
         const item = slides[norm(start + d)];
         const im = ordered[d] && ordered[d].querySelector("img");
         if (!im || !item.src) continue;
-        im.src = item.src;
+        if (im.getAttribute("src") !== item.src) {
+          im.setAttribute("src", item.src);
+        }
         im.alt = item.title ? `Preview — ${item.title}` : "";
       }
       preview.classList.toggle("is-hover", hover !== null);
     }
 
+    function endAutoTick() {
+      window.setTimeout(() => {
+        preview.classList.remove("is-tick");
+        stepLock = false;
+      }, tickMs);
+    }
+
+    function runHoverDeal() {
+      if (reduceMotion) {
+        apply();
+        return;
+      }
+      preview.classList.add("is-tick");
+      deal();
+      apply();
+      window.setTimeout(() => preview.classList.remove("is-tick"), tickMs);
+    }
+
     function step() {
+      if (stepLock) return;
+      stepLock = true;
       preview.classList.add("is-tick");
       deal();
       base = norm(base + 1);
       apply();
-      window.setTimeout(() => preview.classList.remove("is-tick"), 480);
+      endAutoTick();
     }
 
     function startAuto() {
@@ -196,7 +223,7 @@
       row.addEventListener("pointerenter", () => {
         hover = i;
         stopAuto();
-        apply();
+        runHoverDeal();
       });
     });
 
