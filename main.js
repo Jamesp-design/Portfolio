@@ -317,34 +317,6 @@
     });
   }
 
-  /** @param {HTMLElement | null} section */
-  function initPhotoStripScroll(section) {
-    if (!section) return;
-    const rows = section.querySelectorAll("[data-photo-row]");
-
-    function update() {
-      const rect = section.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const denom = Math.max(1, vh + rect.height);
-      const progress = Math.min(1, Math.max(0, (vh - rect.top) / denom));
-      rows.forEach((row) => {
-        const dir = row.getAttribute("data-photo-row") === "left" ? -1 : 1;
-        const track = row.querySelector(".photo-strip-track");
-        if (!track) return;
-        if (reduceMotion) {
-          track.style.transform = "";
-          return;
-        }
-        const shift = progress * dir * 22;
-        track.style.transform = `translateX(${shift}vw)`;
-      });
-    }
-
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    update();
-  }
-
   function initSkillPills() {
     const wrap = document.querySelector("[data-skill-pills]");
     const status = document.querySelector("[data-skill-status]");
@@ -378,10 +350,9 @@
   initWorkPreview(document.querySelector("[data-work-preview]"));
   initSkillPills();
   initExperience(document.querySelector("[data-experience-wrap]"));
-  initPhotoStripScroll(document.querySelector("[data-photo-strip-section]"));
 
   if (!reduceMotion) {
-    document.querySelectorAll(".work-list .work-row").forEach((row) => {
+    function bindWorkRowSpotlight(row) {
       row.addEventListener(
         "pointermove",
         (e) => {
@@ -393,6 +364,9 @@
         },
         { passive: true }
       );
-    });
+    }
+    document.querySelectorAll(".work-list .work-row").forEach(bindWorkRowSpotlight);
+    document.querySelectorAll(".experience-wrap .work-row").forEach(bindWorkRowSpotlight);
   }
 })();
+
