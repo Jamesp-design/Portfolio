@@ -14,7 +14,10 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <div class="grain" aria-hidden="true"></div>
-    <div class="cursor" aria-hidden="true"><span class="cursor-dot"></span></div>
+    <div class="cursor" id="cursor" aria-hidden="true">
+      <span class="cursor__ring"></span>
+      <span class="cursor__dot"></span>
+    </div>
 
     <div class="scroll-progress" aria-hidden="true"></div>
 
@@ -69,132 +72,109 @@
           </p>
         </div>
 
-        <ul class="work-list">
-          <li class="reveal" data-reveal>
-            <a
-              class="work-row"
-              href="./projects/cryptocurrency-platform-integration-site.html"
-              data-color="cyan"
-            >
-              <span class="work-row__thumb">
-                <img
-                  src="./images/projects/nydig.png"
-                  alt="NYDIG — banking integration illustration with interface mockup"
-                  width="640"
-                  height="400"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <span class="work-row__lead">
+        <div class="work-wrap">
+          <ul class="work-list">
+            <li class="reveal" data-reveal>
+              <a
+                class="work-row"
+                href="./projects/cryptocurrency-platform-integration-site.html"
+                data-color="cyan"
+                data-preview-src="./images/projects/nydig.png"
+                data-preview-title="NYDIG"
+              >
                 <span class="work-row__idx">01</span>
                 <span class="work-row__title">NYDIG</span>
-              </span>
-              <span class="work-row__meta">Mobile · API integration · Design system</span>
-              <span class="work-row__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li class="reveal" data-reveal>
-            <a class="work-row" href="./projects/hive-exports.html" data-color="violet">
-              <span class="work-row__thumb">
-                <img
-                  src="./images/projects/hive.png"
-                  alt="Hive — Hive Five export modal interface"
-                  width="640"
-                  height="400"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <span class="work-row__lead">
+                <span class="work-row__meta">Mobile · API integration · Design system</span>
+                <span class="work-row__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="reveal" data-reveal>
+              <a
+                class="work-row"
+                href="./projects/hive-exports.html"
+                data-color="violet"
+                data-preview-src="./images/projects/hive.png"
+                data-preview-title="Hive"
+              >
                 <span class="work-row__idx">02</span>
                 <span class="work-row__title">Hive</span>
-              </span>
-              <span class="work-row__meta">UX/UI · Accessibility · Systems</span>
-              <span class="work-row__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li class="reveal" data-reveal>
-            <a class="work-row" href="./projects/sync-vr.html" data-color="amber">
-              <span class="work-row__thumb">
-                <img
-                  src="./images/projects/sync.png"
-                  alt="Sync — VR headset with motion controllers"
-                  width="640"
-                  height="400"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <span class="work-row__lead">
+                <span class="work-row__meta">UX/UI · Accessibility · Systems</span>
+                <span class="work-row__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="reveal" data-reveal>
+              <a
+                class="work-row"
+                href="./projects/sync-vr.html"
+                data-color="amber"
+                data-preview-src="./images/projects/sync.png"
+                data-preview-title="Sync"
+              >
                 <span class="work-row__idx">03</span>
                 <span class="work-row__title">Sync</span>
-              </span>
-              <span class="work-row__meta">VR · Game feel · Audio‑visual</span>
-              <span class="work-row__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li class="reveal" data-reveal>
-            <a class="work-row" href="./projects/bitcoin-payments-app-redesign.html" data-color="rose">
-              <span class="work-row__thumb">
-                <img
-                  src="./images/projects/bottlepay.png"
-                  alt="Bottlepay — Future Bank mobile UI mockups"
-                  width="640"
-                  height="400"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <span class="work-row__lead">
+                <span class="work-row__meta">VR · Game feel · Audio‑visual</span>
+                <span class="work-row__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="reveal" data-reveal>
+              <a
+                class="work-row"
+                href="./projects/bitcoin-payments-app-redesign.html"
+                data-color="rose"
+                data-preview-src="./images/projects/bottlepay.png"
+                data-preview-title="Bottlepay"
+              >
                 <span class="work-row__idx">04</span>
                 <span class="work-row__title">Bottlepay</span>
-              </span>
-              <span class="work-row__meta">Consumer app · Redesign · Strategy</span>
-              <span class="work-row__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li class="reveal" data-reveal>
-            <a class="work-row" href="./projects/myndr-microinteractions.html" data-color="lime">
-              <span class="work-row__thumb">
-                <img
-                  src="./images/projects/myndr.png"
-                  alt="Myndr — onboarding and character illustration"
-                  width="640"
-                  height="400"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <span class="work-row__lead">
+                <span class="work-row__meta">Consumer app · Redesign · Strategy</span>
+                <span class="work-row__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="reveal" data-reveal>
+              <a
+                class="work-row"
+                href="./projects/myndr-microinteractions.html"
+                data-color="lime"
+                data-preview-src="./images/projects/myndr.png"
+                data-preview-title="Myndr"
+              >
                 <span class="work-row__idx">05</span>
                 <span class="work-row__title">Myndr</span>
-              </span>
-              <span class="work-row__meta">Micro-interactions · Motion</span>
-              <span class="work-row__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li class="reveal" data-reveal>
-            <a class="work-row" href="./projects/loko-mobile-app.html" data-color="sky">
-              <span class="work-row__thumb">
-                <img
-                  src="./images/projects/loko.png"
-                  alt="Loko — AR room and product swap mobile screens"
-                  width="640"
-                  height="400"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <span class="work-row__lead">
+                <span class="work-row__meta">Micro-interactions · Motion</span>
+                <span class="work-row__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li class="reveal" data-reveal>
+              <a
+                class="work-row"
+                href="./projects/loko-mobile-app.html"
+                data-color="sky"
+                data-preview-src="./images/projects/loko.png"
+                data-preview-title="Loko"
+              >
                 <span class="work-row__idx">06</span>
                 <span class="work-row__title">Loko</span>
-              </span>
-              <span class="work-row__meta">AR · Mobile · End-to-end</span>
-              <span class="work-row__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-        </ul>
+                <span class="work-row__meta">AR · Mobile · End-to-end</span>
+                <span class="work-row__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+          </ul>
+
+          <aside class="work-preview" data-work-preview aria-label="Project preview">
+            <p class="work-preview__kicker">Preview</p>
+            <div class="work-preview__stack">
+              <figure class="work-preview__card" data-depth="0">
+                <img src="./images/projects/nydig.png" alt="" width="640" height="400" decoding="async" />
+              </figure>
+              <figure class="work-preview__card" data-depth="1">
+                <img src="./images/projects/hive.png" alt="" decoding="async" />
+              </figure>
+              <figure class="work-preview__card" data-depth="2">
+                <img src="./images/projects/sync.png" alt="" decoding="async" />
+              </figure>
+            </div>
+          </aside>
+        </div>
       </section>
 
       <footer id="contact" class="footer">

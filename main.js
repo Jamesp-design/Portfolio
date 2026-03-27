@@ -43,29 +43,61 @@
   /** @param {HTMLElement} cursor */
   function initCursor(cursor) {
     if (!cursor || reduceMotion) return;
-    let x = window.innerWidth / 2;
-    let y = window.innerHeight / 2;
-    let lx = x;
-    let ly = y;
-    let active = false;
+
+    let tx = window.innerWidth / 2;
+    let ty = window.innerHeight / 2;
+    let dx = tx;
+    let dy = ty;
+    let rx = tx;
+    let ry = ty;
+    let isDown = false;
+
+    function setHoverFromPoint(clientX, clientY) {
+      const el = document.elementFromPoint(clientX, clientY);
+      const interactive =
+        el &&
+        el.closest &&
+        el.closest("a, button, [role='button'], input, textarea, select, label, .work-row");
+      cursor.classList.toggle("is-hover", !!interactive);
+    }
 
     window.addEventListener(
       "pointermove",
       (e) => {
-        x = e.clientX;
-        y = e.clientY;
-        active = true;
+        tx = e.clientX;
+        ty = e.clientY;
+        setHoverFromPoint(tx, ty);
       },
       { passive: true }
     );
 
+    window.addEventListener("pointerdown", () => {
+      isDown = true;
+      cursor.classList.add("is-down");
+    });
+    window.addEventListener("pointerup", () => {
+      isDown = false;
+      cursor.classList.remove("is-down");
+    });
+
     function tick() {
-      if (active) {
-        lx += (x - lx) * 0.18;
-        ly += (y - ly) * 0.18;
-        cursor.style.setProperty("--cx", `${lx}px`);
-        cursor.style.setProperty("--cy", `${ly}px`);
-      }
+      const fd = 0.42;
+      const fr = 0.13;
+      dx += (tx - dx) * fd;
+      dy += (ty - dy) * fd;
+      rx += (tx - rx) * fr;
+      ry += (ty - ry) * fr;
+
+      cursor.style.setProperty("--dx", `${dx}px`);
+      cursor.style.setProperty("--dy", `${dy}px`);
+      cursor.style.setProperty("--rx", `${rx}px`);
+      cursor.style.setProperty("--ry", `${ry}px`);
+
+      const hovering = cursor.classList.contains("is-hover");
+      const ringScale = hovering ? 1.52 : isDown ? 0.9 : 1;
+      cursor.style.setProperty("--rs", String(ringScale));
+      cursor.style.setProperty("--ds", hovering ? "0.28" : "1");
+
       window.requestAnimationFrame(tick);
     }
     tick();
@@ -107,16 +139,94 @@
     items.forEach((el) => io.observe(el));
   }
 
+  /** @param {HTMLElement} preview */
+  function initWorkPreview(preview) {
+    const wrap = document.querySelector(".work-wrap");
+    const rows = document.querySelectorAll(".work-list .work-row");
+    if (!preview || !wrap || !rows.length) return;
+
+    const imgs = preview.querySelectorAll(".work-preview__card img");
+    if (imgs.length !== 3) return;
+
+    /** @type {{ src: string; title: string }[]} */
+    const slides = Array.from(rows).map((row) => ({
+      src: row.getAttribute("data-preview-src") || "",
+      title: row.getAttribute("data-preview-title") || "",
+    }));
+
+    function norm(i) {
+      const n = slides.length;
+      return ((i % n) + n) % n;
+    }
+
+    let base = 0;
+    /** @type {number | null} */
+    let hover = null;
+    let timer = null;
+
+    function apply() {
+      const start = hover !== null ? hover : base;
+      for (let d = 0; d < 3; d++) {
+        const item = slides[norm(start + d)];
+        const im = imgs[d];
+        if (!item.src) continue;
+        im.src = item.src;
+        im.alt = item.title ? `Preview — ${item.title}` : "";
+      }
+      preview.classList.toggle("is-hover", hover !== null);
+    }
+
+    function step() {
+      preview.classList.add("is-tick");
+      base = norm(base + 1);
+      apply();
+      window.setTimeout(() => preview.classList.remove("is-tick"), 420);
+    }
+
+    function startAuto() {
+      if (reduceMotion || timer) return;
+      timer = window.setInterval(step, 4200);
+    }
+
+    function stopAuto() {
+      if (!timer) return;
+      window.clearInterval(timer);
+      timer = null;
+    }
+
+    apply();
+
+    if (!reduceMotion) {
+      startAuto();
+    }
+
+    rows.forEach((row, i) => {
+      row.addEventListener("pointerenter", () => {
+        hover = i;
+        stopAuto();
+        apply();
+      });
+    });
+
+    wrap.addEventListener("pointerleave", (e) => {
+      const next = e.relatedTarget;
+      if (next && wrap.contains(/** @type {Node} */ (next))) return;
+      hover = null;
+      apply();
+      if (!reduceMotion) startAuto();
+    });
+  }
+
   const nav = document.querySelector("[data-nav]");
   initNavScroll(nav);
   initScrollProgress(document.querySelector(".scroll-progress"));
   initCursor(document.querySelector(".cursor"));
   initMagnetic(document.querySelectorAll(".magnetic"));
   initReveal(document.querySelectorAll("[data-reveal]"));
+  initWorkPreview(document.querySelector("[data-work-preview]"));
 
   if (!reduceMotion) {
     document.querySelectorAll(".work-list .work-row").forEach((row) => {
-      const thumb = row.querySelector(".work-row__thumb");
       row.addEventListener(
         "pointermove",
         (e) => {
@@ -125,20 +235,9 @@
           const py = ((e.clientY - r.top) / r.height) * 100;
           row.style.setProperty("--px", `${px}%`);
           row.style.setProperty("--py", `${py}%`);
-          if (!thumb) return;
-          const tr = thumb.getBoundingClientRect();
-          const nx = (e.clientX - tr.left) / tr.width - 0.5;
-          const ny = (e.clientY - tr.top) / tr.height - 0.5;
-          thumb.style.setProperty("--thumb-shift", `${nx * 12}px`);
-          thumb.style.setProperty("--thumb-lift", `${ny * -10}px`);
         },
         { passive: true }
       );
-      row.addEventListener("pointerleave", () => {
-        if (!thumb) return;
-        thumb.style.setProperty("--thumb-shift", "0px");
-        thumb.style.setProperty("--thumb-lift", "0px");
-      });
     });
   }
 })();
