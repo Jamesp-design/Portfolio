@@ -8,7 +8,7 @@
       name="description"
       content="James Phillips — experience designer in Newcastle. Fintech, systems, motion, and craft."
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260327" />
   </head>
   <body class="shell">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -105,8 +105,8 @@
           </a>
         </div>
 
+        <p class="logos-subhead reveal" data-reveal>Teams I've worked with</p>
         <div class="logos-section reveal" data-reveal aria-label="Companies and collaborations">
-          <p class="logos-subhead">Teams I've worked with</p>
           <div class="logos-viewport">
             <div class="logos-track">
               <div class="logos-set">
@@ -234,13 +234,13 @@
           <aside class="work-preview" data-work-preview aria-label="Project preview">
             <div class="work-preview__stack">
               <figure class="work-preview__card">
-                <img src="./images/projects/nydig.png" alt="" width="640" height="400" decoding="async" />
+                <img src="./images/projects/nydig.png" alt="" width="825" height="1080" decoding="async" />
               </figure>
               <figure class="work-preview__card">
-                <img src="./images/projects/hive.png" alt="" decoding="async" />
+                <img src="./images/projects/hive.png" alt="" width="825" height="1080" decoding="async" />
               </figure>
               <figure class="work-preview__card">
-                <img src="./images/projects/sync.png" alt="" decoding="async" />
+                <img src="./images/projects/sync.png" alt="" width="825" height="1080" decoding="async" />
               </figure>
             </div>
           </aside>
@@ -299,17 +299,18 @@
           <p class="skill-status" data-skill-status aria-live="polite">Pick one — I’ll ramble about it.</p>
         </div>
 
-        <div class="about-timeline reveal" data-reveal>
+        <div class="about-timeline reveal" data-reveal data-about-experience>
           <h3 class="about-subtitle">Experience</h3>
-          <ol class="role-list">
-            <li>
-              <details class="role" name="role">
-                <summary class="role__summary">
+          <div class="experience-wrap" data-experience-wrap>
+            <ol class="role-list role-list--experience">
+              <li class="role-item">
+                <button type="button" class="role-row" data-exp-index="0" aria-expanded="false" aria-controls="exp-panel-0">
+                  <span class="role__idx" aria-hidden="true">01</span>
                   <span class="role__title">Assistant Director — Experience Designer</span>
                   <span class="role__meta">Moody’s Analytics · 2023 — present</span>
-                </summary>
-                <div class="role__anim">
-                <div class="role__body">
+                  <span class="role__arrow" aria-hidden="true">→</span>
+                </button>
+                <div class="role__body role__body--inline" id="exp-panel-0">
                   <p>Green-field products for financial and compliance teams.</p>
                   <ul>
                     <li>Design for shell-company risk offerings and new platform work</li>
@@ -318,17 +319,15 @@
                     <li>Virtual conferences and internal design advocacy</li>
                   </ul>
                 </div>
-                </div>
-              </details>
-            </li>
-            <li>
-              <details class="role" name="role">
-                <summary class="role__summary">
+              </li>
+              <li class="role-item">
+                <button type="button" class="role-row" data-exp-index="1" aria-expanded="false" aria-controls="exp-panel-1">
+                  <span class="role__idx" aria-hidden="true">02</span>
                   <span class="role__title">Product Designer</span>
                   <span class="role__meta">Bottlepay · 2021 — 2023</span>
-                </summary>
-                <div class="role__anim">
-                <div class="role__body">
+                  <span class="role__arrow" aria-hidden="true">→</span>
+                </button>
+                <div class="role__body role__body--inline" id="exp-panel-1">
                   <p>Consumer bitcoin app in a deeply collaborative, UX-first team.</p>
                   <ul>
                     <li>End-to-end mobile features and flows</li>
@@ -336,17 +335,15 @@
                     <li>Animated marketing collateral</li>
                   </ul>
                 </div>
-                </div>
-              </details>
-            </li>
-            <li>
-              <details class="role" name="role">
-                <summary class="role__summary">
+              </li>
+              <li class="role-item">
+                <button type="button" class="role-row" data-exp-index="2" aria-expanded="false" aria-controls="exp-panel-2">
+                  <span class="role__idx" aria-hidden="true">03</span>
                   <span class="role__title">Product Designer</span>
                   <span class="role__meta">NYDIG · 2021 — 2023</span>
-                </summary>
-                <div class="role__anim">
-                <div class="role__body">
+                  <span class="role__arrow" aria-hidden="true">→</span>
+                </button>
+                <div class="role__body role__body--inline" id="exp-panel-2">
                   <p>Integration and platform solutions for US institutions.</p>
                   <ul>
                     <li>Integration site for API partners</li>
@@ -354,39 +351,39 @@
                     <li>Sales story decks and pitch materials</li>
                   </ul>
                 </div>
-                </div>
-              </details>
-            </li>
-            <li>
-              <details class="role" name="role">
-                <summary class="role__summary">
+              </li>
+              <li class="role-item">
+                <button type="button" class="role-row" data-exp-index="3" aria-expanded="false" aria-controls="exp-panel-3">
+                  <span class="role__idx" aria-hidden="true">04</span>
                   <span class="role__title">Junior UI Artist</span>
                   <span class="role__meta">Ubisoft · Nexus VR · 2021</span>
-                </summary>
-                <div class="role__anim">
-                <div class="role__body">
+                  <span class="role__arrow" aria-hidden="true">→</span>
+                </button>
+                <div class="role__body role__body--inline" id="exp-panel-3">
                   <p>HUD team — in-headset UI that players live in for hours.</p>
                 </div>
-                </div>
-              </details>
-            </li>
-            <li>
-              <details class="role" name="role">
-                <summary class="role__summary">
+              </li>
+              <li class="role-item">
+                <button type="button" class="role-row" data-exp-index="4" aria-expanded="false" aria-controls="exp-panel-4">
+                  <span class="role__idx" aria-hidden="true">05</span>
                   <span class="role__title">Earlier</span>
                   <span class="role__meta">Komodo Digital · Hive HR · Events</span>
-                </summary>
-                <div class="role__anim">
-                <div class="role__body">
+                  <span class="role__arrow" aria-hidden="true">→</span>
+                </button>
+                <div class="role__body role__body--inline" id="exp-panel-4">
                   <p>
                     Agency product work, employee engagement features at scale, plus hackathons with
-                    <strong>Atom Bank</strong> and                     <strong>Facebook</strong> — lessons I still use daily.
+                    <strong>Atom Bank</strong> and <strong>Facebook</strong> — lessons I still use daily.
                   </p>
                 </div>
-                </div>
-              </details>
-            </li>
-          </ol>
+              </li>
+            </ol>
+            <aside class="experience-preview" data-experience-preview aria-label="Role details">
+              <div class="experience-preview__inner" data-experience-preview-inner>
+                <p class="experience-preview__hint">Hover a role to read more</p>
+              </div>
+            </aside>
+          </div>
         </div>
 
         <div class="about-edu reveal" data-reveal>
@@ -394,6 +391,43 @@
           <p class="edu-line">
             <strong>First-class BA (Hons) Interaction Design</strong> — Northumbria University
           </p>
+        </div>
+      </section>
+
+      <section class="photo-strip-section shell-inner" id="moments" aria-label="Photo moments" data-photo-strip-section>
+        <h2 class="photo-strip-heading reveal" data-reveal>Moments</h2>
+        <p class="photo-strip-lede reveal" data-reveal>A few frames from the journey — swap in your own shots from <code class="photo-strip-code">images/moments/</code>.</p>
+        <div class="photo-strip-rows" data-photo-rows>
+          <div class="photo-strip-row photo-strip-row--r" data-photo-row="right">
+            <div class="photo-strip-track">
+              <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
+              <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
+              <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
+              <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
+              <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
+              <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
+            </div>
+          </div>
+          <div class="photo-strip-row photo-strip-row--l" data-photo-row="left">
+            <div class="photo-strip-track">
+              <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
+              <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
+              <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
+              <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
+              <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
+              <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
+            </div>
+          </div>
+          <div class="photo-strip-row photo-strip-row--r" data-photo-row="right">
+            <div class="photo-strip-track">
+              <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
+              <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
+              <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
+              <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
+              <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
+              <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -415,6 +449,6 @@
       </footer>
     </main>
 
-    <script src="./main.js" defer></script>
+    <script src="./main.js?v=20260327" defer></script>
   </body>
 </html>

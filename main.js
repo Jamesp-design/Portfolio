@@ -61,7 +61,7 @@
         el &&
         el.closest &&
         el.closest(
-          "a, button, [role='button'], input, textarea, select, label, summary, .work-row, .nav-icon, .skill-pill, .logo-img"
+          "a, button, [role='button'], input, textarea, select, label, summary, .work-row, .nav-icon, .skill-pill, .logo-img, .role-row, .photo-slot"
         );
       cursor.classList.toggle("is-hover", !!interactive);
     }
@@ -240,6 +240,111 @@
     });
   }
 
+  /** @param {HTMLElement | null} wrap */
+  function initExperience(wrap) {
+    if (!wrap) return;
+    const previewInner = wrap.querySelector("[data-experience-preview-inner]");
+    const hintHtml = '<p class="experience-preview__hint">Hover a role to read more</p>';
+    const mqDesk = window.matchMedia("(min-width: 960px)");
+    const items = wrap.querySelectorAll(".role-item");
+
+    function clearDesktopPreview() {
+      if (previewInner) previewInner.innerHTML = hintHtml;
+      wrap.classList.remove("experience-wrap--open");
+      items.forEach((item) => {
+        const btn = item.querySelector(".role-row");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+      });
+    }
+
+    /** @param {HTMLButtonElement} btn */
+    function applyDesktopHover(btn) {
+      const item = btn.closest(".role-item");
+      const body = item && item.querySelector(".role__body--inline");
+      if (!previewInner || !body) return;
+      previewInner.innerHTML = body.innerHTML;
+      wrap.classList.add("experience-wrap--open");
+      items.forEach((it) => {
+        const b = it.querySelector(".role-row");
+        if (b) b.setAttribute("aria-expanded", it.contains(btn) ? "true" : "false");
+      });
+    }
+
+    items.forEach((item) => {
+      const btn = item.querySelector(".role-row");
+      if (!btn) return;
+
+      btn.addEventListener("click", () => {
+        if (mqDesk.matches) return;
+        const wasOpen = item.classList.contains("is-open");
+        items.forEach((i) => {
+          i.classList.remove("is-open");
+          const b = i.querySelector(".role-row");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+        if (!wasOpen) {
+          item.classList.add("is-open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
+
+      btn.addEventListener("mouseenter", () => {
+        if (!mqDesk.matches) return;
+        applyDesktopHover(btn);
+      });
+
+      btn.addEventListener("focus", () => {
+        if (!mqDesk.matches) return;
+        applyDesktopHover(btn);
+      });
+    });
+
+    wrap.addEventListener("mouseleave", () => {
+      if (!mqDesk.matches) return;
+      clearDesktopPreview();
+    });
+
+    wrap.addEventListener("focusout", (e) => {
+      if (!mqDesk.matches) return;
+      const next = /** @type {FocusEvent} */ (e).relatedTarget;
+      if (next && wrap.contains(/** @type {Node} */ (next))) return;
+      clearDesktopPreview();
+    });
+
+    mqDesk.addEventListener("change", () => {
+      items.forEach((i) => i.classList.remove("is-open"));
+      clearDesktopPreview();
+    });
+  }
+
+  /** @param {HTMLElement | null} section */
+  function initPhotoStripScroll(section) {
+    if (!section) return;
+    const rows = section.querySelectorAll("[data-photo-row]");
+
+    function update() {
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const denom = Math.max(1, vh + rect.height);
+      const progress = Math.min(1, Math.max(0, (vh - rect.top) / denom));
+      rows.forEach((row) => {
+        const dir = row.getAttribute("data-photo-row") === "left" ? -1 : 1;
+        const track = row.querySelector(".photo-strip-track");
+        if (!track) return;
+        if (reduceMotion) {
+          track.style.transform = "";
+          return;
+        }
+        const shift = progress * dir * 22;
+        track.style.transform = `translateX(${shift}vw)`;
+      });
+    }
+
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  }
+
   function initSkillPills() {
     const wrap = document.querySelector("[data-skill-pills]");
     const status = document.querySelector("[data-skill-status]");
@@ -272,6 +377,8 @@
   initReveal(document.querySelectorAll("[data-reveal]"));
   initWorkPreview(document.querySelector("[data-work-preview]"));
   initSkillPills();
+  initExperience(document.querySelector("[data-experience-wrap]"));
+  initPhotoStripScroll(document.querySelector("[data-photo-strip-section]"));
 
   if (!reduceMotion) {
     document.querySelectorAll(".work-list .work-row").forEach((row) => {
