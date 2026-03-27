@@ -771,11 +771,14 @@ html.theme-light .logos-subhead {
   margin: 0 auto;
 }
 
+/* Match project PNGs (1:1); stack is square so cover meets all edges */
 .work-preview__stack {
   position: relative;
-  height: min(64vw, 420px);
-  min-height: 280px;
-  max-height: 480px;
+  width: 100%;
+  max-width: min(92vw, 440px);
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+  height: auto;
   perspective: 1400px;
   transform-style: preserve-3d;
 }
@@ -791,10 +794,11 @@ html.theme-light .logos-subhead {
 
 .work-preview__card {
   position: absolute;
-  inset: 0 auto auto 0;
+  left: 0;
+  top: 0;
   width: 88%;
-  height: 90%;
-  max-height: 440px;
+  aspect-ratio: 1 / 1;
+  height: auto;
   margin: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
