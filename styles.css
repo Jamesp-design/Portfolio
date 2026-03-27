@@ -1,0 +1,141 @@
+:root {
+  --bg: #f4f4f2;
+  --text: #181818;
+  --muted: #585858;
+  --border: #d8d8d8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.45;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.intro h2 {
+  margin-top: 40px;
+  max-width: 760px;
+  font-size: clamp(1.5rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+.projects {
+  margin-top: 30px;
+  display: grid;
+  gap: 12px;
+}
+
+.project-card {
+  display: block;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: #bcbcbc;
+  transform: translateY(-1px);
+}
+
+.project-title {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.project-meta {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.site-footer {
+  margin-top: 44px;
+}
+
+.site-footer h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.site-footer .or {
+  margin: 4px 0;
+  color: var(--muted);
+}
+
+a {
+  color: inherit;
+}
+
+.project-page .lead {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 780px;
+}
+
+.pill-list {
+  margin: 18px 0 28px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill-list li {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  background: #fff;
+}
+
+.content {
+  display: grid;
+  gap: 20px;
+}
+
+.content h3 {
+  margin: 8px 0;
+  font-size: 1.15rem;
+}
+
+.content p {
+  margin: 0;
+  color: #252525;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
