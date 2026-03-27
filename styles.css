@@ -85,7 +85,7 @@ body {
   overflow-x: clip;
 }
 
-/* Dotted graph paper — stronger in the centre, soft at edges (mask + page gradient) */
+/* Dotted graph paper: full viewport; dots only in a central window (edges = page bg via mask) */
 body::before {
   content: "";
   position: fixed;
@@ -95,22 +95,24 @@ body::before {
   background-image: radial-gradient(circle at center, var(--grid-dot) 1.1px, transparent 1.6px);
   background-size: var(--grid-step) var(--grid-step);
   background-position: 0 0;
-  mask-image: radial-gradient(
-    ellipse 92% 78% at 50% 42%,
-    #000 0%,
-    #000 28%,
-    rgba(0, 0, 0, 0.55) 58%,
-    rgba(0, 0, 0, 0.12) 82%,
-    transparent 100%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse 92% 78% at 50% 42%,
-    #000 0%,
-    #000 28%,
-    rgba(0, 0, 0, 0.55) 58%,
-    rgba(0, 0, 0, 0.12) 82%,
-    transparent 100%
-  );
+  -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 11%,
+      #000 89%,
+      transparent 100%
+    ),
+    linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 11%,
+      #000 89%,
+      transparent 100%
+    ),
+    linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  mask-composite: intersect;
 }
 
 .shell:not(.reduce-motion) {
@@ -473,39 +475,8 @@ main {
   border-block: 1px solid var(--border);
 }
 
-/* Light: white band for the marquee + horizontal fade so edges read solid over the dotted page */
 html.theme-light .logos-section {
   border-block-color: rgba(22, 20, 32, 0.07);
-  background: transparent;
-}
-
-html.theme-light .logos-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  border-radius: inherit;
-  background: linear-gradient(
-    90deg,
-    #ffffff 0%,
-    #ffffff 5%,
-    rgba(255, 255, 255, 0.92) 12%,
-    rgba(255, 255, 255, 0.4) 24%,
-    rgba(255, 255, 255, 0.08) 38%,
-    transparent 50%,
-    rgba(255, 255, 255, 0.08) 62%,
-    rgba(255, 255, 255, 0.4) 76%,
-    rgba(255, 255, 255, 0.92) 88%,
-    #ffffff 95%,
-    #ffffff 100%
-  );
-}
-
-html.theme-light .logos-subhead,
-html.theme-light .logos-viewport {
-  position: relative;
-  z-index: 1;
 }
 
 .logos-subhead {
