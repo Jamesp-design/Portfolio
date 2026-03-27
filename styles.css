@@ -26,7 +26,7 @@
 
   --radius-lg: 22px;
   --radius-md: 14px;
-  --grid-step: 16px;
+  --grid-step: 32px;
   --grid-dot: rgba(255, 255, 255, 0.13);
   --shadow-glow: 0 0 80px rgba(124, 246, 201, 0.12);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -466,9 +466,46 @@ main {
 }
 
 .logos-section {
+  position: relative;
+  z-index: 1;
   margin-top: 2.75rem;
-  padding-block: 0.5rem 0.35rem;
+  padding-block: 0.65rem 0.5rem;
   border-block: 1px solid var(--border);
+}
+
+/* Light: white band for the marquee + horizontal fade so edges read solid over the dotted page */
+html.theme-light .logos-section {
+  border-block-color: rgba(22, 20, 32, 0.07);
+  background: transparent;
+}
+
+html.theme-light .logos-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 5%,
+    rgba(255, 255, 255, 0.92) 12%,
+    rgba(255, 255, 255, 0.4) 24%,
+    rgba(255, 255, 255, 0.08) 38%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.08) 62%,
+    rgba(255, 255, 255, 0.4) 76%,
+    rgba(255, 255, 255, 0.92) 88%,
+    #ffffff 95%,
+    #ffffff 100%
+  );
+}
+
+html.theme-light .logos-subhead,
+html.theme-light .logos-viewport {
+  position: relative;
+  z-index: 1;
 }
 
 .logos-subhead {
@@ -483,7 +520,8 @@ main {
 
 .logos-viewport {
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
 }
 
 .logos-track {
@@ -1205,28 +1243,28 @@ details.role[open] > .role__summary::after {
   color: var(--faint);
 }
 
+/* max-height animates reliably in Chromium; grid 0fr/1fr often does not for <details> */
 .role__anim {
-  display: grid;
-  grid-template-rows: 0fr;
   overflow: hidden;
-  transition: grid-template-rows 0.58s var(--ease-out);
+  max-height: 0;
+  transition: max-height 0.58s var(--ease-out);
 }
 
 details.role[open] > .role__anim {
-  grid-template-rows: 1fr;
+  max-height: min(120rem, 400vh);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .role__anim {
-    transition: none;
+    transition: none !important;
   }
 
   details.role:not([open]) > .role__anim {
-    grid-template-rows: 0fr;
+    max-height: 0;
   }
 
   details.role[open] > .role__anim {
-    grid-template-rows: 1fr;
+    max-height: none;
   }
 }
 

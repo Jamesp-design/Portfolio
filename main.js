@@ -1,8 +1,12 @@
 (function () {
   "use strict";
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const mqReduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const reduceMotion = mqReduceMotion.matches;
   document.body.classList.toggle("reduce-motion", reduceMotion);
+  mqReduceMotion.addEventListener("change", () => {
+    document.body.classList.toggle("reduce-motion", mqReduceMotion.matches);
+  });
 
   const yearEl = document.querySelector("[data-year]");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
