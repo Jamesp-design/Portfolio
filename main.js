@@ -344,6 +344,76 @@
     }
   }
 
+  /** Fisher–Yates shuffle (mutates array) */
+  function shuffleInPlace(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  /**
+   * Loads images/gallery/manifest.json, shuffles, assigns up to 18 slots (6×3 rows).
+   * If more than 18 files exist, a random 18 are picked each refresh; if fewer, images repeat in shuffled order.
+   * @param {HTMLElement | null} section
+   * @returns {Promise<void>}
+   */
+  async function initPhotoGallery(section) {
+    if (!section) return;
+    let files = [];
+    try {
+      const res = await fetch("./images/gallery/manifest.json", { cache: "no-store" });
+      if (!res.ok) return;
+      const data = await res.json();
+      files = Array.isArray(data.images) ? data.images.filter((x) => typeof x === "string" && x.trim()) : [];
+    } catch {
+      return;
+    }
+    if (!files.length) return;
+
+    const base = "./images/gallery/";
+    /** @type {string[]} */
+    let pool = shuffleInPlace([...files]);
+    if (pool.length >= 18) {
+      pool = pool.slice(0, 18);
+    } else {
+      const out = [];
+      for (let i = 0; i < 18; i++) out.push(pool[i % pool.length]);
+      pool = out;
+    }
+
+    const rows = section.querySelectorAll("[data-photo-row]");
+    rows.forEach((row, rowIndex) => {
+      const slice = pool.slice(rowIndex * 6, rowIndex * 6 + 6);
+      const chunks = row.querySelectorAll(".photo-strip-chunk");
+      if (!chunks.length) return;
+      const first = chunks[0];
+      const slots = first.querySelectorAll(".photo-slot");
+      slots.forEach((slot, i) => {
+        const url = slice[i] ? base + encodeURI(slice[i]) : "";
+        if (!url) return;
+        slot.removeAttribute("data-placeholder");
+        const label = slot.querySelector(".photo-slot__label");
+        if (label) label.remove();
+        slot.innerHTML = "";
+        const img = document.createElement("img");
+        img.src = url;
+        img.alt = "";
+        img.loading = "lazy";
+        img.decoding = "async";
+        slot.appendChild(img);
+        slot.setAttribute("aria-label", "Gallery photo");
+      });
+      for (let c = 1; c < chunks.length; c++) {
+        chunks[c].innerHTML = first.innerHTML;
+        chunks[c].querySelectorAll(".photo-slot").forEach((slot) => {
+          slot.setAttribute("tabindex", "-1");
+        });
+      }
+    });
+  }
+
   /** @param {HTMLElement | null} section */
   function initPhotoStripScroll(section) {
     if (!section) return;
@@ -376,6 +446,27 @@
     update();
   }
 
+  /**
+   * @param {HTMLElement | null} section
+   * @returns {Promise<void>}
+   */
+  function waitGalleryImages(section) {
+    if (!section) return Promise.resolve();
+    const imgs = section.querySelectorAll(".photo-strip img");
+    if (!imgs.length) return Promise.resolve();
+    return Promise.all(
+      Array.from(imgs).map(
+        (img) =>
+          img.complete
+            ? Promise.resolve()
+            : new Promise((res) => {
+                img.addEventListener("load", res, { once: true });
+                img.addEventListener("error", res, { once: true });
+              })
+      )
+    );
+  }
+
   const nav = document.querySelector("[data-nav]");
   initNavScroll(nav);
   initScrollProgress(document.querySelector(".scroll-progress"));
@@ -383,7 +474,11 @@
   initReveal(document.querySelectorAll("[data-reveal]"));
   initWorkPreview(document.querySelector("[data-work-preview]"));
   initExperience(document.querySelector("[data-experience-wrap]"));
-  initPhotoStripScroll(document.querySelector("[data-photo-strip-section]"));
+
+  const photoSection = document.querySelector("[data-photo-strip-section]");
+  initPhotoGallery(photoSection).then(() => waitGalleryImages(photoSection)).then(() => {
+    initPhotoStripScroll(photoSection);
+  });
 
   if (!reduceMotion) {
     function bindWorkRowSpotlight(row) {
