@@ -373,6 +373,11 @@
     if (!files.length) return;
 
     const base = "./images/gallery/";
+    function galleryFileUrl(name) {
+      const trimmed = name.trim();
+      if (!trimmed) return "";
+      return base + trimmed.split("/").map(encodeURIComponent).join("/");
+    }
     /** @type {string[]} */
     let pool = shuffleInPlace([...files]);
     if (pool.length >= 18) {
@@ -391,7 +396,7 @@
       const first = chunks[0];
       const slots = first.querySelectorAll(".photo-slot");
       slots.forEach((slot, i) => {
-        const url = slice[i] ? base + encodeURI(slice[i]) : "";
+        const url = slice[i] ? galleryFileUrl(slice[i]) : "";
         if (!url) return;
         slot.removeAttribute("data-placeholder");
         const label = slot.querySelector(".photo-slot__label");
