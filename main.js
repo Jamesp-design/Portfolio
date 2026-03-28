@@ -243,7 +243,9 @@
   /** @param {HTMLElement | null} wrap */
   function initExperience(wrap) {
     if (!wrap) return;
-    const previewInner = wrap.querySelector("[data-experience-preview-inner]");
+    const cardInners = wrap.querySelectorAll("[data-experience-card-inner]");
+    const previewRoot = wrap.querySelector("[data-experience-preview]");
+    const stack = wrap.querySelector("[data-experience-preview-stack]");
     const mqDesk = window.matchMedia("(min-width: 960px)");
     const items = wrap.querySelectorAll(".role-item");
     const firstBody = wrap.querySelector("#exp-panel-0");
@@ -251,10 +253,21 @@
     /** @type {HTMLElement | null} */
     let lastDesktopBody = firstBody;
 
+    const tickMs = 520;
+
+    function dealExperienceStack() {
+      if (!stack) return;
+      const front = stack.lastElementChild;
+      if (front) stack.insertBefore(front, stack.firstElementChild);
+    }
+
     /** @param {HTMLElement | null} bodyEl */
     function setPreviewFromBody(bodyEl) {
-      if (!previewInner || !bodyEl) return;
-      previewInner.innerHTML = bodyEl.innerHTML;
+      if (!bodyEl || cardInners.length === 0) return;
+      const html = bodyEl.innerHTML;
+      cardInners.forEach((el) => {
+        el.innerHTML = html;
+      });
       lastDesktopBody = bodyEl;
     }
 
@@ -271,6 +284,12 @@
       const item = btn.closest(".role-item");
       const body = item && item.querySelector(".role__body--inline");
       if (!body) return;
+      const changed = body !== lastDesktopBody;
+      if (mqDesk.matches && changed && !reduceMotion && previewRoot && stack) {
+        previewRoot.classList.add("is-tick");
+        dealExperienceStack();
+        window.setTimeout(() => previewRoot.classList.remove("is-tick"), tickMs);
+      }
       setPreviewFromBody(body);
       setActiveButton(btn);
     }
