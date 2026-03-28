@@ -244,16 +244,25 @@
   function initExperience(wrap) {
     if (!wrap) return;
     const previewInner = wrap.querySelector("[data-experience-preview-inner]");
-    const hintHtml = '<p class="experience-preview__hint">Hover a role to read more</p>';
     const mqDesk = window.matchMedia("(min-width: 960px)");
     const items = wrap.querySelectorAll(".role-item");
+    const firstBody = wrap.querySelector("#exp-panel-0");
 
-    function clearDesktopPreview() {
-      if (previewInner) previewInner.innerHTML = hintHtml;
-      wrap.classList.remove("experience-wrap--open");
-      items.forEach((item) => {
-        const btn = item.querySelector(".role-row");
-        if (btn) btn.setAttribute("aria-expanded", "false");
+    /** @type {HTMLElement | null} */
+    let lastDesktopBody = firstBody;
+
+    /** @param {HTMLElement | null} bodyEl */
+    function setPreviewFromBody(bodyEl) {
+      if (!previewInner || !bodyEl) return;
+      previewInner.innerHTML = bodyEl.innerHTML;
+      lastDesktopBody = bodyEl;
+    }
+
+    /** @param {HTMLButtonElement} btn */
+    function setActiveButton(btn) {
+      items.forEach((it) => {
+        const b = it.querySelector(".role-row");
+        if (b) b.setAttribute("aria-expanded", b === btn ? "true" : "false");
       });
     }
 
@@ -261,13 +270,15 @@
     function applyDesktopHover(btn) {
       const item = btn.closest(".role-item");
       const body = item && item.querySelector(".role__body--inline");
-      if (!previewInner || !body) return;
-      previewInner.innerHTML = body.innerHTML;
-      wrap.classList.add("experience-wrap--open");
-      items.forEach((it) => {
-        const b = it.querySelector(".role-row");
-        if (b) b.setAttribute("aria-expanded", it.contains(btn) ? "true" : "false");
-      });
+      if (!body) return;
+      setPreviewFromBody(body);
+      setActiveButton(btn);
+    }
+
+    function applyDesktopDefault() {
+      if (lastDesktopBody) setPreviewFromBody(lastDesktopBody);
+      const firstBtn = wrap.querySelector(".role-row");
+      if (firstBtn) setActiveButton(firstBtn);
     }
 
     items.forEach((item) => {
@@ -299,22 +310,33 @@
       });
     });
 
-    wrap.addEventListener("mouseleave", () => {
-      if (!mqDesk.matches) return;
-      clearDesktopPreview();
-    });
-
-    wrap.addEventListener("focusout", (e) => {
-      if (!mqDesk.matches) return;
-      const next = /** @type {FocusEvent} */ (e).relatedTarget;
-      if (next && wrap.contains(/** @type {Node} */ (next))) return;
-      clearDesktopPreview();
-    });
-
     mqDesk.addEventListener("change", () => {
       items.forEach((i) => i.classList.remove("is-open"));
-      clearDesktopPreview();
+      if (mqDesk.matches) {
+        applyDesktopDefault();
+        syncPreviewHeight();
+      }
     });
+
+    const listEl = wrap.querySelector(".role-list--experience");
+    const previewEl = wrap.querySelector(".experience-preview");
+
+    function syncPreviewHeight() {
+      if (!mqDesk.matches || !listEl || !previewEl) return;
+      previewEl.style.maxHeight = `${listEl.offsetHeight}px`;
+    }
+
+    if (mqDesk.matches) {
+      applyDesktopDefault();
+      syncPreviewHeight();
+    }
+
+    window.addEventListener("resize", syncPreviewHeight);
+    window.addEventListener("load", syncPreviewHeight);
+    if (listEl && typeof ResizeObserver !== "undefined") {
+      const ro = new ResizeObserver(() => syncPreviewHeight());
+      ro.observe(listEl);
+    }
   }
 
   /** @param {HTMLElement | null} section */
@@ -329,14 +351,16 @@
       const progress = Math.min(1, Math.max(0, (vh - rect.top) / denom));
       rows.forEach((row) => {
         const dir = row.getAttribute("data-photo-row") === "left" ? -1 : 1;
+        const viewport = row.querySelector(".photo-strip-viewport");
         const track = row.querySelector(".photo-strip-track");
-        if (!track) return;
+        if (!viewport || !track) return;
         if (reduceMotion) {
           track.style.transform = "";
           return;
         }
-        const shift = progress * dir * 40;
-        track.style.transform = `translateX(${shift}vw)`;
+        const maxPan = Math.max(0, track.scrollWidth - viewport.clientWidth);
+        const tx = progress * maxPan * dir;
+        track.style.transform = `translateX(${-tx}px)`;
       });
     }
 
