@@ -243,7 +243,6 @@
   /** @param {HTMLElement | null} wrap */
   function initExperience(wrap) {
     if (!wrap) return;
-    const cardInners = wrap.querySelectorAll("[data-experience-card-inner]");
     const previewRoot = wrap.querySelector("[data-experience-preview]");
     const stack = wrap.querySelector("[data-experience-preview-stack]");
     const mqDesk = window.matchMedia("(min-width: 960px)");
@@ -263,10 +262,14 @@
 
     /** @param {HTMLElement | null} bodyEl */
     function setPreviewFromBody(bodyEl) {
-      if (!bodyEl || cardInners.length === 0) return;
+      if (!bodyEl || !stack) return;
+      const cards = stack.querySelectorAll(".experience-preview__card");
       const html = bodyEl.innerHTML;
-      cardInners.forEach((el) => {
-        el.innerHTML = html;
+      cards.forEach((card, i) => {
+        const inner = card.querySelector("[data-experience-card-inner]");
+        if (!inner) return;
+        /* Only the front slot (always third in DOM) shows text; others stay blank white faces */
+        inner.innerHTML = i === cards.length - 1 ? html : "";
       });
       lastDesktopBody = bodyEl;
     }
