@@ -333,28 +333,11 @@
       items.forEach((i) => i.classList.remove("is-open"));
       if (mqDesk.matches) {
         applyDesktopDefault();
-        syncPreviewHeight();
       }
     });
 
-    const listEl = wrap.querySelector(".role-list--experience");
-    const previewEl = wrap.querySelector(".experience-preview");
-
-    function syncPreviewHeight() {
-      if (!mqDesk.matches || !listEl || !previewEl) return;
-      previewEl.style.maxHeight = `${listEl.offsetHeight}px`;
-    }
-
     if (mqDesk.matches) {
       applyDesktopDefault();
-      syncPreviewHeight();
-    }
-
-    window.addEventListener("resize", syncPreviewHeight);
-    window.addEventListener("load", syncPreviewHeight);
-    if (listEl && typeof ResizeObserver !== "undefined") {
-      const ro = new ResizeObserver(() => syncPreviewHeight());
-      ro.observe(listEl);
     }
   }
 
