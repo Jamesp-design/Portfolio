@@ -350,7 +350,7 @@
       const denom = Math.max(1, vh + rect.height);
       const progress = Math.min(1, Math.max(0, (vh - rect.top) / denom));
       rows.forEach((row) => {
-        const dir = row.getAttribute("data-photo-row") === "left" ? -1 : 1;
+        const isLeft = row.getAttribute("data-photo-row") === "left";
         const viewport = row.querySelector(".photo-strip-viewport");
         const track = row.querySelector(".photo-strip-track");
         if (!viewport || !track) return;
@@ -359,7 +359,9 @@
           return;
         }
         const maxPan = Math.max(0, track.scrollWidth - viewport.clientWidth);
-        const tx = progress * maxPan * dir;
+        /* Left rows use inverted progress so translate stays ≤0 and the strip never reveals empty space past x=0 */
+        const panProgress = isLeft ? 1 - progress : progress;
+        const tx = panProgress * maxPan;
         track.style.transform = `translateX(${-tx}px)`;
       });
     }

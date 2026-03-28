@@ -301,13 +301,12 @@ html.theme-light .cursor.is-hover .cursor__ring {
   z-index: 80;
   padding-block: 1.1rem;
   border-bottom: 1px solid transparent;
-  background: var(--bg0);
-  backdrop-filter: blur(16px);
+  background-color: var(--bg0);
   transition: border-color 0.35s var(--ease-out), padding 0.35s var(--ease-out), background 0.35s ease;
 }
 
 html.theme-light .nav {
-  background: var(--bg0);
+  background-color: var(--bg0);
   border-bottom-color: transparent;
 }
 
@@ -371,7 +370,7 @@ html.theme-light .nav {
   height: 2.45rem;
   border-radius: 12px;
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--surface);
   color: var(--muted);
   text-decoration: none;
   transition: color 0.22s ease, border-color 0.22s ease, background 0.22s ease, transform 0.22s var(--ease-out);
@@ -379,8 +378,8 @@ html.theme-light .nav {
 
 .nav-icon:hover {
   color: var(--text);
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--border);
+  background: var(--surface2);
   transform: translateY(-2px);
 }
 
@@ -1082,13 +1081,13 @@ html.theme-light .hero .btn--ghost:hover {
   position: relative;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
-  background-color: var(--bg0);
+  background-color: transparent;
   padding: 0;
   transition: transform 0.35s var(--ease-out), border-color 0.25s ease, box-shadow 0.35s ease;
 }
 
 html.theme-light .hi-card {
-  box-shadow: 0 1px 0 rgba(22, 20, 32, 0.04);
+  box-shadow: none;
 }
 
 .hi-card__link {
@@ -1114,10 +1113,16 @@ html.theme-light .hi-card {
   width: 2rem;
   height: 2rem;
   border-radius: 10px;
-  border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--bg0) 88%, var(--text));
-  color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.28);
+  color: #fff;
   pointer-events: none;
+}
+
+html.theme-light .hi-card__external {
+  border-color: rgba(22, 20, 32, 0.18);
+  background: rgba(22, 20, 32, 0.78);
+  color: #fff;
 }
 
 .hi-card__external-icon {
@@ -1125,14 +1130,14 @@ html.theme-light .hi-card {
 }
 
 html.theme-light .hi-card:hover {
-  border-color: rgba(22, 20, 32, 0.14);
-  box-shadow: 0 22px 55px rgba(22, 20, 32, 0.09);
+  border-color: rgba(22, 20, 32, 0.16);
+  box-shadow: none;
 }
 
 .hi-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: none;
 }
 
 .about-highlights.reveal.is-visible .hi-card {
@@ -1313,7 +1318,7 @@ html.theme-light .role-item.is-open .role__body--inline {
   display: none;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
-  background-color: var(--bg0);
+  background-color: transparent;
   min-width: 0;
   min-height: 0;
   overflow: hidden;
