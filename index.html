@@ -9,7 +9,7 @@
       content="James Phillips — product designer, Newcastle. Fintech, UX, and systems."
     />
     <link rel="icon" href="./images/brand/Favicon%20Black.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css?v=20260327" />
+    <link rel="stylesheet" href="./styles.css?v=20260328" />
   </head>
   <body class="shell">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -36,11 +36,13 @@
       </div>
     </header>
 
-    <main id="main">
-      <section class="intro shell-inner">
+    <main id="main" class="page--compact">
+      <section class="intro shell-inner" aria-labelledby="intro-heading">
+        <h1 id="intro-heading" class="intro__heading reveal" data-reveal>About</h1>
         <p class="intro__kicker reveal" data-reveal>Product design · Newcastle</p>
         <p class="intro__lede reveal" data-reveal>
-          End-to-end UX for fintech and product teams — research, systems, and craft.
+          Designer in <strong>Newcastle</strong> — end-to-end UX for fintech and product teams. Research, systems, and
+          product craft from discovery to delivery.
         </p>
         <p class="intro__hint reveal" data-reveal>
           <a class="intro__link" href="#work">View work</a>
@@ -98,6 +100,7 @@
                 data-color="cyan"
                 data-preview-src="./images/projects/nydig.png"
                 data-preview-title="NYDIG"
+                aria-label="NYDIG — Mobile, API integration, design system. Open case study."
               >
                 <span class="project-wave-card__bg" style="--img: url(./images/projects/nydig.png)"></span>
                 <span class="project-wave-card__content">
@@ -112,6 +115,7 @@
                 data-color="violet"
                 data-preview-src="./images/projects/hive.png"
                 data-preview-title="Hive"
+                aria-label="Hive — UX, accessibility, systems. Open case study."
               >
                 <span class="project-wave-card__bg" style="--img: url(./images/projects/hive.png)"></span>
                 <span class="project-wave-card__content">
@@ -126,6 +130,7 @@
                 data-color="amber"
                 data-preview-src="./images/projects/sync.png"
                 data-preview-title="Sync"
+                aria-label="Sync — VR, game feel, audio-visual. Open case study."
               >
                 <span class="project-wave-card__bg" style="--img: url(./images/projects/sync.png)"></span>
                 <span class="project-wave-card__content">
@@ -140,6 +145,7 @@
                 data-color="rose"
                 data-preview-src="./images/projects/bottlepay.png"
                 data-preview-title="Bottlepay"
+                aria-label="Bottlepay — Consumer app, redesign, strategy. Open case study."
               >
                 <span class="project-wave-card__bg" style="--img: url(./images/projects/bottlepay.png)"></span>
                 <span class="project-wave-card__content">
@@ -154,6 +160,7 @@
                 data-color="lime"
                 data-preview-src="./images/projects/myndr.png"
                 data-preview-title="Myndr"
+                aria-label="Myndr — Micro-interactions, motion. Open case study."
               >
                 <span class="project-wave-card__bg" style="--img: url(./images/projects/myndr.png)"></span>
                 <span class="project-wave-card__content">
@@ -168,6 +175,7 @@
                 data-color="sky"
                 data-preview-src="./images/projects/loko.png"
                 data-preview-title="Loko"
+                aria-label="Loko — AR, mobile, end-to-end. Open case study."
               >
                 <span class="project-wave-card__bg" style="--img: url(./images/projects/loko.png)"></span>
                 <span class="project-wave-card__content">
@@ -185,51 +193,58 @@
         </div>
       </section>
 
-      <section id="about" class="about shell-inner" aria-label="About James Phillips">
-        <div class="about__intro reveal" data-reveal>
-          <h2 class="about__heading">About</h2>
-          <p class="about__lede">
-            Designer in <strong>Newcastle</strong>. Fintech, systems, and product craft — from discovery to delivery.
-          </p>
-        </div>
-
+      <section id="about" class="about shell-inner" aria-label="Highlights, experience, and education">
         <div class="about__highlights reveal" data-reveal>
-          <h3 class="about__label">Highlights</h3>
-          <ul class="highlight-feed">
-            <li>
+          <h2 class="about__label">Highlights</h2>
+          <div class="highlight-cards">
+            <article class="highlight-card">
               <a
-                class="highlight-feed__link"
+                class="highlight-card__link"
                 href="https://www.prnewswire.com/news-releases/landrys-and-nydig-announce-bitcoin-loyalty-rewards-301420186.html"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span class="highlight-feed__title">Landry's</span>
-                <span class="highlight-feed__arrow" aria-hidden="true">↗</span>
+                <span class="highlight-card__eyebrow">Landry's · NYDIG</span>
+                <h3 class="highlight-card__title">Bitcoin loyalty rewards partnership</h3>
+                <p class="highlight-card__excerpt">
+                  Product design ahead of a public partnership — a bitcoin loyalty program for millions of guests across
+                  <strong>500+</strong> locations nationwide.
+                </p>
+                <span class="highlight-card__meta">PR Newswire <span aria-hidden="true">↗</span></span>
               </a>
-            </li>
-            <li>
+            </article>
+            <article class="highlight-card">
               <a
-                class="highlight-feed__link"
+                class="highlight-card__link"
                 href="https://thefintechtimes.com/uk-leads-the-world-in-shell-company-risks-signifying-urgent-financial-vigilance/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span class="highlight-feed__title">Moody's</span>
-                <span class="highlight-feed__arrow" aria-hidden="true">↗</span>
+                <span class="highlight-card__eyebrow">Moody's Analytics</span>
+                <h3 class="highlight-card__title">Shell company risk in the headlines</h3>
+                <p class="highlight-card__excerpt">
+                  Lead designer on <strong>Shell Company Indicator</strong> — helping businesses detect shell companies
+                  in supply chains, with the UK leading on exposure.
+                </p>
+                <span class="highlight-card__meta">The Fintech Times <span aria-hidden="true">↗</span></span>
               </a>
-            </li>
-            <li>
+            </article>
+            <article class="highlight-card">
               <a
-                class="highlight-feed__link"
+                class="highlight-card__link"
                 href="https://www.ign.com/articles/assassins-creed-nexus-vr-review"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span class="highlight-feed__title">Ubisoft</span>
-                <span class="highlight-feed__arrow" aria-hidden="true">↗</span>
+                <span class="highlight-card__eyebrow">Ubisoft</span>
+                <h3 class="highlight-card__title">Assassin's Creed Nexus VR — shipped</h3>
+                <p class="highlight-card__excerpt">
+                  UI art on the Quest campaign — HUD and in-headset interface craft (see IGN's review).
+                </p>
+                <span class="highlight-card__meta">IGN <span aria-hidden="true">↗</span></span>
               </a>
-            </li>
-          </ul>
+            </article>
+          </div>
         </div>
 
         <div class="about__experience reveal" data-reveal>
@@ -277,6 +292,6 @@
       </footer>
     </main>
 
-    <script src="./main.js?v=20260327" defer></script>
+    <script src="./main.js?v=20260328" defer></script>
   </body>
 </html>

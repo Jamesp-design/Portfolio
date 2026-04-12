@@ -8,6 +8,8 @@
     document.body.classList.toggle("reduce-motion", mqReduceMotion.matches);
   });
 
+  const mqFineHover = window.matchMedia("(hover: hover) and (pointer: fine)");
+
   const yearEl = document.querySelector("[data-year]");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
@@ -61,7 +63,7 @@
         el &&
         el.closest &&
         el.closest(
-          "a, button, [role='button'], input, textarea, select, label, summary, .logo-img, .highlight-feed__link, .footer-links__a, .project-wave-card, .intro__link, .exp-note a, .work-wave__btn, .btn--header-cta"
+          "a, button, [role='button'], input, textarea, select, label, summary, .logo-img, .highlight-card__link, .footer-links__a, .project-wave-card, .intro__link, .exp-note a, .work-wave__btn, .btn--header-cta"
         );
       cursor.classList.toggle("is-hover", !!interactive);
     }
@@ -125,12 +127,21 @@
     items.forEach((el) => io.observe(el));
   }
 
+  /** @param {number} n */
+  function buildPingPongSequence(n) {
+    if (n <= 1) return [0];
+    const seq = [];
+    for (let i = 0; i < n; i++) seq.push(i);
+    for (let i = n - 2; i >= 1; i--) seq.push(i);
+    return seq;
+  }
+
   const WAVE_GAP = 10;
-  const WAVE_SCALES = [1, 0.5, 0.33, 0.21, 0.14, 0.09];
+  const WAVE_SCALES = [1, 0.42, 0.27, 0.17, 0.11, 0.072];
 
   /** @param {number} d */
   function waveScaleAt(d) {
-    return WAVE_SCALES[Math.min(d, WAVE_SCALES.length - 1)] ?? 0.07;
+    return WAVE_SCALES[Math.min(d, WAVE_SCALES.length - 1)] ?? 0.06;
   }
 
   /** @param {HTMLElement | null} root */
@@ -145,39 +156,53 @@
     const cards = track ? [...track.querySelectorAll(".project-wave-card")] : [];
     if (!track || !viewport || cards.length === 0) return;
 
-    let activeIndex = 0;
+    const n = cards.length;
+    const pingPong = buildPingPongSequence(n);
+    let seqPos = 0;
+    let autoIndex = pingPong[0];
+    /** @type {number | null} */
+    let hoverIndex = null;
+    let mouseInsideStage = false;
     /** @type {number | null} */
     let timer = null;
-    const tickMs = 5200;
+    const tickMs = 4800;
+    let rafHover = 0;
 
     function rowMetrics() {
-      const vw = window.innerWidth;
+      const vw = viewport.clientWidth;
       const vh = window.innerHeight;
-      const maxByWidth = Math.min(825, vw * 0.94);
-      const hFromW = (maxByWidth * 1080) / 825;
-      const maxH = vh * 0.86;
-      const H = Math.min(hFromW, maxH);
+      const maxW = Math.min(vw * 0.92, 720);
+      const hCapByWidth = (maxW * 1080) / 825;
+      const hCapByViewport = Math.min(vh * 0.36, vw * 0.55);
+      const H = Math.max(128, Math.min(hCapByWidth, hCapByViewport, 420));
       const activeW = (H * 825) / 1080;
       return { H, activeW };
     }
 
+    function effectiveIndex() {
+      if (mqFineHover.matches && mouseInsideStage && hoverIndex !== null) {
+        return hoverIndex;
+      }
+      return autoIndex;
+    }
+
     function updateStatus() {
       if (!statusEl) return;
-      const card = cards[activeIndex];
+      const ei = effectiveIndex();
+      const card = cards[ei];
       const title = card && card.getAttribute("data-preview-title");
       statusEl.textContent = title ? `Showing ${title}` : "";
     }
 
     function layout() {
+      const ei = effectiveIndex();
       const { H, activeW } = rowMetrics();
       root.style.setProperty("--wave-h", `${H}px`);
       root.style.setProperty("--wave-active-w", `${activeW}px`);
 
-      let offset = 0;
       const widths = cards.map((_, i) => {
-        const d = Math.abs(i - activeIndex);
-        const w = activeW * waveScaleAt(d);
-        return w;
+        const d = Math.abs(i - ei);
+        return activeW * waveScaleAt(d);
       });
 
       cards.forEach((card, i) => {
@@ -185,16 +210,17 @@
         card.style.width = `${w}px`;
         card.style.flex = `0 0 ${w}px`;
         card.style.height = `${H}px`;
-        card.classList.toggle("is-active", i === activeIndex);
-        card.toggleAttribute("data-active", i === activeIndex);
-        card.tabIndex = i === activeIndex ? 0 : -1;
+        const active = i === ei;
+        card.classList.toggle("is-active", active);
+        card.toggleAttribute("data-active", active);
+        card.tabIndex = active ? 0 : -1;
       });
 
       let left = 0;
-      for (let i = 0; i < activeIndex; i++) {
+      for (let i = 0; i < ei; i++) {
         left += widths[i] + WAVE_GAP;
       }
-      const activeCenter = left + widths[activeIndex] / 2;
+      const activeCenter = left + widths[ei] / 2;
       const vw = viewport.clientWidth;
       const tx = vw / 2 - activeCenter;
       track.style.transform = `translate3d(${tx}px, 0, 0)`;
@@ -202,15 +228,27 @@
       updateStatus();
     }
 
-    function go(delta) {
-      const n = cards.length;
-      activeIndex = (activeIndex + delta + n) % n;
+    function syncSeqToIndex(idx) {
+      for (let k = 0; k < pingPong.length; k++) {
+        const test = (seqPos + k) % pingPong.length;
+        if (pingPong[test] === idx) {
+          seqPos = test;
+          autoIndex = pingPong[seqPos];
+          return;
+        }
+      }
+      autoIndex = idx;
+    }
+
+    function stepAuto(delta) {
+      seqPos = (seqPos + delta + pingPong.length) % pingPong.length;
+      autoIndex = pingPong[seqPos];
       layout();
     }
 
     function startAuto() {
-      if (reduceMotion || timer) return;
-      timer = window.setInterval(() => go(1), tickMs);
+      if (reduceMotion || timer || mouseInsideStage) return;
+      timer = window.setInterval(() => stepAuto(1), tickMs);
     }
 
     function stopAuto() {
@@ -219,37 +257,80 @@
       timer = null;
     }
 
+    function onStagePointerMove(e) {
+      if (!mqFineHover.matches) return;
+      if (rafHover) return;
+      rafHover = window.requestAnimationFrame(() => {
+        rafHover = 0;
+        const under = document.elementFromPoint(e.clientX, e.clientY);
+        const cardEl = under && under.closest && under.closest(".project-wave-card");
+        const next = cardEl ? cards.indexOf(/** @type {HTMLElement} */ (cardEl)) : null;
+        if (next !== hoverIndex) {
+          hoverIndex = next;
+          layout();
+        }
+      });
+    }
+
+    root.addEventListener("pointermove", onStagePointerMove, { passive: true });
+
+    root.addEventListener("pointerenter", () => {
+      mouseInsideStage = true;
+      stopAuto();
+      layout();
+    });
+
+    root.addEventListener("pointerleave", () => {
+      const lastShown =
+        mqFineHover.matches && hoverIndex !== null ? hoverIndex : autoIndex;
+      mouseInsideStage = false;
+      hoverIndex = null;
+      syncSeqToIndex(lastShown);
+      layout();
+      if (!reduceMotion) startAuto();
+    });
+
     cards.forEach((card, i) => {
       card.addEventListener("click", (e) => {
-        if (i !== activeIndex) {
+        if (i !== effectiveIndex()) {
           e.preventDefault();
-          activeIndex = i;
+          syncSeqToIndex(i);
           layout();
         }
       });
     });
 
-    if (prevBtn) prevBtn.addEventListener("click", () => { stopAuto(); go(-1); startAuto(); });
-    if (nextBtn) nextBtn.addEventListener("click", () => { stopAuto(); go(1); startAuto(); });
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        stopAuto();
+        stepAuto(-1);
+        startAuto();
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        stopAuto();
+        stepAuto(1);
+        startAuto();
+      });
+    }
 
     root.addEventListener("keydown", (e) => {
       if (e.key === "ArrowLeft") {
         e.preventDefault();
         stopAuto();
-        go(-1);
+        stepAuto(-1);
         startAuto();
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
         stopAuto();
-        go(1);
+        stepAuto(1);
         startAuto();
       }
     });
 
-    root.addEventListener("pointerenter", stopAuto);
-    root.addEventListener("pointerleave", startAuto);
-
     window.addEventListener("resize", layout);
+
     layout();
     if (!reduceMotion) startAuto();
 
