@@ -61,7 +61,7 @@
         el &&
         el.closest &&
         el.closest(
-          "a, button, [role='button'], input, textarea, select, label, summary, .work-row, .nav-icon, .logo-img, .role-row, .photo-slot, .hi-card__link"
+          "a, button, [role='button'], input, textarea, select, label, summary, .work-row, .logo-img, .role-row, .photo-slot, .hi-card__link, .footer-links__a"
         );
       cursor.classList.toggle("is-hover", !!interactive);
     }

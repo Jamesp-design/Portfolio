@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Syne:wght@500;600;700;800&display=swap");
 
 :root {
   --bg0: #07060a;
@@ -22,7 +22,7 @@
 
   --font-display: "Syne", system-ui, sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
 
   --radius-lg: 22px;
   --radius-md: 14px;
@@ -38,8 +38,8 @@
 }
 
 html.theme-light {
-  --bg0: #f8f6fc;
-  --bg1: #f0ecf8;
+  --bg0: #ffffff;
+  --bg1: #ffffff;
   --surface: rgba(18, 16, 28, 0.045);
   --surface2: rgba(18, 16, 28, 0.09);
   --border: rgba(18, 16, 28, 0.11);
@@ -81,55 +81,14 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--text);
-  background: radial-gradient(1200px 800px at 12% -10%, var(--glow-orb-a), transparent 55%),
-    radial-gradient(900px 600px at 88% 10%, var(--glow-orb-b), transparent 50%),
-    linear-gradient(180deg, var(--bg0), var(--bg1) 38%, var(--bg0));
+  background: var(--bg0);
   line-height: 1.5;
   min-height: 100vh;
   overflow-x: clip;
 }
 
-/* Dotted graph paper — full viewport */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle at center, var(--grid-dot) 1.1px, transparent 1.6px);
-  background-size: var(--grid-step) var(--grid-step);
-  background-position: 0 0;
-}
-
-/*
- * Soft vertical “brush” strokes: full height, left & right edges, same family as page bg.
- * Sits above the dots so edges read like painted-off paper; centre stays open for the grid.
- */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image: linear-gradient(
-      90deg,
-      var(--bg0) 0%,
-      color-mix(in srgb, var(--bg0) 82%, transparent) 14%,
-      color-mix(in srgb, var(--bg0) 48%, transparent) 32%,
-      color-mix(in srgb, var(--bg0) 18%, transparent) 52%,
-      transparent 72%
-    ),
-    linear-gradient(
-      270deg,
-      var(--bg0) 0%,
-      color-mix(in srgb, var(--bg0) 82%, transparent) 14%,
-      color-mix(in srgb, var(--bg0) 48%, transparent) 32%,
-      color-mix(in srgb, var(--bg0) 18%, transparent) 52%,
-      transparent 72%
-    );
-  background-size: min(var(--edge-brush-w), 50vw) 100%, min(var(--edge-brush-w), 50vw) 100%;
-  background-position: left top, right top;
-  background-repeat: no-repeat;
+html.theme-light body {
+  background: #ffffff;
 }
 
 .shell:not(.reduce-motion) {
@@ -291,7 +250,6 @@ html.theme-light .cursor.is-hover .cursor__ring {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  /* 16px grid alignment with dotted background */
   padding-inline: clamp(1rem, 4vw, 2.5rem);
 }
 
@@ -345,16 +303,11 @@ html.theme-light .nav {
   border-radius: 12px;
 }
 
-.nav-brand__mark {
-  display: grid;
-  place-items: center;
-  width: 2.45rem;
-  height: 2.45rem;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(124, 246, 201, 0.22), rgba(196, 167, 255, 0.18));
-  border: 1px solid var(--border);
-  font-family: var(--font-display);
-  font-size: 0.85rem;
+.nav-brand__logo {
+  display: block;
+  height: clamp(1.5rem, 3.5vw, 1.85rem);
+  width: auto;
+  max-width: 9rem;
 }
 
 .nav-icons {
@@ -474,6 +427,14 @@ main {
 
 .hero-hint__link:hover {
   color: var(--faint);
+}
+
+html.theme-light .hero-hint__link {
+  color: var(--muted);
+}
+
+html.theme-light .hero-hint__link:hover {
+  color: var(--text);
 }
 
 .hero-cta-row {
@@ -1005,6 +966,31 @@ html.theme-light .hero .btn--ghost {
 html.theme-light .hero .btn--ghost:hover {
   background-color: color-mix(in srgb, var(--bg0) 90%, var(--text));
   border-color: rgba(22, 20, 32, 0.2);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  margin-top: 1.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+.footer-links__a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links__a:hover {
+  color: var(--text);
+}
+
+.footer-links__sep {
+  color: var(--faint);
+  user-select: none;
 }
 
 .footer-fineprint {
