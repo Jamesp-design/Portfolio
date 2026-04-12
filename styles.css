@@ -612,6 +612,12 @@ body.reduce-motion .project-wave-card.is-active {
   transform: translateY(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .project-wave-card__content {
+    transition: none;
+  }
+}
+
 .project-wave-card__title {
   display: block;
   font-family: var(--font-display);
