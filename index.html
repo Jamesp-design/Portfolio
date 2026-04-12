@@ -9,7 +9,7 @@
       content="James Phillips — product designer, Newcastle. Fintech, UX, and systems."
     />
     <link rel="icon" href="./images/brand/Favicon%20Black.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css?v=20260405" />
+    <link rel="stylesheet" href="./styles.css?v=20260327" />
   </head>
   <body class="shell">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -32,40 +32,22 @@
             decoding="async"
           />
         </a>
+        <a class="btn btn--header-cta" href="mailto:hello@jamesp.co">Get in touch</a>
       </div>
     </header>
 
     <main id="main">
-      <section class="hero shell-inner">
-        <p class="hero-kicker reveal" data-reveal>Product design · Newcastle</p>
-        <h1 class="hero-title">
-          <span class="hero-line reveal" data-reveal>
-            <span class="hero-word">Interfaces that</span>
-            <span class="hero-word hero-word--serif hero-word--accent">stay clear</span>
-            <span class="hero-word">under pressure.</span>
-          </span>
-        </h1>
-        <p class="hero-sub reveal" data-reveal>
+      <section class="intro shell-inner">
+        <p class="intro__kicker reveal" data-reveal>Product design · Newcastle</p>
+        <p class="intro__lede reveal" data-reveal>
           End-to-end UX for fintech and product teams — research, systems, and craft.
         </p>
-
-        <p class="hero-hint reveal" data-reveal>
-          <a class="hero-hint__link" href="#work">View work</a>
+        <p class="intro__hint reveal" data-reveal>
+          <a class="intro__link" href="#work">View work</a>
         </p>
 
-        <div class="hero-cta-row reveal" data-reveal>
-          <a class="btn btn--primary" href="mailto:hello@jamesp.co">Get in touch</a>
-          <a
-            class="btn btn--ghost"
-            href="./files/james-phillips-cv.pdf"
-            download="James-Phillips-CV.pdf"
-          >
-            Download resume
-          </a>
-        </div>
-
-        <p class="logos-subhead reveal" data-reveal>Teams I've worked with</p>
-        <div class="logos-section reveal" data-reveal aria-label="Companies and collaborations">
+        <p class="intro__logos-label reveal" data-reveal>Teams I've worked with</p>
+        <div class="intro__logos reveal" data-reveal aria-label="Companies and collaborations">
           <div class="logos-viewport">
             <div class="logos-track">
               <div class="logos-set">
@@ -93,565 +75,208 @@
         </div>
       </section>
 
-      <section id="work" class="work shell-inner">
-        <div class="work-header reveal" data-reveal>
-          <h2 class="work-heading">Selected work</h2>
-          <p class="work-lede">Case studies — integration, HR, fintech, and experiments.</p>
+      <section id="work" class="work-wave" aria-labelledby="work-heading">
+        <div class="work-wave__intro shell-inner">
+          <h2 id="work-heading" class="work-wave__title reveal" data-reveal>Selected work</h2>
+          <p class="work-wave__lede reveal" data-reveal>Case studies — integration, HR, fintech, and experiments.</p>
         </div>
 
-        <div class="work-wrap">
-          <ul class="work-list">
-            <li class="reveal" data-reveal>
+        <div
+          class="work-wave__stage"
+          data-work-wave
+          tabindex="0"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Project carousel"
+        >
+          <div class="work-wave__viewport">
+            <div class="work-wave__track" data-wave-track>
               <a
-                class="work-row"
+                class="project-wave-card"
                 href="./projects/cryptocurrency-platform-integration-site.html"
+                data-wave-index="0"
                 data-color="cyan"
                 data-preview-src="./images/projects/nydig.png"
                 data-preview-title="NYDIG"
               >
-                <span class="work-row__idx">01</span>
-                <span class="work-row__title">NYDIG</span>
-                <span class="work-row__meta">Mobile · API integration · Design system</span>
-                <span class="work-row__arrow" aria-hidden="true">→</span>
+                <span class="project-wave-card__bg" style="--img: url(./images/projects/nydig.png)"></span>
+                <span class="project-wave-card__content">
+                  <span class="project-wave-card__title">NYDIG</span>
+                  <span class="project-wave-card__tags">Mobile · API integration · Design system</span>
+                </span>
               </a>
-            </li>
-            <li class="reveal" data-reveal>
               <a
-                class="work-row"
+                class="project-wave-card"
                 href="./projects/hive-exports.html"
+                data-wave-index="1"
                 data-color="violet"
                 data-preview-src="./images/projects/hive.png"
                 data-preview-title="Hive"
               >
-                <span class="work-row__idx">02</span>
-                <span class="work-row__title">Hive</span>
-                <span class="work-row__meta">UX/UI · Accessibility · Systems</span>
-                <span class="work-row__arrow" aria-hidden="true">→</span>
+                <span class="project-wave-card__bg" style="--img: url(./images/projects/hive.png)"></span>
+                <span class="project-wave-card__content">
+                  <span class="project-wave-card__title">Hive</span>
+                  <span class="project-wave-card__tags">UX/UI · Accessibility · Systems</span>
+                </span>
               </a>
-            </li>
-            <li class="reveal" data-reveal>
               <a
-                class="work-row"
+                class="project-wave-card"
                 href="./projects/sync-vr.html"
+                data-wave-index="2"
                 data-color="amber"
                 data-preview-src="./images/projects/sync.png"
                 data-preview-title="Sync"
               >
-                <span class="work-row__idx">03</span>
-                <span class="work-row__title">Sync</span>
-                <span class="work-row__meta">VR · Game feel · Audio‑visual</span>
-                <span class="work-row__arrow" aria-hidden="true">→</span>
+                <span class="project-wave-card__bg" style="--img: url(./images/projects/sync.png)"></span>
+                <span class="project-wave-card__content">
+                  <span class="project-wave-card__title">Sync</span>
+                  <span class="project-wave-card__tags">VR · Game feel · Audio‑visual</span>
+                </span>
               </a>
-            </li>
-            <li class="reveal" data-reveal>
               <a
-                class="work-row"
+                class="project-wave-card"
                 href="./projects/bitcoin-payments-app-redesign.html"
+                data-wave-index="3"
                 data-color="rose"
                 data-preview-src="./images/projects/bottlepay.png"
                 data-preview-title="Bottlepay"
               >
-                <span class="work-row__idx">04</span>
-                <span class="work-row__title">Bottlepay</span>
-                <span class="work-row__meta">Consumer app · Redesign · Strategy</span>
-                <span class="work-row__arrow" aria-hidden="true">→</span>
+                <span class="project-wave-card__bg" style="--img: url(./images/projects/bottlepay.png)"></span>
+                <span class="project-wave-card__content">
+                  <span class="project-wave-card__title">Bottlepay</span>
+                  <span class="project-wave-card__tags">Consumer app · Redesign · Strategy</span>
+                </span>
               </a>
-            </li>
-            <li class="reveal" data-reveal>
               <a
-                class="work-row"
+                class="project-wave-card"
                 href="./projects/myndr-microinteractions.html"
+                data-wave-index="4"
                 data-color="lime"
                 data-preview-src="./images/projects/myndr.png"
                 data-preview-title="Myndr"
               >
-                <span class="work-row__idx">05</span>
-                <span class="work-row__title">Myndr</span>
-                <span class="work-row__meta">Micro-interactions · Motion</span>
-                <span class="work-row__arrow" aria-hidden="true">→</span>
+                <span class="project-wave-card__bg" style="--img: url(./images/projects/myndr.png)"></span>
+                <span class="project-wave-card__content">
+                  <span class="project-wave-card__title">Myndr</span>
+                  <span class="project-wave-card__tags">Micro-interactions · Motion</span>
+                </span>
               </a>
-            </li>
-            <li class="reveal" data-reveal>
               <a
-                class="work-row"
+                class="project-wave-card"
                 href="./projects/loko-mobile-app.html"
+                data-wave-index="5"
                 data-color="sky"
                 data-preview-src="./images/projects/loko.png"
                 data-preview-title="Loko"
               >
-                <span class="work-row__idx">06</span>
-                <span class="work-row__title">Loko</span>
-                <span class="work-row__meta">AR · Mobile · End-to-end</span>
-                <span class="work-row__arrow" aria-hidden="true">→</span>
+                <span class="project-wave-card__bg" style="--img: url(./images/projects/loko.png)"></span>
+                <span class="project-wave-card__content">
+                  <span class="project-wave-card__title">Loko</span>
+                  <span class="project-wave-card__tags">AR · Mobile · End-to-end</span>
+                </span>
               </a>
-            </li>
-          </ul>
-
-          <aside class="work-preview" data-work-preview aria-label="Project preview">
-            <div class="work-preview__stack">
-              <figure class="work-preview__card">
-                <img src="./images/projects/nydig.png" alt="" width="825" height="1080" decoding="async" />
-              </figure>
-              <figure class="work-preview__card">
-                <img src="./images/projects/hive.png" alt="" width="825" height="1080" decoding="async" />
-              </figure>
-              <figure class="work-preview__card">
-                <img src="./images/projects/sync.png" alt="" width="825" height="1080" decoding="async" />
-              </figure>
             </div>
-          </aside>
+          </div>
+          <p class="work-wave__status visually-hidden" data-wave-status aria-live="polite"></p>
+          <div class="work-wave__controls shell-inner">
+            <button type="button" class="work-wave__btn" data-wave-prev aria-label="Previous project">←</button>
+            <button type="button" class="work-wave__btn" data-wave-next aria-label="Next project">→</button>
+          </div>
         </div>
       </section>
 
-      <section
-        id="about"
-        class="about shell-inner"
-        aria-label="About James Phillips"
-        data-about
-      >
-        <div class="about-intro reveal" data-reveal>
-          <h2 class="about-heading">About</h2>
-          <p class="about-lede">
+      <section id="about" class="about shell-inner" aria-label="About James Phillips">
+        <div class="about__intro reveal" data-reveal>
+          <h2 class="about__heading">About</h2>
+          <p class="about__lede">
             Designer in <strong>Newcastle</strong>. Fintech, systems, and product craft — from discovery to delivery.
           </p>
         </div>
 
-        <div class="about-highlights reveal" data-reveal>
-          <article class="hi-card">
-            <a
-              class="hi-card__link"
-              href="https://www.prnewswire.com/news-releases/landrys-and-nydig-announce-bitcoin-loyalty-rewards-301420186.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Landry’s loyalty — opens in new tab"
-            >
-              <span class="hi-card__external" aria-hidden="true" title="Opens in new tab">
-                <svg class="hi-card__external-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14 3h7v7M10 14L21 3M21 14v6a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <h3 class="hi-card__title">Landry’s · loyalty</h3>
-              <p class="hi-card__text">
-                Product design in the run-up to a public partnership between Landry’s and NYDIG — a bitcoin loyalty
-                program for millions of guests across <strong>500+</strong> locations nationwide.
-              </p>
-            </a>
-          </article>
-          <article class="hi-card">
-            <a
-              class="hi-card__link"
-              href="https://thefintechtimes.com/uk-leads-the-world-in-shell-company-risks-signifying-urgent-financial-vigilance/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Moody’s shell risk — opens in new tab"
-            >
-              <span class="hi-card__external" aria-hidden="true" title="Opens in new tab">
-                <svg class="hi-card__external-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14 3h7v7M10 14L21 3M21 14v6a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <h3 class="hi-card__title">Moody’s · shell risk</h3>
-              <p class="hi-card__text">
-                Lead designer on <strong>Shell Company Indicator</strong> — a risk tool to help businesses detect shell
-                companies in supply and distribution chains, with the UK leading the world on shell-company risk
-                exposure.
-              </p>
-            </a>
-          </article>
-          <article class="hi-card">
-            <a
-              class="hi-card__link"
-              href="https://www.ign.com/articles/assassins-creed-nexus-vr-review"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Ubisoft shipped — opens in new tab"
-            >
-              <span class="hi-card__external" aria-hidden="true" title="Opens in new tab">
-                <svg class="hi-card__external-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14 3h7v7M10 14L21 3M21 14v6a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <h3 class="hi-card__title">Ubisoft · shipped</h3>
-              <p class="hi-card__text">
-                UI art on <strong>Assassin’s Creed Nexus VR</strong> — HUD and in-headset interface craft on a full Quest
-                campaign (see IGN’s review).
-              </p>
-            </a>
-          </article>
+        <div class="about__highlights reveal" data-reveal>
+          <h3 class="about__label">Highlights</h3>
+          <ul class="highlight-feed">
+            <li>
+              <a
+                class="highlight-feed__link"
+                href="https://www.prnewswire.com/news-releases/landrys-and-nydig-announce-bitcoin-loyalty-rewards-301420186.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="highlight-feed__title">Landry's</span>
+                <span class="highlight-feed__arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="highlight-feed__link"
+                href="https://thefintechtimes.com/uk-leads-the-world-in-shell-company-risks-signifying-urgent-financial-vigilance/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="highlight-feed__title">Moody's</span>
+                <span class="highlight-feed__arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="highlight-feed__link"
+                href="https://www.ign.com/articles/assassins-creed-nexus-vr-review"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="highlight-feed__title">Ubisoft</span>
+                <span class="highlight-feed__arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          </ul>
         </div>
 
-        <div class="about-timeline reveal" data-reveal data-about-experience>
-          <h3 class="about-subtitle">Experience</h3>
-          <div class="experience-wrap" data-experience-wrap>
-            <ol class="role-list role-list--experience">
-              <li class="role-item">
-                <button
-                  type="button"
-                  class="work-row role-row"
-                  data-color="cyan"
-                  data-exp-index="0"
-                  aria-expanded="false"
-                  aria-controls="exp-panel-0"
-                >
-                  <span class="work-row__idx">2023 — present</span>
-                  <span class="work-row__title">Moody’s</span>
-                  <span class="work-row__meta">Assistant Director — Experience Designer</span>
-                  <span class="work-row__arrow" aria-hidden="true">→</span>
-                </button>
-                <div class="role__body role__body--inline" id="exp-panel-0">
-                  <p>
-                    Experience design within Moody’s Analytics — shaping products for teams who need clearer tools around
-                    risk, compliance, and research workflows, from early discovery through delivery.
-                  </p>
-                  <ul>
-                    <li>Green-field and incubation-style work for financial and compliance products, turning fuzzy briefs into shippable patterns</li>
-                    <li>Design for shell-company risk offerings and broader platform initiatives alongside engineering and product partners</li>
-                    <li>Advancing design system coverage, quality, and documentation so patterns stay consistent under real-world edge cases</li>
-                    <li>Process and ways-of-working design to help teams ship faster without losing clarity or governance</li>
-                    <li>Internal design advocacy, critiques, and virtual conferences that raise the bar for craft across squads</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="role-item">
-                <button
-                  type="button"
-                  class="work-row role-row"
-                  data-color="rose"
-                  data-exp-index="1"
-                  aria-expanded="false"
-                  aria-controls="exp-panel-1"
-                >
-                  <span class="work-row__idx">2021 — 2023</span>
-                  <span class="work-row__title">Bottlepay</span>
-                  <span class="work-row__meta">Product Designer</span>
-                  <span class="work-row__arrow" aria-hidden="true">→</span>
-                </button>
-                <div class="role__body role__body--inline" id="exp-panel-1">
-                  <p>
-                    Product design for a consumer Bitcoin app in a tight, UX-first team — shipping features fast while
-                    keeping trust and clarity at the centre of the experience. The product had to feel approachable for
-                    newcomers and precise enough for power users moving real value.
-                  </p>
-                  <ul>
-                    <li>End-to-end mobile features and flows across payments, onboarding, security, and core product surfaces</li>
-                    <li>Full-app redesign initiative to align UI, patterns, and brand as the product matured and regulation evolved</li>
-                    <li>Clickable prototypes and proof-of-concepts for sales and partnerships, tuned for narrative and edge cases</li>
-                    <li>Collaboration with marketing on animated collateral and campaign assets that matched product reality</li>
-                    <li>Close iteration with engineering on feasibility, performance, and polish — especially around states and errors</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="role-item">
-                <button
-                  type="button"
-                  class="work-row role-row"
-                  data-color="violet"
-                  data-exp-index="2"
-                  aria-expanded="false"
-                  aria-controls="exp-panel-2"
-                >
-                  <span class="work-row__idx">2021 — 2023</span>
-                  <span class="work-row__title">NYDIG</span>
-                  <span class="work-row__meta">Product Designer</span>
-                  <span class="work-row__arrow" aria-hidden="true">→</span>
-                </button>
-                <div class="role__body role__body--inline" id="exp-panel-2">
-                  <p>
-                    Platform and integration design for institutional cryptocurrency solutions — making complex APIs and
-                    control surfaces understandable for enterprise buyers and operators. Work balanced technical accuracy
-                    with narratives that survived procurement, security review, and live demos.
-                  </p>
-                  <ul>
-                    <li>Integration site and partner-facing tools for API exploration, auth flows, and technical storytelling</li>
-                    <li>Internal admin and control surfaces for operations teams managing large-scale deployments and incidents</li>
-                    <li>Sales-enablement decks, narratives, and materials tuned for institutional audiences and compliance questions</li>
-                    <li>Partnering with engineering on information architecture, states, permissions, and edge-case handling at scale</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="role-item">
-                <button
-                  type="button"
-                  class="work-row role-row"
-                  data-color="amber"
-                  data-exp-index="3"
-                  aria-expanded="false"
-                  aria-controls="exp-panel-3"
-                >
-                  <span class="work-row__idx">2021</span>
-                  <span class="work-row__title">Ubisoft</span>
-                  <span class="work-row__meta">Junior UI Artist</span>
-                  <span class="work-row__arrow" aria-hidden="true">→</span>
-                </button>
-                <div class="role__body role__body--inline" id="exp-panel-3">
-                  <p>
-                    UI art for <strong>Assassin’s Creed Nexus VR</strong> (Meta Quest) — a full-length series entry built
-                    for wire-free VR. In a focused 2021 stint I contributed HUD and diegetic interface work that had to
-                    stay readable across parkour, stealth, and combat without breaking immersion.
-                  </p>
-                  <ul>
-                    <li>HUD and in-headset UI tuned for long sessions: comfort, motion, and clarity constraints baked into layout and type</li>
-                    <li>Close collaboration with UX, design, and engineering on legibility, feedback, and VR-specific interaction patterns</li>
-                    <li>Iteration on hierarchy, iconography, and states so interfaces survive fast movement, low light, and combat chaos</li>
-                    <li>Polish passes on diegetic elements so UI feels part of the world while staying scannable in seconds</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="role-item">
-                <button
-                  type="button"
-                  class="work-row role-row"
-                  data-color="lime"
-                  data-exp-index="4"
-                  aria-expanded="false"
-                  aria-controls="exp-panel-4"
-                >
-                  <span class="work-row__idx">2018 — 2020</span>
-                  <span class="work-row__title">Komodo</span>
-                  <span class="work-row__meta">Product Designer</span>
-                  <span class="work-row__arrow" aria-hidden="true">→</span>
-                </button>
-                <div class="role__body role__body--inline" id="exp-panel-4">
-                  <p>
-                    Agency-side product design at Komodo Digital — shipping interfaces for client teams in fast
-                    discovery–delivery cycles across sectors, from startups to established brands. Work spanned research,
-                    UX, UI, and handoff with a strong bias toward demos that make alignment cheap.
-                  </p>
-                  <ul>
-                    <li>End-to-end UX and UI for web and mobile products under tight client timelines and shifting priorities</li>
-                    <li>Workshops, prototyping, and clickable demos to align stakeholders and de-risk build before engineering commits</li>
-                    <li>Design systems and component thinking reused across engagements so quality didn’t reset every sprint</li>
-                    <li>Handoff, QA, and iteration with developers to preserve hierarchy, motion, and edge cases in production</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="role-item">
-                <button
-                  type="button"
-                  class="work-row role-row"
-                  data-color="sky"
-                  data-exp-index="5"
-                  aria-expanded="false"
-                  aria-controls="exp-panel-5"
-                >
-                  <span class="work-row__idx">2019 — 2021</span>
-                  <span class="work-row__title">Hive</span>
-                  <span class="work-row__meta">Product Designer</span>
-                  <span class="work-row__arrow" aria-hidden="true">→</span>
-                </button>
-                <div class="role__body role__body--inline" id="exp-panel-5">
-                  <p>
-                    Product design for Hive HR’s employee engagement platform — features used at scale to help teams
-                    measure morale, act on feedback, and stay connected. I focused on flows that stayed humane under load:
-                    busy managers, frontline staff, and hybrid schedules.
-                  </p>
-                  <ul>
-                    <li>Flows and components for surveys, pulse checks, insights, and manager tooling with clear empty and error states</li>
-                    <li>Accessibility and clarity for diverse workforces, roles, and device contexts (including low-bandwidth mobile)</li>
-                    <li>Design system contributions as the product surface grew — patterns for charts, notifications, and permissions</li>
-                    <li>Collaboration with PM and engineering on rollout, experiments, and iterative improvements from usage data</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="role-item">
-                <button
-                  type="button"
-                  class="work-row role-row"
-                  data-color="cyan"
-                  data-exp-index="6"
-                  aria-expanded="false"
-                  aria-controls="exp-panel-6"
-                >
-                  <span class="work-row__idx">2020 — 2021</span>
-                  <span class="work-row__title">Pentesec</span>
-                  <span class="work-row__meta">UX / Product Designer</span>
-                  <span class="work-row__arrow" aria-hidden="true">→</span>
-                </button>
-                <div class="role__body role__body--inline" id="exp-panel-6">
-                  <p>
-                    UX and product design for cybersecurity tooling — making complex threat, asset, and configuration data
-                    scannable for analysts and IT teams who live in high-noise environments. The goal was always faster
-                    orientation: what matters, what changed, and what to do next.
-                  </p>
-                  <ul>
-                    <li>Information architecture for dense datasets, alert streams, and cross-product navigation without dead ends</li>
-                    <li>Patterns for status, severity, filtering, and drill-down that stay calm under incident pressure</li>
-                    <li>Collaboration with SMEs to validate language, workflows, and edge cases so copy matched real operations</li>
-                    <li>Iteration on tables, timelines, and detail views so power users could skim without losing fidelity</li>
-                  </ul>
-                </div>
-              </li>
-              <li class="role-item">
-                <button
-                  type="button"
-                  class="work-row role-row"
-                  data-color="violet"
-                  data-exp-index="7"
-                  aria-expanded="false"
-                  aria-controls="exp-panel-7"
-                >
-                  <span class="work-row__idx">Various</span>
-                  <span class="work-row__title">Hackathons</span>
-                  <span class="work-row__meta">Participant · winner</span>
-                  <span class="work-row__arrow" aria-hidden="true">→</span>
-                </button>
-                <div class="role__body role__body--inline" id="exp-panel-7">
-                  <p>
-                    High-intensity build events and open-innovation formats — rapid prototyping, pitching, and
-                    cross-discipline collaboration with industry partners. These sprints trained muscle memory for
-                    scoping ruthlessly, pairing with engineers, and shipping a credible story before the timer hits zero.
-                  </p>
-                  <ul>
-                    <li>Hackathons with <strong>Atom Bank</strong>, <strong>Meta (Facebook)</strong>, and other partners — from problem framing and research synthesis to demo day</li>
-                    <li>Turning sketches and storyboards into clickable proofs overnight, with clear roles and handoffs in the room</li>
-                    <li>Winning placements where juries valued both idea and execution — UX, UI, and narrative hanging together</li>
-                    <li>Presentation, storytelling, and critique skills that still shape how I workshop with product teams today</li>
-                  </ul>
-                </div>
-              </li>
-            </ol>
-            <aside class="experience-preview" data-experience-preview aria-hidden="true">
-              <div class="experience-preview__stack" data-experience-preview-stack>
-                <div class="experience-preview__card">
-                  <div class="experience-preview__card-inner" data-experience-card-inner></div>
-                </div>
-                <div class="experience-preview__card">
-                  <div class="experience-preview__card-inner" data-experience-card-inner></div>
-                </div>
-                <div class="experience-preview__card">
-                  <div class="experience-preview__card-inner" data-experience-card-inner></div>
-                </div>
-              </div>
-            </aside>
-          </div>
+        <div class="about__experience reveal" data-reveal>
+          <h3 class="about__label">Experience</h3>
+          <p class="exp-note">
+            For full detail, see
+            <a href="https://www.linkedin.com/in/james-phillips0799/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
+          </p>
+          <ul class="exp-list">
+            <li><span class="exp-list__when">2023 — present</span> Moody’s — Assistant Director, Experience Designer</li>
+            <li><span class="exp-list__when">2021 — 2023</span> Bottlepay — Product Designer</li>
+            <li><span class="exp-list__when">2021 — 2023</span> NYDIG — Product Designer</li>
+            <li><span class="exp-list__when">2021</span> Ubisoft — Junior UI Artist</li>
+            <li><span class="exp-list__when">2018 — 2020</span> Komodo — Product Designer</li>
+            <li><span class="exp-list__when">2019 — 2021</span> Hive — Product Designer</li>
+            <li><span class="exp-list__when">2020 — 2021</span> Pentesec — UX / Product Designer</li>
+            <li><span class="exp-list__when">Various</span> Hackathons — Participant · winner</li>
+          </ul>
         </div>
 
-        <div class="about-edu reveal" data-reveal>
-          <h3 class="about-subtitle">Education</h3>
+        <div class="about__edu reveal" data-reveal>
+          <h3 class="about__label">Education</h3>
           <p class="edu-line">
             <strong>First-class BA (Hons) Interaction Design</strong> — Northumbria University
           </p>
         </div>
       </section>
 
-      <section class="photo-strip-section shell-inner" id="moments" aria-label="Photo moments" data-photo-strip-section>
-        <h2 class="photo-strip-heading reveal" data-reveal>Moments</h2>
-        <p class="photo-strip-lede reveal" data-reveal>Moments — photos from <code class="photo-strip-code">images/gallery/</code> (see <code class="photo-strip-code">manifest.json</code>).</p>
-        <div class="photo-strip-rows" data-photo-rows>
-          <div class="photo-strip-row" data-photo-row="right">
-            <div class="photo-strip-viewport">
-              <div class="photo-strip-track">
-                <div class="photo-strip-chunk">
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
-                </div>
-                <div class="photo-strip-chunk" aria-hidden="true">
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                </div>
-                <div class="photo-strip-chunk" aria-hidden="true">
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="photo-strip-row" data-photo-row="left">
-            <div class="photo-strip-viewport">
-              <div class="photo-strip-track">
-                <div class="photo-strip-chunk">
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
-                </div>
-                <div class="photo-strip-chunk" aria-hidden="true">
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                </div>
-                <div class="photo-strip-chunk" aria-hidden="true">
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="photo-strip-row" data-photo-row="right">
-            <div class="photo-strip-viewport">
-              <div class="photo-strip-track">
-                <div class="photo-strip-chunk">
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, portrait"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="0" role="img" aria-label="Photo placeholder, landscape"><span class="photo-slot__label">Landscape</span></div>
-                </div>
-                <div class="photo-strip-chunk" aria-hidden="true">
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                </div>
-                <div class="photo-strip-chunk" aria-hidden="true">
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                  <div class="photo-slot photo-slot--portrait" data-placeholder tabindex="-1"><span class="photo-slot__label">Portrait</span></div>
-                  <div class="photo-slot photo-slot--landscape" data-placeholder tabindex="-1"><span class="photo-slot__label">Landscape</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <footer id="contact" class="footer">
         <div class="footer-inner shell-inner">
-          <div class="footer-content reveal" data-reveal>
-            <h2 class="footer-title">Get in touch</h2>
-            <p class="footer-copy">New projects, collaborations, or a quick hello.</p>
-            <div class="footer-actions">
+          <div class="footer__content reveal" data-reveal>
+            <h2 class="footer__title">Get in touch</h2>
+            <p class="footer__copy">New projects, collaborations, or a quick hello.</p>
+            <div class="footer__actions">
               <a class="btn btn--primary" href="mailto:hello@jamesp.co">Email</a>
             </div>
             <nav class="footer-links" aria-label="Links">
               <a class="footer-links__a" href="https://www.linkedin.com/in/james-phillips0799/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               <span class="footer-links__sep" aria-hidden="true">·</span>
-              <a class="footer-links__a" href="./files/james-phillips-cv.pdf" download="James-Phillips-CV.pdf">Resume (PDF)</a>
-              <span class="footer-links__sep" aria-hidden="true">·</span>
               <a class="footer-links__a" href="mailto:hello@jamesp.co">hello@jamesp.co</a>
             </nav>
-            <p class="footer-fineprint">© <span data-year></span> James Phillips</p>
+            <p class="footer__fineprint">© <span data-year></span> James Phillips</p>
           </div>
         </div>
       </footer>
     </main>
 
-    <script src="./main.js?v=20260405" defer></script>
+    <script src="./main.js?v=20260327" defer></script>
   </body>
 </html>
