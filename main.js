@@ -33,15 +33,15 @@
 
   /** @param {HTMLElement | null} nav */
   /** @param {HTMLElement | null} hero */
-  function initNavHeroDark(nav, hero) {
+  function initNavOverLight(nav, hero) {
     if (!nav || !hero) return;
     const io = new IntersectionObserver(
       (entries) => {
         const e = entries[0];
         if (!e) return;
-        nav.classList.toggle("nav--hero-dark", e.isIntersecting);
+        nav.classList.toggle("nav--on-light", !e.isIntersecting);
       },
-      { threshold: 0, rootMargin: "-40px 0px 0px 0px" }
+      { threshold: 0, rootMargin: "-48px 0px 0px 0px" }
     );
     io.observe(hero);
   }
@@ -192,7 +192,7 @@
 
   const nav = document.querySelector("[data-nav]");
   initNavScroll(nav);
-  initNavHeroDark(nav, document.querySelector("[data-hero-home]"));
+  initNavOverLight(nav, document.querySelector("[data-hero-home]"));
   initScrollProgress(document.querySelector(".scroll-progress"));
   initCursor(document.querySelector(".cursor"));
   initReveal(document.querySelectorAll("[data-reveal]"));
