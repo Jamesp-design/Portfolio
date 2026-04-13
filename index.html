@@ -9,7 +9,7 @@
       content="James Phillips — product designer, Newcastle. Fintech, UX, and systems."
     />
     <link rel="icon" href="./images/brand/Favicon%20Black.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css?v=20260416" />
+    <link rel="stylesheet" href="./styles.css?v=20260417" />
   </head>
   <body class="shell">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -81,8 +81,9 @@
               aria-label="Selected work previews"
             >
               <p class="visually-hidden" data-project-stage-status aria-live="polite"></p>
-              <div class="work-showcase__panel">
-                <div class="work-showcase__hero" aria-hidden="true">
+              <div class="work-showcase__layout">
+                <div class="work-showcase__hero-anchor shell-inner">
+                  <div class="work-showcase__hero" aria-hidden="true">
                   <img
                     class="work-showcase__hero-img is-active"
                     src="./images/projects/NYDIG_wide.png"
@@ -144,6 +145,7 @@
                     decoding="async"
                     loading="lazy"
                   />
+                  </div>
                 </div>
 
                 <a
@@ -151,7 +153,7 @@
                 href="./projects/cryptocurrency-platform-integration-site.html"
                 data-project-index="0"
                 data-preview-title="NYDIG"
-                style="--sticker-top: 10%; --sticker-left: 10%; --sticker-rotate: -10deg"
+                style="--sticker-top: 5%; --sticker-left: 0%; --sticker-rotate: -10deg"
                 aria-label="NYDIG — Mobile, API integration, design system. Open case study."
               >
                 <span class="project-sticker__title">NYDIG</span>
@@ -162,7 +164,7 @@
                 href="./projects/hive-exports.html"
                 data-project-index="1"
                 data-preview-title="Hive"
-                style="--sticker-top: 26%; --sticker-left: 11%; --sticker-rotate: 7deg"
+                style="--sticker-top: 30%; --sticker-left: 3%; --sticker-rotate: 7deg"
                 aria-label="Hive — UX, accessibility, systems. Open case study."
               >
                 <span class="project-sticker__title">Hive</span>
@@ -173,7 +175,7 @@
                 href="./projects/bitcoin-payments-app-redesign.html"
                 data-project-index="3"
                 data-preview-title="Bottlepay"
-                style="--sticker-top: 52%; --sticker-left: 9%; --sticker-rotate: -5deg"
+                style="--sticker-top: 58%; --sticker-left: 2%; --sticker-rotate: -5deg"
                 aria-label="Bottlepay — Consumer app, redesign, strategy. Open case study."
               >
                 <span class="project-sticker__title">Bottlepay</span>
@@ -184,7 +186,7 @@
                 href="./projects/sync-vr.html"
                 data-project-index="2"
                 data-preview-title="Sync"
-                style="--sticker-top: 40%; --sticker-right: 11%; --sticker-rotate: -6deg"
+                style="--sticker-top: 38%; --sticker-right: 0%; --sticker-rotate: -6deg"
                 aria-label="Sync — VR, game feel, audio-visual. Open case study."
               >
                 <span class="project-sticker__title">Sync</span>
@@ -195,7 +197,7 @@
                 href="./projects/loko-mobile-app.html"
                 data-project-index="5"
                 data-preview-title="Loko"
-                style="--sticker-top: 12%; --sticker-right: 10%; --sticker-rotate: 8deg"
+                style="--sticker-top: 8%; --sticker-right: 1%; --sticker-rotate: 8deg"
                 aria-label="Loko — AR, mobile, end-to-end. Open case study."
               >
                 <span class="project-sticker__title">Loko</span>
@@ -206,7 +208,7 @@
                 href="./projects/myndr-microinteractions.html"
                 data-project-index="4"
                 data-preview-title="Myndr"
-                style="--sticker-bottom: 10%; --sticker-right: 11%; --sticker-rotate: 12deg"
+                style="--sticker-bottom: 6%; --sticker-right: 2%; --sticker-rotate: 12deg"
                 aria-label="Myndr — Micro-interactions, motion. Open case study."
               >
                 <span class="project-sticker__title">Myndr</span>
@@ -218,7 +220,8 @@
         </section>
       </div>
 
-      <div class="work-showcase__logos-wrap shell-inner reveal" data-reveal aria-labelledby="work-logos-label">
+      <div class="site-below-fold">
+        <div class="work-showcase__logos-wrap shell-inner reveal" data-reveal aria-labelledby="work-logos-label">
           <p id="work-logos-label" class="work-showcase__logos-label">Teams I've worked with</p>
           <div class="logos-viewport">
             <div class="logos-track">
@@ -246,7 +249,7 @@
           </div>
         </div>
 
-      <section id="about" class="about shell-inner" aria-label="Highlights, experience, and education">
+        <section id="about" class="about about--below-fold shell-inner" aria-label="Highlights, experience, and education">
         <div class="about__highlights reveal" data-reveal>
           <h2 class="about__label">Highlights</h2>
           <div class="highlight-cards">
@@ -324,9 +327,9 @@
             <strong>First-class BA (Hons) Interaction Design</strong> — Northumbria University
           </p>
         </div>
-      </section>
+        </section>
 
-      <footer id="contact" class="footer">
+        <footer id="contact" class="footer footer--below-fold">
         <div class="footer-inner shell-inner">
           <div class="footer__content reveal" data-reveal>
             <h2 class="footer__title">Get in touch</h2>
@@ -342,9 +345,10 @@
             <p class="footer__fineprint">© <span data-year></span> James Phillips</p>
           </div>
         </div>
-      </footer>
+        </footer>
+      </div>
     </main>
 
-    <script src="./main.js?v=20260415" defer></script>
+    <script src="./main.js?v=20260417" defer></script>
   </body>
 </html>
