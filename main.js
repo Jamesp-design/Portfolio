@@ -31,6 +31,21 @@
     onScroll();
   }
 
+  /** @param {HTMLElement | null} nav */
+  /** @param {HTMLElement | null} hero */
+  function initNavHeroDark(nav, hero) {
+    if (!nav || !hero) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        const e = entries[0];
+        if (!e) return;
+        nav.classList.toggle("nav--hero-dark", e.isIntersecting);
+      },
+      { threshold: 0, rootMargin: "-40px 0px 0px 0px" }
+    );
+    io.observe(hero);
+  }
+
   /** @param {HTMLElement | null} bar */
   function initScrollProgress(bar) {
     if (!bar) return;
@@ -63,7 +78,7 @@
         el &&
         el.closest &&
         el.closest(
-          "a, button, [role='button'], input, textarea, select, label, summary, .logo-img, .highlight-card__link, .footer-links__a, .project-wave-card, .intro__link, .exp-note a, .work-wave__btn, .btn--header-cta"
+          "a, button, [role='button'], input, textarea, select, label, summary, .logo-img, .highlight-card__link, .footer-links__a, .project-sticker, .hero-home__link, .exp-note a, .btn--header-cta"
         );
       cursor.classList.toggle("is-hover", !!interactive);
     }
@@ -127,234 +142,59 @@
     items.forEach((el) => io.observe(el));
   }
 
-  /** @param {number} n */
-  function buildPingPongSequence(n) {
-    if (n <= 1) return [0];
-    const seq = [];
-    for (let i = 0; i < n; i++) seq.push(i);
-    for (let i = n - 2; i >= 1; i--) seq.push(i);
-    return seq;
-  }
-
-  const WAVE_GAP = 10;
-  const WAVE_SCALES = [1, 0.42, 0.27, 0.17, 0.11, 0.072];
-
-  /** @param {number} d */
-  function waveScaleAt(d) {
-    return WAVE_SCALES[Math.min(d, WAVE_SCALES.length - 1)] ?? 0.06;
-  }
-
   /** @param {HTMLElement | null} root */
-  function initWorkWave(root) {
+  function initProjectStickers(root) {
     if (!root) return;
-    const track = root.querySelector("[data-wave-track]");
-    const viewport = root.querySelector(".work-wave__viewport");
-    const statusEl = root.querySelector("[data-wave-status]");
-    const prevBtn = root.querySelector("[data-wave-prev]");
-    const nextBtn = root.querySelector("[data-wave-next]");
-    /** @type {HTMLElement[]} */
-    const cards = track ? [...track.querySelectorAll(".project-wave-card")] : [];
-    if (!track || !viewport || cards.length === 0) return;
+    const statusEl = root.querySelector("[data-project-stage-status]");
+    /** @type {NodeListOf<HTMLAnchorElement>} */
+    const stickers = root.querySelectorAll(".project-sticker");
+    /** @type {NodeListOf<HTMLImageElement>} */
+    const imgs = root.querySelectorAll(".work-showcase__hero-img");
+    if (stickers.length === 0 || imgs.length === 0) return;
 
-    const n = cards.length;
-    const pingPong = buildPingPongSequence(n);
-    let seqPos = 0;
-    let autoIndex = pingPong[0];
-    /** @type {number | null} */
-    let hoverIndex = null;
-    let mouseInsideStage = false;
-    /** @type {number | null} */
-    let timer = null;
-    const tickMs = 4800;
-    let rafHover = 0;
-
-    function rowMetrics() {
-      const vw = viewport.clientWidth;
-      const vh = window.innerHeight;
-      const maxW = Math.min(vw * 0.92, 720);
-      const hCapByWidth = (maxW * 1080) / 825;
-      const hCapByViewport = Math.min(vh * 0.36, vw * 0.55);
-      const H = Math.max(128, Math.min(hCapByWidth, hCapByViewport, 420));
-      const activeW = (H * 825) / 1080;
-      return { H, activeW };
-    }
-
-    function effectiveIndex() {
-      if (mqFineHover.matches && mouseInsideStage && hoverIndex !== null) {
-        return hoverIndex;
-      }
-      return autoIndex;
-    }
-
-    function updateStatus() {
-      if (!statusEl) return;
-      const ei = effectiveIndex();
-      const card = cards[ei];
-      const title = card && card.getAttribute("data-preview-title");
-      statusEl.textContent = title ? `Showing ${title}` : "";
-    }
-
-    function layout() {
-      const ei = effectiveIndex();
-      const { H, activeW } = rowMetrics();
-      root.style.setProperty("--wave-h", `${H}px`);
-      root.style.setProperty("--wave-active-w", `${activeW}px`);
-
-      const widths = cards.map((_, i) => {
-        const d = Math.abs(i - ei);
-        return activeW * waveScaleAt(d);
+    function setActive(index) {
+      const i = Math.max(0, Math.min(index, imgs.length - 1));
+      root.dataset.activeProject = String(i);
+      imgs.forEach((img, j) => {
+        img.classList.toggle("is-active", j === i);
       });
-
-      cards.forEach((card, i) => {
-        const w = widths[i];
-        card.style.width = `${w}px`;
-        card.style.flex = `0 0 ${w}px`;
-        card.style.height = `${H}px`;
-        const active = i === ei;
-        card.classList.toggle("is-active", active);
-        card.toggleAttribute("data-active", active);
-        card.tabIndex = active ? 0 : -1;
-      });
-
-      let left = 0;
-      for (let i = 0; i < ei; i++) {
-        left += widths[i] + WAVE_GAP;
+      const sticker = [...stickers].find((s) => Number(s.dataset.projectIndex) === i);
+      const title = sticker && sticker.dataset.previewTitle;
+      if (statusEl) {
+        statusEl.textContent = title ? `Showing ${title}` : "";
       }
-      const activeCenter = left + widths[ei] / 2;
-      const vw = viewport.clientWidth;
-      const tx = vw / 2 - activeCenter;
-      track.style.transform = `translate3d(${tx}px, 0, 0)`;
-
-      updateStatus();
     }
 
-    function syncSeqToIndex(idx) {
-      for (let k = 0; k < pingPong.length; k++) {
-        const test = (seqPos + k) % pingPong.length;
-        if (pingPong[test] === idx) {
-          seqPos = test;
-          autoIndex = pingPong[seqPos];
-          return;
-        }
-      }
-      autoIndex = idx;
-    }
+    setActive(0);
 
-    function stepAuto(delta) {
-      seqPos = (seqPos + delta + pingPong.length) % pingPong.length;
-      autoIndex = pingPong[seqPos];
-      layout();
-    }
-
-    function startAuto() {
-      if (reduceMotion || timer || mouseInsideStage) return;
-      timer = window.setInterval(() => stepAuto(1), tickMs);
-    }
-
-    function stopAuto() {
-      if (!timer) return;
-      window.clearInterval(timer);
-      timer = null;
-    }
-
-    function onStagePointerMove(e) {
-      if (!mqFineHover.matches) return;
-      if (rafHover) return;
-      rafHover = window.requestAnimationFrame(() => {
-        rafHover = 0;
-        const under = document.elementFromPoint(e.clientX, e.clientY);
-        const cardEl = under && under.closest && under.closest(".project-wave-card");
-        const next = cardEl ? cards.indexOf(/** @type {HTMLElement} */ (cardEl)) : null;
-        if (next !== hoverIndex) {
-          hoverIndex = next;
-          layout();
-        }
+    stickers.forEach((sticker) => {
+      sticker.addEventListener("mouseenter", () => {
+        const idx = Number(sticker.dataset.projectIndex);
+        if (!Number.isNaN(idx)) setActive(idx);
       });
-    }
-
-    root.addEventListener("pointermove", onStagePointerMove, { passive: true });
-
-    root.addEventListener("pointerenter", () => {
-      mouseInsideStage = true;
-      stopAuto();
-      layout();
-    });
-
-    root.addEventListener("pointerleave", () => {
-      const lastShown =
-        mqFineHover.matches && hoverIndex !== null ? hoverIndex : autoIndex;
-      mouseInsideStage = false;
-      hoverIndex = null;
-      syncSeqToIndex(lastShown);
-      layout();
-      if (!reduceMotion) startAuto();
-    });
-
-    cards.forEach((card, i) => {
-      card.addEventListener("click", (e) => {
-        if (i !== effectiveIndex()) {
-          e.preventDefault();
-          syncSeqToIndex(i);
-          layout();
-        }
+      sticker.addEventListener("focusin", () => {
+        const idx = Number(sticker.dataset.projectIndex);
+        if (!Number.isNaN(idx)) setActive(idx);
       });
     });
 
-    if (prevBtn) {
-      prevBtn.addEventListener("click", () => {
-        stopAuto();
-        stepAuto(-1);
-        startAuto();
-      });
-    }
-    if (nextBtn) {
-      nextBtn.addEventListener("click", () => {
-        stopAuto();
-        stepAuto(1);
-        startAuto();
-      });
-    }
-
-    root.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        stopAuto();
-        stepAuto(-1);
-        startAuto();
-      } else if (e.key === "ArrowRight") {
-        e.preventDefault();
-        stopAuto();
-        stepAuto(1);
-        startAuto();
-      }
+    root.addEventListener("mouseleave", () => {
+      if (mqFineHover.matches) setActive(0);
     });
 
-    window.addEventListener("resize", layout);
-
-    layout();
-    if (!reduceMotion) startAuto();
-
-    if (!reduceMotion) {
-      cards.forEach((card) => {
-        card.addEventListener(
-          "pointermove",
-          (e) => {
-            const r = card.getBoundingClientRect();
-            const px = ((e.clientX - r.left) / r.width) * 100;
-            const py = ((e.clientY - r.top) / r.height) * 100;
-            card.style.setProperty("--px", `${px}%`);
-            card.style.setProperty("--py", `${py}%`);
-          },
-          { passive: true }
-        );
-      });
-    }
+    root.addEventListener("focusout", (e) => {
+      const next = /** @type {FocusEvent} */ (e).relatedTarget;
+      if (!next || !(next instanceof Node) || !root.contains(next)) {
+        setActive(0);
+      }
+    });
   }
 
   const nav = document.querySelector("[data-nav]");
   initNavScroll(nav);
+  initNavHeroDark(nav, document.querySelector("[data-hero-home]"));
   initScrollProgress(document.querySelector(".scroll-progress"));
   initCursor(document.querySelector(".cursor"));
   initReveal(document.querySelectorAll("[data-reveal]"));
-  initWorkWave(document.querySelector("[data-work-wave]"));
+  initProjectStickers(document.querySelector("[data-project-stage]"));
 })();
