@@ -9,7 +9,7 @@
       content="James Phillips — product designer, Newcastle. Fintech, UX, and systems."
     />
     <link rel="icon" href="./images/brand/Favicon%20Black.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css?v=20260414" />
+    <link rel="stylesheet" href="./styles.css?v=20260415" />
   </head>
   <body class="shell">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -47,98 +47,106 @@
     </header>
 
     <main id="main" class="page--compact">
-      <section class="hero-home" data-hero-home aria-labelledby="hero-heading">
-        <div class="hero-home__inner shell-inner">
-          <p class="hero-home__kicker reveal" data-reveal>Product design · Newcastle</p>
-          <h1 id="hero-heading" class="hero-home__mega reveal" data-reveal>Product designer</h1>
-          <div class="hero-home__columns">
-            <p class="hero-home__col reveal" data-reveal>
-              Designer in <strong>Newcastle</strong> — end-to-end UX for fintech and product teams. Research, systems, and
-              product craft from discovery to delivery.
-            </p>
-            <p class="hero-home__col reveal" data-reveal>
-              From discovery workshops to shipped UI, I partner with engineering and product to tighten flows, build
-              design systems, and stress-test ideas with real users — especially in regulated and high-trust spaces.
-            </p>
+      <div class="landing-dark" data-hero-home>
+        <section class="hero-home" aria-labelledby="hero-heading">
+          <div class="hero-home__inner shell-inner">
+            <p class="hero-home__kicker reveal" data-reveal>Product design · Newcastle</p>
+            <h1 id="hero-heading" class="hero-home__mega reveal" data-reveal>Product designer</h1>
+            <div class="hero-home__columns">
+              <p class="hero-home__col reveal" data-reveal>
+                Designer in <strong>Newcastle</strong> — end-to-end UX for fintech and product teams. Research, systems, and
+                product craft from discovery to delivery.
+              </p>
+              <p class="hero-home__col reveal" data-reveal>
+                From discovery workshops to shipped UI, I partner with engineering and product to tighten flows, build
+                design systems, and stress-test ideas with real users — especially in regulated and high-trust spaces.
+              </p>
+            </div>
+            <div class="hero-home__actions reveal" data-reveal>
+              <a class="hero-home__link" href="#work">View work <span aria-hidden="true">→</span></a>
+              <a class="hero-home__link" href="mailto:hello@jamesp.co">Get in touch <span aria-hidden="true">→</span></a>
+            </div>
           </div>
-          <div class="hero-home__actions reveal" data-reveal>
-            <a class="hero-home__link" href="#work">View work <span aria-hidden="true">→</span></a>
-            <a class="hero-home__link" href="mailto:hello@jamesp.co">Get in touch <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="work" class="work-showcase" aria-labelledby="work-heading">
-        <h2 id="work-heading" class="visually-hidden">Selected work</h2>
+        <section id="work" class="work-showcase work-showcase--dark" aria-labelledby="work-heading">
+          <h2 id="work-heading" class="visually-hidden">Selected work</h2>
 
-        <div class="work-showcase__bleed">
-          <div
-            class="work-showcase__stage"
-            data-project-stage
-            data-active-project="0"
-            role="region"
-            aria-label="Selected work previews"
-          >
-            <p class="visually-hidden" data-project-stage-status aria-live="polite"></p>
-            <div class="work-showcase__panel">
-              <div class="work-showcase__hero" aria-hidden="true">
-                <img
-                  class="work-showcase__hero-img is-active"
-                  src="./images/projects/nydig_wide.png"
-                  alt=""
-                  width="1200"
-                  height="675"
-                  data-project-index="0"
-                  decoding="async"
-                />
-                <img
-                  class="work-showcase__hero-img"
-                  src="./images/projects/hive_wide.png"
-                  alt=""
-                  width="1200"
-                  height="675"
-                  data-project-index="1"
-                  decoding="async"
-                />
-                <img
-                  class="work-showcase__hero-img"
-                  src="./images/projects/sync_wide.png"
-                  alt=""
-                  width="1200"
-                  height="675"
-                  data-project-index="2"
-                  decoding="async"
-                />
-                <img
-                  class="work-showcase__hero-img"
-                  src="./images/projects/bottlepay_wide.png"
-                  alt=""
-                  width="1200"
-                  height="675"
-                  data-project-index="3"
-                  decoding="async"
-                />
-                <img
-                  class="work-showcase__hero-img"
-                  src="./images/projects/myndr_wide.png"
-                  alt=""
-                  width="1200"
-                  height="675"
-                  data-project-index="4"
-                  decoding="async"
-                />
-                <img
-                  class="work-showcase__hero-img"
-                  src="./images/projects/loko_wide.png"
-                  alt=""
-                  width="1200"
-                  height="675"
-                  data-project-index="5"
-                  decoding="async"
-                />
-              </div>
+          <div class="work-showcase__bleed">
+            <div
+              class="work-showcase__stage"
+              data-project-stage
+              data-active-project="0"
+              role="region"
+              aria-label="Selected work previews"
+            >
+              <p class="visually-hidden" data-project-stage-status aria-live="polite"></p>
+              <div class="work-showcase__panel">
+                <div class="work-showcase__hero" aria-hidden="true">
+                  <img
+                    class="work-showcase__hero-img is-active"
+                    src="./images/projects/NYDIG_wide.png"
+                    alt=""
+                    width="1200"
+                    height="675"
+                    data-project-index="0"
+                    decoding="async"
+                    fetchpriority="high"
+                    loading="eager"
+                  />
+                  <img
+                    class="work-showcase__hero-img"
+                    src="./images/projects/Hive%20HR%20Exports_wide.png"
+                    alt=""
+                    width="1200"
+                    height="675"
+                    data-project-index="1"
+                    decoding="async"
+                    loading="lazy"
+                  />
+                  <img
+                    class="work-showcase__hero-img"
+                    src="./images/projects/Sync%20VR_wide.png"
+                    alt=""
+                    width="1200"
+                    height="675"
+                    data-project-index="2"
+                    decoding="async"
+                    loading="lazy"
+                  />
+                  <img
+                    class="work-showcase__hero-img"
+                    src="./images/projects/Bottlepay%20App_wide.png"
+                    alt=""
+                    width="1200"
+                    height="675"
+                    data-project-index="3"
+                    decoding="async"
+                    loading="lazy"
+                  />
+                  <img
+                    class="work-showcase__hero-img"
+                    src="./images/projects/Myndr%20Onboarding%20Animations_wide.png"
+                    alt=""
+                    width="1200"
+                    height="675"
+                    data-project-index="4"
+                    decoding="async"
+                    loading="lazy"
+                  />
+                  <img
+                    class="work-showcase__hero-img"
+                    src="./images/projects/Loko_wide.png"
+                    alt=""
+                    width="1200"
+                    height="675"
+                    data-project-index="5"
+                    decoding="async"
+                    loading="lazy"
+                  />
+                </div>
 
-              <a
+                <a
                 class="project-sticker project-sticker--pill project-sticker--cyan"
                 href="./projects/cryptocurrency-platform-integration-site.html"
                 data-project-index="0"
@@ -204,11 +212,13 @@
                 <span class="project-sticker__title">Myndr</span>
                 <span class="project-sticker__tags">Motion · Micro-UX</span>
               </a>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
+      </div>
 
-        <div class="work-showcase__logos-wrap shell-inner reveal" data-reveal aria-labelledby="work-logos-label">
+      <div class="work-showcase__logos-wrap shell-inner reveal" data-reveal aria-labelledby="work-logos-label">
           <p id="work-logos-label" class="work-showcase__logos-label">Teams I've worked with</p>
           <div class="logos-viewport">
             <div class="logos-track">
@@ -235,7 +245,6 @@
             </div>
           </div>
         </div>
-      </section>
 
       <section id="about" class="about shell-inner" aria-label="Highlights, experience, and education">
         <div class="about__highlights reveal" data-reveal>
@@ -336,6 +345,6 @@
       </footer>
     </main>
 
-    <script src="./main.js?v=20260414" defer></script>
+    <script src="./main.js?v=20260415" defer></script>
   </body>
 </html>

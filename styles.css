@@ -338,21 +338,32 @@ main {
   gap: 0;
 }
 
-/* --- Hero home --- */
-.hero-home {
-  background: var(--hero-bg);
-  color: rgba(255, 255, 255, 0.88);
-  margin-top: 0;
+/* --- Landing (hero + sticker board = one viewport-tall black band) --- */
+.landing-dark {
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  box-sizing: border-box;
   min-height: calc(100dvh - var(--nav-h));
   min-height: calc(100svh - var(--nav-h));
+  background: var(--hero-bg);
   display: flex;
   flex-direction: column;
-  padding-block: clamp(0.75rem, 3vw, 1.5rem) clamp(1.25rem, 4vw, 2rem);
+}
+
+/* --- Hero home --- */
+.hero-home {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.88);
+  margin-top: 0;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-block: clamp(0.75rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.75rem);
   box-sizing: border-box;
 }
 
 .hero-home__inner {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -531,33 +542,47 @@ main {
 }
 
 /* --- Work stickers --- */
-.work-showcase {
-  padding-block: 0 2.5rem;
-  margin-bottom: 0.5rem;
+.work-showcase--dark {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
 }
 
 .work-showcase__bleed {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
   background: var(--hero-bg);
-  padding: 0 0 clamp(1.25rem, 3vw, 2rem);
+  padding: 0;
 }
 
 .work-showcase__stage {
   position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-inline: clamp(1rem, 4vw, 2.5rem);
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .work-showcase__panel {
   position: relative;
+  flex: 1 1 auto;
+  min-height: min(36vh, 320px);
   width: 100%;
-  max-width: calc(100vw - clamp(1rem, 4vw, 2.5rem) * 2);
-  min-height: clamp(320px, 62vw, 560px);
-  margin-left: 0;
-  margin-right: auto;
-  padding: clamp(1.25rem, 4vw, 2.75rem) clamp(1rem, 3vw, 2rem) clamp(1.5rem, 4vw, 2.5rem);
-  border-top-right-radius: clamp(80px, 22vw, 420px);
-  border-bottom-right-radius: clamp(80px, 22vw, 420px);
+  max-width: 100%;
+  margin: 0;
+  padding: clamp(0.75rem, 2.5vw, 1.5rem) clamp(1rem, 4vw, 2.75rem) clamp(0.75rem, 2.5vw, 1.5rem)
+    clamp(0.65rem, 2vw, 1.25rem);
+  border-top-right-radius: clamp(100px, 26vw, 520px);
+  border-bottom-right-radius: clamp(100px, 26vw, 520px);
   background-color: var(--stage-cream);
   background-image: linear-gradient(var(--stage-grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--stage-grid) 1px, transparent 1px);
@@ -565,17 +590,23 @@ main {
   background-position: center top;
   overflow: visible;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .work-showcase__hero {
   position: relative;
   z-index: 1;
-  width: min(92%, 720px);
+  flex: 0 0 auto;
+  width: min(94%, 820px);
   max-width: 100%;
   margin: 0 auto;
   aspect-ratio: 16 / 9;
   border-radius: var(--radius-lg);
   box-shadow: 0 28px 60px rgba(22, 20, 32, 0.12);
+  background: rgba(18, 16, 28, 0.06);
 }
 
 .work-showcase__hero-img {
@@ -680,7 +711,8 @@ body.reduce-motion .work-showcase__hero-img {
 }
 
 .work-showcase__logos-wrap {
-  padding-block: clamp(1.75rem, 4vw, 2.75rem) 0;
+  padding-block: clamp(2.25rem, 5vw, 3.5rem) clamp(2rem, 4vw, 2.75rem);
+  margin-bottom: 0.35rem;
 }
 
 .work-showcase__logos-label {
@@ -694,13 +726,13 @@ body.reduce-motion .work-showcase__hero-img {
 
 @media (max-width: 719px) {
   .work-showcase__panel {
-    min-height: 420px;
-    border-top-right-radius: clamp(48px, 14vw, 160px);
-    border-bottom-right-radius: clamp(48px, 14vw, 160px);
+    min-height: min(42vh, 380px);
+    border-top-right-radius: clamp(56px, 18vw, 200px);
+    border-bottom-right-radius: clamp(56px, 18vw, 200px);
   }
 
   .work-showcase__hero {
-    width: min(94%, 520px);
+    width: min(96%, 560px);
   }
 
   .project-sticker {
@@ -830,14 +862,14 @@ body.reduce-motion .work-showcase__hero-img {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.45rem;
+  gap: 0.85rem;
 }
 
 .exp-list li {
   font-size: 0.875rem;
   color: var(--muted);
-  line-height: 1.5;
-  padding-left: 0;
+  line-height: 1.65;
+  padding: 0.15rem 0 0.2rem;
   border-left: none;
 }
 
