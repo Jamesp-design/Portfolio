@@ -717,7 +717,7 @@ body.reduce-motion .work-showcase__hero-img {
   flex-direction: column;
   justify-content: space-between;
   gap: clamp(2.75rem, 7vh, 5rem);
-  padding-block: clamp(2.75rem, 7vh, 5rem);
+  padding-block: clamp(3.5rem, 9vh, 6rem);
   box-sizing: border-box;
   background: var(--bg0);
 }
@@ -726,6 +726,7 @@ body.reduce-motion .work-showcase__hero-img {
   padding-block: 0;
   margin-bottom: 0;
   flex-shrink: 0;
+  margin-top: clamp(1.5rem, 4vh, 2.5rem);
 }
 
 .work-showcase__logos-label {
@@ -761,8 +762,8 @@ body.reduce-motion .work-showcase__hero-img {
   }
 
   .site-below-fold {
-    gap: clamp(2rem, 6vh, 3.5rem);
-    padding-block: clamp(2rem, 6vh, 3.5rem);
+    gap: clamp(2.25rem, 7vh, 4rem);
+    padding-block: clamp(2.5rem, 8vh, 4.5rem);
   }
 }
 
@@ -915,6 +916,26 @@ body.reduce-motion .work-showcase__hero-img {
   font-variant-numeric: tabular-nums;
   color: var(--faint);
   font-size: 0.8125rem;
+}
+
+.exp-links {
+  margin: 1rem 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--faint);
+}
+
+.exp-links a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.05rem;
+}
+
+.exp-links a:hover {
+  border-bottom-color: var(--text);
 }
 
 .edu-line {
