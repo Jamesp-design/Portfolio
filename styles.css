@@ -711,13 +711,14 @@ body.reduce-motion .work-showcase__hero-img {
 
 /* --- Below fold (second viewport: logos, about, footer) --- */
 .site-below-fold {
-  min-height: calc(100dvh - var(--nav-h));
-  min-height: calc(100svh - var(--nav-h));
+  min-height: 100dvh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: clamp(2.75rem, 7vh, 5rem);
-  padding-block: clamp(3.5rem, 9vh, 6rem);
+  justify-content: flex-start;
+  gap: clamp(2.5rem, 6vh, 4.5rem);
+  padding-top: calc(var(--nav-h) + clamp(1rem, 2.8vh, 1.8rem));
+  padding-bottom: clamp(2.25rem, 5vh, 3.5rem);
   box-sizing: border-box;
   background: var(--bg0);
 }
@@ -726,7 +727,8 @@ body.reduce-motion .work-showcase__hero-img {
   padding-block: 0;
   margin-bottom: 0;
   flex-shrink: 0;
-  margin-top: clamp(1.5rem, 4vh, 2.5rem);
+  margin-top: clamp(0.75rem, 2vh, 1.35rem);
+  scroll-margin-top: calc(var(--nav-h) + 0.75rem);
 }
 
 .work-showcase__logos-label {
@@ -762,8 +764,9 @@ body.reduce-motion .work-showcase__hero-img {
   }
 
   .site-below-fold {
-    gap: clamp(2.25rem, 7vh, 4rem);
-    padding-block: clamp(2.5rem, 8vh, 4.5rem);
+    gap: clamp(2rem, 5vh, 3.25rem);
+    padding-top: calc(var(--nav-h) + 1rem);
+    padding-bottom: clamp(2rem, 5vh, 3rem);
   }
 }
 
