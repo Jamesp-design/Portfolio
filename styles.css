@@ -606,6 +606,7 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 28px 72px rgba(0, 0, 0, 0.45);
   background: rgba(12, 12, 14, 0.85);
+  overflow: hidden;
 }
 
 .work-showcase__hero-img {
@@ -626,6 +627,112 @@ main {
 
 body.reduce-motion .work-showcase__hero-img {
   transition-duration: 0.01ms;
+}
+
+.nydig-hero-scene {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(1.03);
+  transition: opacity 0.6s var(--ease-out), transform 0.8s var(--ease-out);
+  background:
+    radial-gradient(1200px 420px at 20% -30%, rgba(88, 130, 255, 0.55), transparent 62%),
+    radial-gradient(800px 420px at 85% 110%, rgba(12, 44, 182, 0.7), transparent 64%),
+    linear-gradient(140deg, #001489 0%, #001d9f 48%, #001489 100%);
+}
+
+.nydig-hero-scene::before,
+.nydig-hero-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.nydig-hero-scene::before {
+  background:
+    radial-gradient(circle at 18% 40%, rgba(255, 255, 255, 0.14) 0 6px, transparent 7px),
+    radial-gradient(circle at 78% 30%, rgba(255, 255, 255, 0.12) 0 4px, transparent 5px),
+    radial-gradient(circle at 66% 78%, rgba(255, 255, 255, 0.1) 0 5px, transparent 6px);
+  opacity: 0.6;
+}
+
+.nydig-hero-scene::after {
+  background: radial-gradient(65% 75% at 50% 50%, transparent 62%, rgba(5, 5, 8, 0.46) 100%);
+}
+
+.nydig-hero-scene__glow {
+  position: absolute;
+  inset: 20% 12%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(113, 151, 255, 0.28) 0, transparent 72%);
+  filter: blur(10px);
+}
+
+.nydig-phone {
+  position: absolute;
+  width: clamp(110px, 12vw, 188px);
+  height: auto;
+  opacity: 0;
+  transform-origin: 50% 90%;
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.38));
+}
+
+.nydig-phone--1 { left: 10%; top: 15%; }
+.nydig-phone--2 { left: 24%; top: 12%; }
+.nydig-phone--3 { left: 39%; top: 14%; }
+.nydig-phone--4 { left: 54%; top: 13%; }
+.nydig-phone--5 { left: 68%; top: 16%; }
+.nydig-phone--6 { left: 81%; top: 18%; }
+
+[data-project-stage][data-active-project="0"] .nydig-hero-scene {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-project-stage][data-active-project="0"] .work-showcase__hero-img--nydig {
+  opacity: 0 !important;
+}
+
+[data-project-stage][data-active-project="0"] .nydig-phone {
+  animation: nydigPhoneIn 900ms var(--ease-out) both;
+}
+
+[data-project-stage][data-active-project="0"] .nydig-phone--1 { animation-delay: 60ms; }
+[data-project-stage][data-active-project="0"] .nydig-phone--2 { animation-delay: 120ms; }
+[data-project-stage][data-active-project="0"] .nydig-phone--3 { animation-delay: 180ms; }
+[data-project-stage][data-active-project="0"] .nydig-phone--4 { animation-delay: 240ms; }
+[data-project-stage][data-active-project="0"] .nydig-phone--5 { animation-delay: 300ms; }
+[data-project-stage][data-active-project="0"] .nydig-phone--6 { animation-delay: 360ms; }
+
+@keyframes nydigPhoneIn {
+  0% {
+    opacity: 0;
+    transform: translateY(56px) scale(0.88) rotate(-7deg);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nydig-hero-scene,
+  .nydig-phone {
+    transition: none;
+    animation: none !important;
+  }
+
+  [data-project-stage][data-active-project="0"] .nydig-phone {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .project-sticker {
