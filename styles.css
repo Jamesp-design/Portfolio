@@ -606,7 +606,7 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 28px 72px rgba(0, 0, 0, 0.45);
   background: rgba(12, 12, 14, 0.85);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .work-showcase__hero-img {
@@ -674,7 +674,7 @@ body.reduce-motion .work-showcase__hero-img {
 
 .nydig-phone {
   position: absolute;
-  width: clamp(180px, 16vw, 300px);
+  width: clamp(210px, 19vw, 350px);
   height: auto;
   opacity: 0;
   --phone-start: translate3d(0, 78px, 0) scale(0.82) rotate(-12deg);
@@ -685,28 +685,28 @@ body.reduce-motion .work-showcase__hero-img {
 }
 
 .nydig-phone--a {
-  left: -5%;
-  top: 20%;
+  left: 3%;
+  top: 16%;
   --phone-end: translate3d(0, 0, 0) rotate(-16deg) scale(0.92);
   --phone-start: translate3d(-34px, 96px, 0) rotate(-24deg) scale(0.76);
-  z-index: 1;
+  z-index: 4;
 }
 
 .nydig-phone--b {
-  left: 32%;
-  top: -16%;
-  width: clamp(200px, 18vw, 340px);
+  left: 36%;
+  top: -22%;
+  width: clamp(230px, 21vw, 390px);
   --phone-end: translate3d(0, 0, 0) rotate(-3deg) scale(0.98);
   --phone-start: translate3d(0, 110px, 0) rotate(-2deg) scale(0.78);
-  z-index: 5;
+  z-index: 7;
 }
 
 .nydig-phone--c {
-  right: -6%;
-  top: 14%;
+  right: 4%;
+  top: 18%;
   --phone-end: translate3d(0, 0, 0) rotate(14deg) scale(0.92);
   --phone-start: translate3d(38px, 92px, 0) rotate(22deg) scale(0.75);
-  z-index: 3;
+  z-index: 5;
 }
 
 [data-project-stage][data-active-project="0"] .nydig-hero-scene {
@@ -876,12 +876,12 @@ body.reduce-motion .work-showcase__hero-img {
   }
 
   .nydig-phone {
-    width: clamp(120px, 26vw, 190px);
+    width: clamp(145px, 30vw, 230px);
   }
 
   .nydig-phone--b {
-    width: clamp(145px, 30vw, 210px);
-    top: -8%;
+    width: clamp(165px, 34vw, 260px);
+    top: -14%;
   }
 
   .project-sticker {
