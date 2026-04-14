@@ -610,12 +610,35 @@ main {
 }
 
 [data-project-stage][data-active-project="0"] .work-showcase__hero {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+[data-project-stage][data-active-project="0"] .work-showcase__hero::before,
+[data-project-stage][data-active-project="0"] .work-showcase__hero::after {
+  content: "";
+  position: absolute;
+  inset: -14% -10%;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+[data-project-stage][data-active-project="0"] .work-showcase__hero::before {
   background:
-    radial-gradient(1300px 520px at 16% -42%, rgba(95, 139, 255, 0.62), transparent 64%),
-    radial-gradient(860px 480px at 86% 114%, rgba(11, 48, 194, 0.76), transparent 66%),
-    radial-gradient(700px 340px at 48% 52%, rgba(56, 113, 244, 0.3), transparent 72%),
-    linear-gradient(140deg, #001489 0%, #001d9f 48%, #001489 100%);
-  animation: nydigSceneDrift 14s ease-in-out infinite alternate;
+    radial-gradient(52% 42% at 18% 28%, rgba(144, 181, 255, 0.36), transparent 72%),
+    radial-gradient(45% 38% at 78% 74%, rgba(60, 112, 255, 0.28), transparent 76%);
+  filter: blur(10px);
+  animation: nydigBlobDriftA 16s ease-in-out infinite alternate;
+}
+
+[data-project-stage][data-active-project="0"] .work-showcase__hero::after {
+  background:
+    radial-gradient(44% 34% at 30% 78%, rgba(121, 164, 255, 0.2), transparent 78%),
+    radial-gradient(40% 34% at 84% 18%, rgba(72, 126, 255, 0.18), transparent 80%);
+  mix-blend-mode: screen;
+  filter: blur(12px);
+  animation: nydigBlobDriftB 18s ease-in-out infinite alternate;
 }
 
 .work-showcase__hero-img {
@@ -669,6 +692,10 @@ body.reduce-motion .work-showcase__hero-img {
 
 .nydig-hero-scene::after {
   background: radial-gradient(65% 75% at 50% 50%, transparent 62%, rgba(5, 5, 8, 0.46) 100%);
+}
+
+[data-project-stage][data-active-project="0"] .nydig-hero-scene::after {
+  background: none;
 }
 
 .nydig-hero-scene__glow {
@@ -790,6 +817,28 @@ body.reduce-motion .work-showcase__hero-img {
   }
 }
 
+@keyframes nydigBlobDriftA {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(3%, 2%, 0) scale(1.05);
+    opacity: 0.95;
+  }
+}
+
+@keyframes nydigBlobDriftB {
+  0% {
+    transform: translate3d(2%, -2%, 0) scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate3d(-2%, 3%, 0) scale(1.04);
+    opacity: 0.82;
+  }
+}
+
 @keyframes nydigGrainDrift {
   0% {
     transform: translate3d(0, 0, 0);
@@ -847,6 +896,8 @@ body.reduce-motion .work-showcase__hero-img {
   .nydig-hero-scene,
   .nydig-phone,
   .nydig-phone-shell,
+  [data-project-stage][data-active-project="0"] .work-showcase__hero::before,
+  [data-project-stage][data-active-project="0"] .work-showcase__hero::after,
   .nydig-hero-scene::before,
   .nydig-hero-scene__glow {
     transition: none;
