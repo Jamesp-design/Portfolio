@@ -609,6 +609,15 @@ main {
   overflow: visible;
 }
 
+[data-project-stage][data-active-project="0"] .work-showcase__hero {
+  background:
+    radial-gradient(1300px 520px at 16% -42%, rgba(95, 139, 255, 0.62), transparent 64%),
+    radial-gradient(860px 480px at 86% 114%, rgba(11, 48, 194, 0.76), transparent 66%),
+    radial-gradient(700px 340px at 48% 52%, rgba(56, 113, 244, 0.3), transparent 72%),
+    linear-gradient(140deg, #001489 0%, #001d9f 48%, #001489 100%);
+  animation: nydigSceneDrift 14s ease-in-out infinite alternate;
+}
+
 .work-showcase__hero-img {
   position: absolute;
   inset: 0;
@@ -633,17 +642,12 @@ body.reduce-motion .work-showcase__hero-img {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  pointer-events: none;
+  pointer-events: auto;
   overflow: visible;
   opacity: 0;
   transform: scale(1.03);
   transition: opacity 0.6s var(--ease-out), transform 0.8s var(--ease-out);
-  background:
-    radial-gradient(1300px 520px at 16% -42%, rgba(95, 139, 255, 0.62), transparent 64%),
-    radial-gradient(860px 480px at 86% 114%, rgba(11, 48, 194, 0.76), transparent 66%),
-    radial-gradient(700px 340px at 48% 52%, rgba(56, 113, 244, 0.3), transparent 72%),
-    linear-gradient(140deg, #001489 0%, #001d9f 48%, #001489 100%);
-  animation: nydigSceneDrift 14s ease-in-out infinite alternate;
+  background: transparent;
 }
 
 .nydig-hero-scene::before,
@@ -678,44 +682,59 @@ body.reduce-motion .work-showcase__hero-img {
   animation: nydigGlowPulse 12s ease-in-out infinite;
 }
 
-.nydig-phone {
+.nydig-phone-shell {
   position: absolute;
-  width: clamp(230px, 21vw, 390px);
-  height: auto;
-  opacity: 0;
-  --phone-start: translate3d(0, 78px, 0) scale(0.82) rotate(-12deg);
-  --phone-end: translate3d(0, 0, 0) scale(1) rotate(0deg);
-  --phone-idle-shift: translate3d(0, 0, 0);
-  --phone-hover-scale: scale(1);
+  pointer-events: auto;
   transform-origin: 50% 90%;
-  transform: var(--phone-end) var(--phone-idle-shift) var(--phone-hover-scale);
-  filter: drop-shadow(0 26px 46px rgba(0, 0, 0, 0.42));
-  transition: transform 0.35s var(--ease-out), filter 0.35s var(--ease-out);
+  transition: transform 320ms var(--ease-out);
 }
 
-.nydig-phone--a {
+.nydig-phone-shell--a {
   left: 3%;
   top: 16%;
-  --phone-end: translate3d(0, 0, 0) rotate(-16deg) scale(0.92);
-  --phone-start: translate3d(-34px, 96px, 0) rotate(-24deg) scale(0.76);
   z-index: 4;
 }
 
-.nydig-phone--b {
+.nydig-phone-shell--b {
   left: 36%;
   top: -22%;
-  width: clamp(255px, 23vw, 430px);
-  --phone-end: translate3d(0, 0, 0) rotate(-3deg) scale(0.98);
-  --phone-start: translate3d(0, 110px, 0) rotate(-2deg) scale(0.78);
   z-index: 7;
 }
 
-.nydig-phone--c {
+.nydig-phone-shell--c {
   right: 4%;
   top: 18%;
+  z-index: 5;
+}
+
+.nydig-phone {
+  position: relative;
+  display: block;
+  width: clamp(230px, 21vw, 390px);
+  height: auto;
+  opacity: 0;
+  --phone-start: translate3d(0, 78px, 0) rotate(-12deg) scale(0.82);
+  --phone-end: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  transform-origin: 50% 90%;
+  transform: var(--phone-end);
+  filter: drop-shadow(0 26px 46px rgba(0, 0, 0, 0.42));
+  transition: filter 0.35s var(--ease-out);
+}
+
+.nydig-phone--a {
+  --phone-end: translate3d(0, 0, 0) rotate(-16deg) scale(0.92);
+  --phone-start: translate3d(-34px, 96px, 0) rotate(-24deg) scale(0.76);
+}
+
+.nydig-phone--b {
+  width: clamp(255px, 23vw, 430px);
+  --phone-end: translate3d(0, 0, 0) rotate(-3deg) scale(0.98);
+  --phone-start: translate3d(0, 110px, 0) rotate(-2deg) scale(0.78);
+}
+
+.nydig-phone--c {
   --phone-end: translate3d(0, 0, 0) rotate(14deg) scale(0.92);
   --phone-start: translate3d(38px, 92px, 0) rotate(22deg) scale(0.75);
-  z-index: 5;
 }
 
 [data-project-stage][data-active-project="0"] .nydig-hero-scene {
@@ -734,12 +753,15 @@ body.reduce-motion .work-showcase__hero-img {
 [data-project-stage][data-active-project="0"] .nydig-phone--a { animation-delay: 50ms; }
 [data-project-stage][data-active-project="0"] .nydig-phone--b { animation-delay: 180ms; }
 [data-project-stage][data-active-project="0"] .nydig-phone--c { animation-delay: 320ms; }
-[data-project-stage][data-active-project="0"] .nydig-phone--a { --phone-idle-shift: translate3d(0, -6px, 0); animation: nydigPhoneIn 1000ms var(--ease-out) both, nydigPhoneIdleA 7.2s ease-in-out 1.2s infinite alternate; }
-[data-project-stage][data-active-project="0"] .nydig-phone--b { --phone-idle-shift: translate3d(0, -8px, 0); animation: nydigPhoneIn 1000ms var(--ease-out) both, nydigPhoneIdleB 8.2s ease-in-out 1.35s infinite alternate; }
-[data-project-stage][data-active-project="0"] .nydig-phone--c { --phone-idle-shift: translate3d(0, -6px, 0); animation: nydigPhoneIn 1000ms var(--ease-out) both, nydigPhoneIdleC 7.8s ease-in-out 1.5s infinite alternate; }
+[data-project-stage][data-active-project="0"] .nydig-phone-shell--a { animation: nydigPhoneIdleShellA 7.2s ease-in-out 1.2s infinite alternate; }
+[data-project-stage][data-active-project="0"] .nydig-phone-shell--b { animation: nydigPhoneIdleShellB 8.2s ease-in-out 1.35s infinite alternate; }
+[data-project-stage][data-active-project="0"] .nydig-phone-shell--c { animation: nydigPhoneIdleShellC 7.8s ease-in-out 1.5s infinite alternate; }
 
-[data-project-stage][data-active-project="0"] .work-showcase__hero:hover .nydig-phone {
-  --phone-hover-scale: scale(1.035);
+[data-project-stage][data-active-project="0"] .nydig-phone-shell:hover {
+  transform: scale(1.045);
+}
+
+[data-project-stage][data-active-project="0"] .nydig-phone-shell:hover .nydig-phone {
   filter: drop-shadow(0 30px 56px rgba(0, 0, 0, 0.46));
 }
 
@@ -794,36 +816,37 @@ body.reduce-motion .work-showcase__hero-img {
   }
 }
 
-@keyframes nydigPhoneIdleA {
+@keyframes nydigPhoneIdleShellA {
   0% {
-    transform: var(--phone-end) translate3d(-2px, -3px, 0) rotate(-0.35deg) var(--phone-hover-scale);
+    transform: translate3d(-2px, -3px, 0) rotate(-0.35deg);
   }
   100% {
-    transform: var(--phone-end) translate3d(3px, 4px, 0) rotate(0.35deg) var(--phone-hover-scale);
+    transform: translate3d(3px, 4px, 0) rotate(0.35deg);
   }
 }
 
-@keyframes nydigPhoneIdleB {
+@keyframes nydigPhoneIdleShellB {
   0% {
-    transform: var(--phone-end) translate3d(-1px, -4px, 0) rotate(-0.28deg) var(--phone-hover-scale);
+    transform: translate3d(-1px, -4px, 0) rotate(-0.28deg);
   }
   100% {
-    transform: var(--phone-end) translate3d(2px, 4px, 0) rotate(0.28deg) var(--phone-hover-scale);
+    transform: translate3d(2px, 4px, 0) rotate(0.28deg);
   }
 }
 
-@keyframes nydigPhoneIdleC {
+@keyframes nydigPhoneIdleShellC {
   0% {
-    transform: var(--phone-end) translate3d(2px, -3px, 0) rotate(0.35deg) var(--phone-hover-scale);
+    transform: translate3d(2px, -3px, 0) rotate(0.35deg);
   }
   100% {
-    transform: var(--phone-end) translate3d(-3px, 4px, 0) rotate(-0.35deg) var(--phone-hover-scale);
+    transform: translate3d(-3px, 4px, 0) rotate(-0.35deg);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .nydig-hero-scene,
   .nydig-phone,
+  .nydig-phone-shell,
   .nydig-hero-scene::before,
   .nydig-hero-scene__glow {
     transition: none;
@@ -962,9 +985,12 @@ body.reduce-motion .work-showcase__hero-img {
     width: clamp(170px, 34vw, 255px);
   }
 
+  .nydig-phone-shell--b {
+    top: -14%;
+  }
+
   .nydig-phone--b {
     width: clamp(188px, 37vw, 286px);
-    top: -14%;
   }
 
   .project-sticker {
