@@ -66,6 +66,89 @@ a {
 .work_card:hover .work_img {
 	clip-path: polygon(5% 10%, 95% 2%, 95% 90%, 5% 98%);
 }
+
+/* Highlights */
+.highlights {
+	width: 100%;
+	padding: 6em 0 3em;
+	position: relative;
+	z-index: 3;
+}
+.highlights__label {
+	margin: 0 0 1.2em;
+	font-family: Recoleta, sans-serif;
+	font-size: 1.6em;
+	font-weight: 400;
+	line-height: 1.3;
+	color: var(--black, #101010);
+}
+.highlight-cards {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.2em;
+}
+@media (min-width: 768px) {
+	.highlight-cards {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.6em;
+	}
+}
+.highlight-card {
+	margin: 0;
+	border: 1px solid rgba(16, 16, 16, 0.1);
+	border-radius: 0.6em;
+	background: #fff;
+	transition: border-color 0.2s ease, box-shadow 0.25s ease;
+}
+.highlight-card:hover {
+	border-color: rgba(16, 16, 16, 0.22);
+	box-shadow: 0 1.2em 3em rgba(16, 16, 16, 0.06);
+}
+.highlight-card__link {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45em;
+	height: 100%;
+	padding: 1.4em 1.5em 1.5em;
+	margin-right: 0;
+	text-decoration: none;
+	color: inherit;
+	font-size: inherit;
+}
+.highlight-card__eyebrow {
+	font-size: 0.95em;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--mid-grey, #878787);
+}
+.highlight-card__title {
+	margin: 0;
+	font-family: Recoleta, sans-serif;
+	font-size: 1.35em;
+	font-weight: 400;
+	line-height: 1.3;
+	color: var(--black, #101010);
+}
+.highlight-card__excerpt {
+	margin: 0;
+	flex: 1;
+	font-size: 1.05em;
+	line-height: 1.55;
+	color: var(--mid-grey, #878787);
+}
+.highlight-card__excerpt strong {
+	color: var(--black, #101010);
+	font-weight: 600;
+}
+.highlight-card__meta {
+	margin-top: 0.4em;
+	font-size: 0.95em;
+	color: var(--silver, #c3c3c3);
+}
+.highlight-card__link:hover .highlight-card__meta {
+	color: var(--orange-red, #3575eb);
+}
 </style>
       </div>
     </div>
@@ -79,8 +162,8 @@ a {
             <div class="work_wrap">
               <div data-w-id="bed124ed-6d4a-9f4d-301e-11d2ea3fe6b7" class="work_left">
                 <a href="cryptocurrency-platform-integration-site.html" class="work_card w-inline-block">
-                  <div class="work_img"><img src="images/Integration-Site-Blurry-Grey.png" loading="lazy" sizes="(max-width: 479px) 88vw, (max-width: 767px) 41vw, (max-width: 991px) 35vw, 27vw" srcset="images/Integration-Site-Blurry-Grey-p-500.png 500w, images/Integration-Site-Blurry-Grey-p-800.png 800w, images/Integration-Site-Blurry-Grey-p-1080.png 1080w, images/Integration-Site-Blurry-Grey-p-1600.png 1600w, images/Integration-Site-Blurry-Grey.png 1650w" alt="" class="work_photo"></div>
-                  <p class="work_title">Banking Intergration Mobile App 🔒</p>
+                  <div class="work_img"><img src="images/Banking-Integration.png" loading="lazy" alt="Future Bank bitcoin integration mobile app screens" class="work_photo"></div>
+                  <p class="work_title">Banking Integration Mobile App</p>
                   <p class="work_sub-title">Mobile App. API Integration.</p>
                 </a>
                 <a href="hive-exports.html" class="work_card w-inline-block">
@@ -112,12 +195,41 @@ a {
                 </a>
               </div>
             </div>
+            <section class="highlights" aria-label="Highlights">
+              <h2 class="highlights__label">Highlights</h2>
+              <div class="highlight-cards">
+                <article class="highlight-card">
+                  <a class="highlight-card__link" href="https://www.prnewswire.com/news-releases/landrys-and-nydig-announce-bitcoin-loyalty-rewards-301420186.html" target="_blank" rel="noopener noreferrer">
+                    <span class="highlight-card__eyebrow">Landry's · NYDIG</span>
+                    <h3 class="highlight-card__title">Bitcoin loyalty rewards partnership</h3>
+                    <p class="highlight-card__excerpt">Product design ahead of a public partnership — a bitcoin loyalty program for millions of guests across <strong>500+</strong> locations nationwide.</p>
+                    <span class="highlight-card__meta">PR Newswire <span aria-hidden="true">↗</span></span>
+                  </a>
+                </article>
+                <article class="highlight-card">
+                  <a class="highlight-card__link" href="https://thefintechtimes.com/uk-leads-the-world-in-shell-company-risks-signifying-urgent-financial-vigilance/" target="_blank" rel="noopener noreferrer">
+                    <span class="highlight-card__eyebrow">Moody's Analytics</span>
+                    <h3 class="highlight-card__title">Shell company risk in the headlines</h3>
+                    <p class="highlight-card__excerpt">Lead designer on <strong>Shell Company Indicator</strong> — helping businesses detect shell companies in supply chains, with the UK leading on exposure.</p>
+                    <span class="highlight-card__meta">The Fintech Times <span aria-hidden="true">↗</span></span>
+                  </a>
+                </article>
+                <article class="highlight-card">
+                  <a class="highlight-card__link" href="https://www.ign.com/articles/assassins-creed-nexus-vr-review" target="_blank" rel="noopener noreferrer">
+                    <span class="highlight-card__eyebrow">Ubisoft</span>
+                    <h3 class="highlight-card__title">Assassin's Creed Nexus VR — shipped</h3>
+                    <p class="highlight-card__excerpt">UI art on the Quest campaign — HUD and in-headset interface craft (see IGN's review).</p>
+                    <span class="highlight-card__meta">IGN <span aria-hidden="true">↗</span></span>
+                  </a>
+                </article>
+              </div>
+            </section>
             <div class="container is-hero bottom">
               <a href="mailto:hello@jamesp.co?subject=Get%20in%20touch!" class="link-block w-inline-block">
                 <h1 class="hero_heading link"><span class="text-span-4">Get in touch</span><span class="mid-grey">‍</span></h1>
               </a>
               <h1 class="hero_heading link">or<span class="mid-grey"></span></h1>
-              <a href="documents/James-Phillips---CV-2023.pdf" target="_blank" class="link-block-2 w-inline-block">
+              <a href="documents/James-Phillips-CV-2026.pdf" target="_blank" class="link-block-2 w-inline-block">
                 <h1 class="hero_heading link"><span class="text-span-5">download my resume</span><span class="mid-grey"></span></h1>
               </a>
             </div>
