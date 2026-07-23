@@ -1847,3 +1847,50 @@ blockquote {
   font-style: normal;
   font-display: swap;
 }
+
+/* Site footer */
+.site-footer {
+  width: 100%;
+  padding: 2.5em 0 3.5em;
+  position: relative;
+  z-index: 3;
+  background: #fff;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.35em 0.55em;
+}
+
+.site-footer a {
+  margin-right: 0;
+  font-size: 1.05em;
+  line-height: 1.4;
+  color: var(--mid-grey);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: var(--black);
+}
+
+.site-footer__sep {
+  font-size: 1.05em;
+  color: var(--silver);
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 767px) {
+  .site-footer {
+    padding: 3em 6vw 4.5em;
+  }
+
+  .site-footer a,
+  .site-footer__sep {
+    font-size: 3.2vw;
+  }
+}
