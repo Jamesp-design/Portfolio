@@ -293,6 +293,32 @@ blockquote {
   inset: 0%;
 }
 
+.work_img-badge {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(16, 16, 16, 0.15);
+  pointer-events: none;
+}
+
+.work_img-badge svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.work_img-badge path {
+  fill: var(--orange-red);
+}
+
 .work_title {
   font-family: Recoleta, sans-serif;
   font-size: 1.4em;
