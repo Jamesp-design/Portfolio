@@ -150,11 +150,16 @@ blockquote {
 }
 
 .container.is-hero.bottom {
+  box-sizing: border-box;
   text-align: center;
-  height: 10vh;
-  padding-left: 18em;
-  padding-right: 18em;
-  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 10vh;
+  padding: 4em 13em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .html {
@@ -203,6 +208,7 @@ blockquote {
 }
 
 .hero_heading {
+  font-family: Recoleta, sans-serif;
   font-size: 4.9em;
 }
 
@@ -553,11 +559,61 @@ blockquote {
   color: var(--mid-grey);
 }
 
-.case-study-meta {
-  margin: 0 0 28px;
+.construction-notice {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+}
+
+.construction-notice__toggle {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 14px;
+  border: none;
+  border-radius: 999px;
+  background: var(--orange-red);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(53, 117, 235, 0.35);
+  transition: padding 0.25s ease, gap 0.25s ease;
+  overflow: hidden;
+}
+
+.construction-notice__toggle:hover,
+.construction-notice__toggle:focus-visible {
+  padding: 14px 20px;
+  gap: 10px;
+}
+
+.construction-notice__icon {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  display: block;
+}
+
+.construction-notice__icon path {
+  fill: #fff;
+}
+
+.construction-notice__label {
+  font-family: Sf Pro Text, sans-serif;
   font-size: 15px;
-  line-height: 1.55;
-  color: var(--mid-grey);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-width 0.25s ease, opacity 0.2s ease;
+}
+
+.construction-notice__toggle:hover .construction-notice__label,
+.construction-notice__toggle:focus-visible .construction-notice__label {
+  max-width: 220px;
+  opacity: 1;
 }
 
 .experience-item__note {
