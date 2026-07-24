@@ -411,32 +411,57 @@ blockquote {
 .projectname {
   color: var(--black);
   text-align: left;
-  letter-spacing: 2px;
+  letter-spacing: -0.02em;
   margin-bottom: 0;
-  font-weight: 500;
+  font-family: Recoleta, sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.15;
 }
 
 .projectname.platform {
-  font-size: 5.1em;
+  font-size: 36px;
 }
 
 .projectsubhead {
   color: var(--mid-grey);
   text-align: left;
-  -webkit-text-stroke-color: var(--silver);
-  font-size: 24px;
+  margin-top: 8px;
+  font-size: 16px;
   font-weight: 400;
+  line-height: 1.4;
 }
 
 .main-heading {
   color: var(--black);
   text-align: left;
-  letter-spacing: 4px;
-  margin-top: 10px;
-  margin-bottom: 27px;
-  font-size: 60px;
-  font-weight: 500;
-  line-height: 70px;
+  letter-spacing: -0.01em;
+  margin-top: 16px;
+  margin-bottom: 20px;
+  font-family: Recoleta, sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.case-study-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.case-tag {
+  display: inline-block;
+  padding: 4px 11px;
+  border: 1px solid rgba(16, 16, 16, 0.12);
+  border-radius: 999px;
+  font-family: Sf Pro Text, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--black);
+  background: #fff;
 }
 
 .refresh-tag {
@@ -674,9 +699,11 @@ blockquote {
 .heading-7 {
   color: var(--black);
   text-align: left;
-  margin-bottom: 40px;
-  font-size: 2em;
-  font-weight: 500;
+  margin-bottom: 24px;
+  font-family: Recoleta, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.35;
 }
 
 .slider-2 {
@@ -725,10 +752,11 @@ blockquote {
 .heading-6 {
   color: var(--black);
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-family: Recoleta, sans-serif;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 400;
+  line-height: 1.35;
 }
 
 .heading-6.password {
@@ -1375,6 +1403,15 @@ blockquote {
     padding-right: 2%;
   }
 
+  .projectname,
+  .projectname.platform {
+    font-size: 32px;
+  }
+
+  .main-heading {
+    font-size: 24px;
+  }
+
   .refresh-tag {
     font-size: 12px;
     line-height: 24px;
@@ -1514,10 +1551,19 @@ blockquote {
 
   .main-heading {
     letter-spacing: 0;
-    margin-top: 20px;
+    margin-top: 12px;
+    font-size: 22px;
+    line-height: 1.35;
+  }
+
+  .projectname,
+  .projectname.platform {
     font-size: 28px;
-    font-weight: 700;
-    line-height: 36px;
+  }
+
+  .heading-6,
+  .heading-7 {
+    font-size: 20px;
   }
 
   .refresh-tag.loko {
