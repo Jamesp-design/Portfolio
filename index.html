@@ -168,12 +168,12 @@ a {
 	padding: 0;
 	list-style: none;
 	display: grid;
+	grid-template-columns: 1fr;
 	gap: 24px;
 }
 @media (min-width: 768px) {
 	.experience-list {
-		grid-template-columns: repeat(2, 1fr);
-		gap: 28px 32px;
+		gap: 28px;
 	}
 }
 .experience-item {
@@ -387,7 +387,7 @@ a {
                     <span class="experience-pill">Accessibility</span>
                   </div>
                 </li>
-                <li class="experience-item experience-item--full">
+                <li class="experience-item">
                   <span class="experience-item__when">Jun 2018 — May 2019</span>
                   <h3 class="experience-item__title">Early roles &amp; hackathons</h3>
                   <p class="experience-item__company">Pentesec · TiiQu · Industry hackathons</p>
