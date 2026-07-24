@@ -30,7 +30,7 @@
   <div class="page-wrapper">
     <section class="hero-section">
       <div class="container is-hero">
-        <h1 data-w-id="ebca27cc-a043-8323-52d6-d2378f743967" class="hero_heading">Hi, I&#x27;m James. A <span class="text-span">Product Designer</span> <span class="text-span-3">based in </span>Newcastle, <span class="text-span-2">working in</span> Fintech.<span class="mid-grey">‍</span></h1>
+        <h1 data-w-id="ebca27cc-a043-8323-52d6-d2378f743967" class="hero_heading">I&#x27;m James, an <span class="text-span">Experience Designer</span> creating complex financial-risk products, scalable design systems, and smarter design workflows.<span class="mid-grey">‍</span></h1>
       </div>
     </section>
     <div class="global-styles">
@@ -152,6 +152,70 @@ a {
 .highlight-card__link:hover .highlight-card__meta {
 	color: var(--orange-red, #3575eb);
 }
+
+/* Experience */
+.experience {
+	width: 100%;
+	padding: 0 0 4em;
+	position: relative;
+	z-index: 3;
+}
+.experience-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	gap: 1.4em;
+}
+@media (min-width: 768px) {
+	.experience-list {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.6em 2em;
+	}
+}
+.experience-item {
+	margin: 0;
+	padding: 0 0 1.4em;
+	border-bottom: 1px solid rgba(16, 16, 16, 0.08);
+}
+.experience-item__when {
+	display: block;
+	margin-bottom: 0.35em;
+	font-size: 0.95em;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--silver, #c3c3c3);
+}
+.experience-item__title {
+	margin: 0;
+	font-family: Recoleta, sans-serif;
+	font-size: 1.25em;
+	font-weight: 400;
+	line-height: 1.3;
+	color: var(--black, #101010);
+}
+.experience-item__company {
+	margin: 0.15em 0 0.75em;
+	font-size: 1.05em;
+	line-height: 1.4;
+	color: var(--mid-grey, #878787);
+}
+.experience-pills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.45em;
+}
+.experience-pill {
+	display: inline-block;
+	padding: 0.25em 0.65em;
+	border: 1px solid rgba(16, 16, 16, 0.12);
+	border-radius: 999px;
+	font-size: 0.85em;
+	line-height: 1.4;
+	color: var(--black, #101010);
+	background: #fff;
+}
 </style>
       </div>
     </div>
@@ -164,26 +228,31 @@ a {
           <div class="container">
             <div class="work_wrap">
               <div data-w-id="bed124ed-6d4a-9f4d-301e-11d2ea3fe6b7" class="work_left">
+                <a href="network-graphs.html" class="work_card w-inline-block">
+                  <div class="work_img"><img src="images/placeholder-network-graphs.svg" loading="lazy" alt="Network graph visualisation placeholder" class="work_photo"></div>
+                  <p class="work_title">Network Graphs</p>
+                  <p class="work_sub-title">Moody&#x27;s Analytics. Network visualisation.</p>
+                </a>
+                <a href="forced-labour-risk-assessment.html" class="work_card w-inline-block">
+                  <div class="work_img"><img src="images/placeholder-forced-labour.svg" loading="lazy" alt="Forced labour risk assessment placeholder" class="work_photo"></div>
+                  <p class="work_title">Forced Labour Risk Assessment</p>
+                  <p class="work_sub-title">Moody&#x27;s Analytics. Survey design.</p>
+                </a>
                 <a href="cryptocurrency-platform-integration-site.html" class="work_card w-inline-block">
                   <div class="work_img"><img src="images/Banking-Integration.png" loading="lazy" alt="Future Bank bitcoin integration mobile app screens" class="work_photo"></div>
                   <p class="work_title">Banking Integration Mobile App</p>
-                  <p class="work_sub-title">Mobile App. API Integration.</p>
+                  <p class="work_sub-title">Mobile App. API Integration.</p>
                 </a>
                 <a href="hive-exports.html" class="work_card w-inline-block">
                   <div class="work_img"><img src="images/Hive-HR-Exports.png" loading="lazy" sizes="(max-width: 479px) 88vw, (max-width: 767px) 41vw, (max-width: 991px) 35vw, 27vw" srcset="images/Hive-HR-Exports-p-500.png 500w, images/Hive-HR-Exports-p-800.png 800w, images/Hive-HR-Exports-p-1080.png 1080w, images/Hive-HR-Exports-p-1600.png 1600w, images/Hive-HR-Exports.png 1650w" alt="" class="work_photo"></div>
                   <p class="work_title">Hive HR</p>
-                  <p class="work_sub-title">UX/UI Design. Accessibilty. Design Systems</p>
-                </a>
-                <a href="sync-vr.html" class="work_card w-inline-block">
-                  <div class="work_img"><img src="images/Sync-VR.png" loading="lazy" sizes="(max-width: 479px) 88vw, (max-width: 767px) 41vw, (max-width: 991px) 35vw, 27vw" srcset="images/Sync-VR-p-500.png 500w, images/Sync-VR-p-800.png 800w, images/Sync-VR-p-1080.png 1080w, images/Sync-VR-p-1600.png 1600w, images/Sync-VR.png 1650w" alt="" class="work_photo"></div>
-                  <p class="work_title">Sync VR</p>
-                  <p class="work_sub-title">Games Development. VR.</p>
+                  <p class="work_sub-title">UX/UI Design. Accessibility. Design systems</p>
                 </a>
               </div>
               <div data-w-id="bed124ed-6d4a-9f4d-301e-11d2ea3fe6cd" class="work_right">
                 <a href="bitcoin-payments-app-redesign.html" class="work_card w-inline-block">
                   <div class="work_img"><img src="images/Bottlepay-App.png" loading="lazy" sizes="(max-width: 479px) 88vw, (max-width: 767px) 41vw, (max-width: 991px) 35vw, 27vw" srcset="images/Bottlepay-App-p-500.png 500w, images/Bottlepay-App-p-800.png 800w, images/Bottlepay-App-p-1080.png 1080w, images/Bottlepay-App-p-1600.png 1600w, images/Bottlepay-App.png 1650w" alt="" class="work_photo"></div>
-                  <p class="work_title">Bitcoin Consumer App </p>
+                  <p class="work_title">Bitcoin Consumer App</p>
                   <p class="work_sub-title">Mobile App. Fintech.</p>
                 </a>
                 <a href="myndr-microinteractions.html" class="work_card w-inline-block">
@@ -195,6 +264,11 @@ a {
                   <div class="work_img"><img src="images/Loko.png" loading="lazy" sizes="(max-width: 479px) 88vw, (max-width: 767px) 41vw, (max-width: 991px) 35vw, 27vw" srcset="images/Loko-p-500.png 500w, images/Loko-p-800.png 800w, images/Loko-p-1080.png 1080w, images/Loko-p-1600.png 1600w, images/Loko.png 1650w" alt="" class="work_photo"></div>
                   <p class="work_title">Loko</p>
                   <p class="work_sub-title">UX/UI Design. Mobile App.</p>
+                </a>
+                <a href="sync-vr.html" class="work_card w-inline-block">
+                  <div class="work_img"><img src="images/Sync-VR.png" loading="lazy" sizes="(max-width: 479px) 88vw, (max-width: 767px) 41vw, (max-width: 991px) 35vw, 27vw" srcset="images/Sync-VR-p-500.png 500w, images/Sync-VR-p-800.png 800w, images/Sync-VR-p-1080.png 1080w, images/Sync-VR-p-1600.png 1600w, images/Sync-VR.png 1650w" alt="" class="work_photo"></div>
+                  <p class="work_title">Sync VR</p>
+                  <p class="work_sub-title">University project. VR.</p>
                 </a>
               </div>
             </div>
@@ -226,6 +300,91 @@ a {
                   </a>
                 </article>
               </div>
+            </section>
+            <section class="experience" aria-label="Experience">
+              <h2 class="highlights__label">Experience</h2>
+              <ul class="experience-list">
+                <li class="experience-item">
+                  <span class="experience-item__when">2023 — present</span>
+                  <h3 class="experience-item__title">Assistant Director, Experience Designer</h3>
+                  <p class="experience-item__company">Moody&#x27;s Analytics</p>
+                  <div class="experience-pills">
+                    <span class="experience-pill">Network visualisation</span>
+                    <span class="experience-pill">Compliance workflows</span>
+                    <span class="experience-pill">Scalable design systems</span>
+                  </div>
+                </li>
+                <li class="experience-item">
+                  <span class="experience-item__when">2021 — 2023</span>
+                  <h3 class="experience-item__title">Product Designer</h3>
+                  <p class="experience-item__company">Bottlepay</p>
+                  <div class="experience-pills">
+                    <span class="experience-pill">Consumer fintech</span>
+                    <span class="experience-pill">App restructuring</span>
+                    <span class="experience-pill">Navigation design</span>
+                  </div>
+                </li>
+                <li class="experience-item">
+                  <span class="experience-item__when">2021 — 2023</span>
+                  <h3 class="experience-item__title">Product Designer</h3>
+                  <p class="experience-item__company">NYDIG</p>
+                  <div class="experience-pills">
+                    <span class="experience-pill">Banking integration</span>
+                    <span class="experience-pill">High-fidelity prototyping</span>
+                    <span class="experience-pill">Partner enablement</span>
+                  </div>
+                </li>
+                <li class="experience-item">
+                  <span class="experience-item__when">2021</span>
+                  <h3 class="experience-item__title">Junior UI Artist</h3>
+                  <p class="experience-item__company">Ubisoft</p>
+                  <div class="experience-pills">
+                    <span class="experience-pill">VR HUD design</span>
+                    <span class="experience-pill">In-headset UI</span>
+                    <span class="experience-pill">Shipped product craft</span>
+                  </div>
+                </li>
+                <li class="experience-item">
+                  <span class="experience-item__when">2019 — 2021</span>
+                  <h3 class="experience-item__title">Product Designer</h3>
+                  <p class="experience-item__company">Hive</p>
+                  <div class="experience-pills">
+                    <span class="experience-pill">Accessibility</span>
+                    <span class="experience-pill">MVP delivery</span>
+                    <span class="experience-pill">Component libraries</span>
+                  </div>
+                </li>
+                <li class="experience-item">
+                  <span class="experience-item__when">2020 — 2021</span>
+                  <h3 class="experience-item__title">UX / Product Designer</h3>
+                  <p class="experience-item__company">Pentesec</p>
+                  <div class="experience-pills">
+                    <span class="experience-pill">Enterprise UX</span>
+                    <span class="experience-pill">Cybersecurity products</span>
+                    <span class="experience-pill">Workshop facilitation</span>
+                  </div>
+                </li>
+                <li class="experience-item">
+                  <span class="experience-item__when">2018 — 2020</span>
+                  <h3 class="experience-item__title">Product Designer</h3>
+                  <p class="experience-item__company">Komodo Digital</p>
+                  <div class="experience-pills">
+                    <span class="experience-pill">Microinteractions</span>
+                    <span class="experience-pill">Motion design</span>
+                    <span class="experience-pill">Iconography</span>
+                  </div>
+                </li>
+                <li class="experience-item">
+                  <span class="experience-item__when">Various</span>
+                  <h3 class="experience-item__title">Hackathon participant</h3>
+                  <p class="experience-item__company">Industry events</p>
+                  <div class="experience-pills">
+                    <span class="experience-pill">Rapid prototyping</span>
+                    <span class="experience-pill">Pitching</span>
+                    <span class="experience-pill">Cross-discipline teams</span>
+                  </div>
+                </li>
+              </ul>
             </section>
             <div class="container is-hero bottom">
               <a href="mailto:hello@jamesp.co?subject=Get%20in%20touch!" class="link-block w-inline-block">

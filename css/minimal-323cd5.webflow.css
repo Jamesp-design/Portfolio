@@ -500,6 +500,13 @@ blockquote {
   background-color: #04d1b8;
 }
 
+.refresh-tag.moodys {
+  box-shadow: none;
+  color: #fff;
+  background-color: #0a5cb8;
+  font-weight: 400;
+}
+
 .paragraph {
   color: var(--black);
   text-align: left;

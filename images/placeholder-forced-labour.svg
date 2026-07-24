@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1650" height="930" viewBox="0 0 1650 930" fill="none">
+  <rect width="1650" height="930" fill="#F3F0EB"/>
+  <rect x="520" y="220" width="610" height="72" rx="12" fill="#fff" stroke="#C3C3C3" stroke-width="2"/>
+  <rect x="520" y="330" width="610" height="72" rx="12" fill="#fff" stroke="#C3C3C3" stroke-width="2"/>
+  <rect x="520" y="440" width="610" height="72" rx="12" fill="#fff" stroke="#C3C3C3" stroke-width="2"/>
+  <rect x="520" y="550" width="420" height="16" rx="8" fill="#0A5CB8" opacity="0.7"/>
+  <text x="825" y="760" text-anchor="middle" fill="#878787" font-family="system-ui, sans-serif" font-size="42">Forced Labour Assessment · placeholder</text>
+</svg>

@@ -12,6 +12,8 @@ This site is the personal portfolio of James Phillips. Prefer the ATS resume bel
 ## Portfolio
 
 - [Home](https://www.jamesp.co/): Intro and selected work
+- [Network Graphs](https://www.jamesp.co/network-graphs.html): Moody&#x27;s Maxsight ownership network visualisation
+- [Forced Labour Risk Assessment](https://www.jamesp.co/forced-labour-risk-assessment.html): Moody&#x27;s Maxsight supplier survey workflow
 - [Banking Integration Mobile App](https://www.jamesp.co/cryptocurrency-platform-integration-site.html): Fintech mobile/API integration case study
 - [Bitcoin Consumer App](https://www.jamesp.co/bitcoin-payments-app-redesign.html): Consumer fintech app redesign
 - [Hive HR](https://www.jamesp.co/hive-exports.html): UX/UI, accessibility, design systems

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1650" height="930" viewBox="0 0 1650 930" fill="none">
+  <rect width="1650" height="930" fill="#E8EDF5"/>
+  <circle cx="825" cy="420" r="48" fill="#0A5CB8" opacity="0.85"/>
+  <circle cx="680" cy="520" r="32" fill="#3575EB" opacity="0.55"/>
+  <circle cx="970" cy="500" r="36" fill="#3575EB" opacity="0.55"/>
+  <circle cx="760" cy="340" r="24" fill="#3575EB" opacity="0.4"/>
+  <circle cx="900" cy="360" r="28" fill="#3575EB" opacity="0.4"/>
+  <line x1="825" y1="420" x2="680" y2="520" stroke="#0A5CB8" stroke-width="3" opacity="0.35"/>
+  <line x1="825" y1="420" x2="970" y2="500" stroke="#0A5CB8" stroke-width="3" opacity="0.35"/>
+  <line x1="825" y1="420" x2="760" y2="340" stroke="#0A5CB8" stroke-width="2" opacity="0.25"/>
+  <line x1="825" y1="420" x2="900" y2="360" stroke="#0A5CB8" stroke-width="2" opacity="0.25"/>
+  <text x="825" y="760" text-anchor="middle" fill="#878787" font-family="system-ui, sans-serif" font-size="42">Network Graphs · placeholder</text>
+</svg>
