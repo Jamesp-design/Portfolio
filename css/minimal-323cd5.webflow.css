@@ -52,7 +52,7 @@ body {
   color: var(--black);
   letter-spacing: 0;
   font-family: Sf Pro Text, sans-serif;
-  font-size: 1vw;
+  font-size: 18px;
   line-height: 1.6;
 }
 
@@ -108,7 +108,8 @@ h6 {
 p {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 1.5em;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 a {
@@ -511,7 +512,8 @@ blockquote {
   color: var(--black);
   text-align: left;
   margin-bottom: 20px;
-  font-size: .7em;
+  font-size: 18px;
+  line-height: 1.65;
   font-weight: 400;
 }
 
@@ -1350,7 +1352,12 @@ blockquote {
 
 @media screen and (max-width: 991px) {
   body {
-    font-size: .619375em;
+    font-size: 17px;
+  }
+
+  p,
+  .paragraph {
+    font-size: 17px;
   }
 
   .container {
@@ -1470,6 +1477,15 @@ blockquote {
 }
 
 @media screen and (max-width: 479px) {
+  body {
+    font-size: 16px;
+  }
+
+  p,
+  .paragraph {
+    font-size: 16px;
+  }
+
   .container.is-hero {
     height: auto;
     padding-top: 16.9em;
