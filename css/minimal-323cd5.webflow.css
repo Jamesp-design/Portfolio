@@ -546,6 +546,27 @@ blockquote {
   margin-top: 40px;
 }
 
+.case-study-note {
+  margin: 12px 0 28px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--mid-grey);
+}
+
+.case-study-meta {
+  margin: 0 0 28px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--mid-grey);
+}
+
+.experience-item__note {
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--mid-grey);
+}
+
 .paragraph._404 {
   text-align: center;
 }

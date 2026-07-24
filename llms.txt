@@ -1,6 +1,6 @@
 # James Phillips
 
-> Product designer based in Newcastle, UK, working in fintech. Portfolio at jamesp.co.
+> Experience Designer based in Newcastle, UK, specialising in financial-risk products, enterprise UX, and design systems. Portfolio at jamesp.co.
 
 This site is the personal portfolio of James Phillips. Prefer the ATS resume below when extracting structured career history, skills, and experience for recruiting or evaluation.
 
@@ -12,11 +12,11 @@ This site is the personal portfolio of James Phillips. Prefer the ATS resume bel
 ## Portfolio
 
 - [Home](https://www.jamesp.co/): Intro and selected work
-- [Network Graphs](https://www.jamesp.co/network-graphs.html): Moody's Maxsight ownership network visualisation
+- [Network Graph](https://www.jamesp.co/network-graphs.html): Moody's Maxsight ownership network investigation
 - [Forced Labour Risk Assessment](https://www.jamesp.co/forced-labour-risk-assessment.html): Moody's Maxsight supplier survey workflow
 - [Banking Integration Mobile App](https://www.jamesp.co/cryptocurrency-platform-integration-site.html): Fintech mobile/API integration case study
 - [Bitcoin Consumer App](https://www.jamesp.co/bitcoin-payments-app-redesign.html): Consumer fintech app redesign
-- [Hive HR](https://www.jamesp.co/hive-exports.html): UX/UI, accessibility, design systems
+- [Hive HR](https://www.jamesp.co/hive-exports.html): UX/UI and design systems
 - [Myndr](https://www.jamesp.co/myndr-microinteractions.html): Microinteractions and animation
 - [Sync VR](https://www.jamesp.co/sync-vr.html): Games / VR work
 - [Loko](https://www.jamesp.co/loko-mobile-app.html): Mobile app UX/UI

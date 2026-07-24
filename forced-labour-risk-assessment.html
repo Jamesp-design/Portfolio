@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html data-wf-site="642b5a79ad38a47fb43b743b" lang="en">
+<html data-wf-site="642b5a79ad38a47fb43b743b" lang="en-GB">
 <head>
   <meta charset="utf-8">
-  <title>Forced Labour Risk Assessment — Moody&#x27;s Analytics</title>
-  <meta content="Forced Labour Risk Assessment — Moody&#x27;s Analytics" property="og:title">
-  <meta content="Forced Labour Risk Assessment — Moody&#x27;s Analytics" name="twitter:title">
+  <title>Forced Labour Risk Assessment — James Phillips</title>
+  <meta name="description" content="Case study: designing the Forced Labour Risk Assessment survey experience and core product screens in Maxsight.">
+  <meta content="Forced Labour Risk Assessment — James Phillips" property="og:title">
+  <meta content="Case study: designing a configurable supplier survey for forced-labour due diligence in Maxsight." property="og:description">
+  <meta content="Forced Labour Risk Assessment — James Phillips" name="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
@@ -21,9 +23,9 @@
 </head>
 <body>
   <header id="nav" class="sticky-nav refresh">
-    <nav class="container-4 w-container">
+    <nav class="container-4 w-container" aria-label="Site">
       <ul role="list" class="nav-grid w-list-unstyled">
-        <li id="w-node-f78a0280-39c3-fe27-a3f7-98d8d15e5255-d15e5252" class="list-item-2">
+        <li class="list-item-2">
           <a href="index.html" class="logo w-nav-brand"><img src="images/back-arrow.svg" width="24" height="24" alt="" class="nav-back-icon" aria-hidden="true">
             <div class="text-block refresh">James Phillips</div>
           </a>
@@ -31,67 +33,63 @@
       </ul>
     </nav>
   </header>
-  <div class="heading-wrapper w-container">
-    <h1 class="projectname platform">Forced Labour Risk Assessment</h1>
-    <h1 class="projectsubhead">Moody&#x27;s Analytics · Maxsight™</h1>
-    <h1 class="main-heading">Designing a custom survey workflow for forced-labour risk.</h1>
-    <div class="case-study-tags">
-      <span class="case-tag">UX design</span>
-      <span class="case-tag">Information architecture</span>
-    </div>
-  </div>
-  <div class="section-4">
-    <div class="w-container">
-      <div class="w-row">
-        <div class="w-col w-col-6">
-          <h3 class="heading-6">Overview</h3>
-          <p class="paragraph">Forced labour risk can be difficult for organisations to identify across complex, global supplier networks. The challenge is not only understanding risk—it is gathering the right information in a consistent way and turning it into a process that teams can act on.</p>
-          <p class="paragraph caption">This case study uses public product information and simplified descriptions of my contribution. It does not include production screens, customer data, or proprietary methodology.</p>
-        </div>
-        <div class="w-col w-col-6">
-          <h3 class="heading-6">My role</h3>
-          <p class="paragraph">I designed the core Maxsight experience for Moody&#x27;s Forced Labor Risk Assessment, including the complete supplier-survey flow and its interactions. The work helped establish a new, customisable survey capability within the platform, built specifically to support this type of due-diligence workflow.</p>
+  <main>
+    <header class="heading-wrapper w-container">
+      <h1 class="projectname platform">Forced Labour Risk Assessment</h1>
+      <p class="projectsubhead">Moody&#x27;s Analytics · Maxsight™</p>
+      <p class="main-heading">Designing a configurable survey workflow for forced-labour due diligence.</p>
+      <div class="case-study-tags">
+        <span class="case-tag">UX design</span>
+        <span class="case-tag">Information architecture</span>
+      </div>
+    </header>
+    <article class="section-4">
+      <div class="w-container">
+        <p class="paragraph">Maxsight needed a configurable survey experience for the Forced Labour Risk Assessment. I designed the core product screens and the end-to-end supplier-survey flow that made it possible.</p>
+        <p class="paragraph">The difficult part was collecting detailed supplier information without making the survey feel like a chore. I designed the question flow, progress states and reusable interaction patterns from scratch, so the experience could be customised while still feeling consistent within Maxsight.</p>
+        <p class="case-study-note">This case study uses public product information and simplified descriptions of my contribution. It does not include production screens, customer data or proprietary methodology.</p>
+        <p class="case-study-meta">Role: Experience Designer · Company: Moody&#x27;s Analytics · 2024–2025 · Product and interaction design</p>
+      </div>
+      <div class="container-7 w-container">
+        <h2 class="heading-6">The challenge</h2>
+        <p class="paragraph">Organisations need to assess forced-labour exposure across supplier networks that can span different countries, sectors and operating models. The product needed to help teams create supplier profiles within Maxsight, gather structured information directly from suppliers, and turn responses into inputs for a wider due-diligence view.</p>
+        <p class="paragraph">Generic form tools could not support the required configuration or Maxsight integration, so the team built a bespoke survey capability from the ground up.</p>
+        <img src="images/flra-journey-diagram.svg" loading="lazy" alt="Supplier due-diligence journey from creating a supplier profile through survey, responses, assessment, benchmarking and mitigation actions" class="image-30">
+      </div>
+      <div class="container-7 w-container">
+        <div class="w-row">
+          <div class="w-col w-col-6">
+            <h2 class="heading-6">Designing the journey</h2>
+            <p class="paragraph">I structured the experience around a clear journey: <strong>create supplier profile → send survey → collect responses → assess risk → benchmark results → identify mitigation actions</strong>.</p>
+            <p class="paragraph">This gave the product team a shared understanding of the workflow, while keeping individual tasks focused for the people using it day to day.</p>
+          </div>
+          <div class="w-col w-col-6">
+            <h2 class="heading-6">A bespoke survey capability</h2>
+            <p class="paragraph">The survey experience had to balance two competing needs: gathering detailed, structured information and keeping completion clear and approachable.</p>
+            <p class="paragraph">I designed the interaction model from scratch — question flow, progress states and reusable interface patterns — so the patterns could support customisation while remaining consistent within Maxsight.</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="container-7 w-container">
-      <h2 class="heading-6">The challenge</h2>
-      <p class="paragraph">Businesses need to assess forced-labour exposure across supplier networks that can span different countries, sectors, and operating models. The product needed to help teams create supplier assessments within Maxsight, gather structured information directly from suppliers, make a complex survey feel manageable to complete, and turn responses into inputs for a wider risk assessment.</p>
-      <p class="paragraph">A generic form or survey tool would not provide the flexibility or product integration required, so the team created a bespoke survey capability from the ground up.</p>
-      <img src="images/placeholder-forced-labour.svg" loading="lazy" alt="Forced labour assessment placeholder" class="image-30">
-    </div>
-    <div class="container-7 w-container">
-      <div class="w-row">
-        <div class="w-col w-col-6">
-          <h3 class="heading-6">Designing the journey</h3>
-          <p class="paragraph">I structured the experience around a clear journey: <strong>create supplier profile → send survey → collect responses → assess risk → benchmark results → identify mitigation actions</strong>.</p>
-          <p class="paragraph">This created a shared understanding of the workflow across the product team, while ensuring individual users could focus on the task in front of them.</p>
-        </div>
-        <div class="w-col w-col-6">
-          <h3 class="heading-6">A bespoke survey capability</h3>
-          <p class="paragraph">The survey experience had to balance two competing needs: gathering detailed, structured information and keeping completion clear and approachable.</p>
-          <p class="paragraph">I designed the interaction model from scratch—question flow, progress states, and reusable interface patterns—so the patterns could support customisation while remaining consistent within the Maxsight product experience.</p>
-        </div>
+      <div class="container-13 w-container">
+        <h2 class="heading-6">From information to action</h2>
+        <p class="paragraph">The assessment evaluates exposure across country, industry and business-practice factors. My design work focused on making the data-collection stage understandable and purposeful, so the information gathered through the survey could feed a meaningful wider view.</p>
+        <p class="paragraph">The goal was not simply to collect more data. It was to support a workflow that helps organisations understand where attention and mitigation may be needed.</p>
       </div>
-    </div>
-    <div class="container-13 w-container">
-      <h1 class="heading-6">From information to action</h1>
-      <p class="paragraph">The assessment evaluates supplier risk across country, industry, and business-practice factors. My design work focused on making the data-collection stage understandable and purposeful, so the information gathered through the survey could contribute to a meaningful wider risk view.</p>
-      <p class="paragraph">The goal was not simply to collect more data. It was to support a workflow that helps organisations understand where attention and mitigation may be needed.</p>
-    </div>
-    <div class="container-7 w-container">
-      <h2 class="heading-6">Outcome</h2>
-      <p class="paragraph">The Forced Labor Risk Assessment launched in 2025 through a collaboration between Moody&#x27;s and the University of Nottingham&#x27;s Rights Lab. The public solution combines Rights Lab research and scoring methods with Moody&#x27;s technology to help organisations assess supply-chain exposure, collect supplier information, prioritise risk, and support mitigation activity.</p>
-      <p class="paragraph">My contribution established the core digital assessment experience and the custom survey workflow that enabled this research-led methodology to function as a usable product within Maxsight.</p>
-    </div>
-  </div>
+      <div class="container-7 w-container">
+        <h2 class="heading-6">Outcome</h2>
+        <p class="paragraph">The work created a custom survey foundation within Maxsight and turned a complex research-led methodology into a product flow users could work through.</p>
+        <p class="paragraph">It gave organisations a clearer way to collect supplier information, assess potential exposure and identify where further investigation or mitigation may be needed.</p>
+        <p class="paragraph">The Forced Labor Risk Assessment launched in 2025 through a collaboration between Moody&#x27;s and the University of Nottingham&#x27;s Rights Lab — combining Rights Lab research and scoring methods with Moody&#x27;s technology.</p>
+      </div>
+    </article>
+  </main>
   <div class="container is-hero bottom">
     <a href="mailto:hello@jamesp.co?subject=Get%20in%20touch!" class="link-block w-inline-block">
-      <h1 class="hero_heading link"><span class="text-span-4">Get in touch</span><span class="mid-grey">‍</span></h1>
+      <p class="hero_heading link"><span class="text-span-4">Get in touch</span><span class="mid-grey">‍</span></p>
     </a>
-    <h1 class="hero_heading link">or<span class="mid-grey"></span></h1>
+    <p class="hero_heading link">or<span class="mid-grey"></span></p>
     <a href="documents/James-Phillips-CV-2026.pdf" target="_blank" class="link-block-2 w-inline-block">
-      <h1 class="hero_heading link"><span class="text-span-5">download my resume</span><span class="mid-grey"></span></h1>
+      <p class="hero_heading link"><span class="text-span-5">download my resume</span><span class="mid-grey"></span></p>
     </a>
   </div>
   <footer class="site-footer">

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html data-wf-site="642b5a79ad38a47fb43b743b" lang="en">
+<html data-wf-site="642b5a79ad38a47fb43b743b" lang="en-GB">
 <head>
   <meta charset="utf-8">
-  <title>Network Graphs — Moody&#x27;s Analytics</title>
-  <meta content="Network Graphs — Moody&#x27;s Analytics" property="og:title">
-  <meta content="Network Graphs — Moody&#x27;s Analytics" name="twitter:title">
+  <title>Network Graph — James Phillips</title>
+  <meta name="description" content="Case study: designing the network graph in Maxsight for ownership investigation — from network overview to supporting evidence.">
+  <meta content="Network Graph — James Phillips" property="og:title">
+  <meta content="Case study: designing the network graph in Maxsight for ownership investigation." property="og:description">
+  <meta content="Network Graph — James Phillips" name="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
@@ -21,9 +23,9 @@
 </head>
 <body>
   <header id="nav" class="sticky-nav refresh">
-    <nav class="container-4 w-container">
+    <nav class="container-4 w-container" aria-label="Site">
       <ul role="list" class="nav-grid w-list-unstyled">
-        <li id="w-node-f78a0280-39c3-fe27-a3f7-98d8d15e5255-d15e5252" class="list-item-2">
+        <li class="list-item-2">
           <a href="index.html" class="logo w-nav-brand"><img src="images/back-arrow.svg" width="24" height="24" alt="" class="nav-back-icon" aria-hidden="true">
             <div class="text-block refresh">James Phillips</div>
           </a>
@@ -31,68 +33,65 @@
       </ul>
     </nav>
   </header>
-  <div class="heading-wrapper w-container">
-    <h1 class="projectname platform">Network Graphs</h1>
-    <h1 class="projectsubhead">Moody&#x27;s Analytics · Maxsight™</h1>
-    <h1 class="main-heading">Making complex ownership networks easier to investigate.</h1>
-    <div class="case-study-tags">
-      <span class="case-tag">UX design</span>
-      <span class="case-tag">Data visualisation</span>
-    </div>
-  </div>
-  <div class="section-4">
-    <div class="w-container">
-      <div class="w-row">
-        <div class="w-col w-col-6">
-          <h3 class="heading-6">Overview</h3>
-          <p class="paragraph">Understanding a company&#x27;s risk often means looking beyond the company itself. Relevant information can sit within a network of shareholders, beneficial owners, subsidiaries, directors, and other connected entities.</p>
-          <p class="paragraph caption">Due to confidentiality, this case study uses publicly available product information and simplified descriptions of my work. It does not include customer data, proprietary methodology, or unreleased product designs.</p>
-        </div>
-        <div class="w-col w-col-6">
-          <h3 class="heading-6">My role</h3>
-          <p class="paragraph">I designed the network-graph experience within Maxsight and contributed to the connected Ownership and Risk Indicators chapters. The work helped transform complex corporate relationships and risk signals into a clearer investigation experience for compliance teams.</p>
+  <main>
+    <header class="heading-wrapper w-container">
+      <h1 class="projectname platform">Network Graph</h1>
+      <p class="projectsubhead">Moody&#x27;s Analytics · Maxsight™</p>
+      <p class="main-heading">Making complex ownership networks easier to investigate.</p>
+      <div class="case-study-tags">
+        <span class="case-tag">UX design</span>
+        <span class="case-tag">Data visualisation</span>
+      </div>
+    </header>
+    <article class="section-4">
+      <div class="w-container">
+        <p class="paragraph">Risk is rarely held by one company. It can sit with the people and businesses around it.</p>
+        <p class="paragraph">I designed the network graph in Maxsight, alongside parts of the Ownership and Risk Indicators chapters. I wanted users to be able to start with the wider company structure, then follow a connection into the detail that mattered.</p>
+        <p class="paragraph">The difficult part was making a large network understandable without removing the evidence compliance teams need to investigate it.</p>
+        <p class="case-study-note">This case study uses publicly available product information and simplified descriptions of my contribution. It does not include customer data, proprietary methodology or unreleased product designs.</p>
+        <p class="case-study-meta"><strong>My contribution:</strong> I owned the graph interaction model, hierarchy of nodes and connections, and drill-down states that linked the network to supporting ownership and risk information.</p>
+        <p class="case-study-meta">Role: Assistant Director, Experience Designer · Company: Moody&#x27;s Analytics · 2023–present · Enterprise UX and data visualisation</p>
+      </div>
+      <div class="container-7 w-container">
+        <h2 class="heading-6">The challenge</h2>
+        <p class="paragraph">Ownership structures are rarely simple. A company may be linked to many organisations and individuals, with relationships spanning multiple levels of ownership and control.</p>
+        <p class="paragraph">Users needed to understand who owns or controls an entity, how companies and people are connected, where potential sanctions or financial-crime exposure exists, and which relationships warranted further investigation.</p>
+        <img src="images/network-graph-diagram.svg" loading="lazy" alt="Diagram showing an investigation flow from network overview through a relevant connection to supporting evidence" class="image-30">
+      </div>
+      <div class="container-7 w-container">
+        <div class="w-row">
+          <div class="w-col w-col-6">
+            <h2 class="heading-6">Designing for investigation</h2>
+            <p class="paragraph">The graph was not designed as a visualisation for its own sake. It needed to support a real investigation workflow.</p>
+            <p class="paragraph">I focused on helping users move between three levels of understanding: <strong>network overview → relevant connection → supporting evidence</strong>. At a high level, users can understand the shape of an ownership network. From there, they can identify a relationship or flagged connection, then move into detailed information to support an investigation.</p>
+          </div>
+          <div class="w-col w-col-6">
+            <h2 class="heading-6">Connecting ownership and risk</h2>
+            <p class="paragraph">The Ownership chapter provides the structural context: shareholders, beneficial owners, subsidiaries, and other forms of company control.</p>
+            <p class="paragraph">Risk Indicators build on that structure by helping users understand potential direct or indirect exposure to sanctioned or financially criminal parties. The design needed to make these layers work together, so users could see not only that risk existed, but how it was connected to the focal company.</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="container-7 w-container">
-      <h2 class="heading-6">The challenge</h2>
-      <p class="paragraph">Ownership structures are rarely simple. A company may be linked to many organisations and individuals, with relationships spanning multiple levels of ownership and control.</p>
-      <p class="paragraph">Users needed to understand who owns or controls an entity, how companies and people are connected, where potential sanctions or financial-crime exposure exists, and which relationships warranted further investigation. The challenge was to make a large and complex network understandable without removing the detail needed for due diligence.</p>
-      <img src="images/placeholder-network-graphs.svg" loading="lazy" alt="Network graph placeholder" class="image-30">
-    </div>
-    <div class="container-7 w-container">
-      <div class="w-row">
-        <div class="w-col w-col-6">
-          <h3 class="heading-6">Designing for investigation</h3>
-          <p class="paragraph">The graph was not designed as a visualisation for its own sake. It needed to support a real investigation workflow.</p>
-          <p class="paragraph">I focused on helping users move between three levels of understanding: <strong>network overview → relevant connection → supporting evidence</strong>. At a high level, users can understand the shape of an ownership network. From there, they can identify a relationship or flagged connection, then move into detailed information to support an investigation.</p>
-        </div>
-        <div class="w-col w-col-6">
-          <h3 class="heading-6">Connecting ownership and risk</h3>
-          <p class="paragraph">The Ownership chapter provides the structural context: shareholders, beneficial owners, subsidiaries, and other forms of company control.</p>
-          <p class="paragraph">Risk Indicators build on that structure by helping users understand potential direct or indirect exposure to sanctioned or financially criminal parties. The design needed to make these layers work together, so users could see not only that risk existed, but how it was connected to the focal company.</p>
-        </div>
+      <div class="container-13 w-container">
+        <h2 class="heading-6">Design principles</h2>
+        <p class="paragraph"><strong>Start with context</strong> — Help users orient themselves within a complex network before asking them to assess individual details.</p>
+        <p class="paragraph"><strong>Reveal complexity gradually</strong> — Keep the initial experience understandable while allowing deeper investigation where required.</p>
+        <p class="paragraph"><strong>Connect signals to evidence</strong> — Make it clear how a flagged relationship relates to the company and where users can find supporting information.</p>
       </div>
-    </div>
-    <div class="container-13 w-container">
-      <h1 class="heading-6">Design principles</h1>
-      <p class="paragraph"><strong>Start with context</strong> — Help users orient themselves within a complex network before asking them to assess individual details.</p>
-      <p class="paragraph"><strong>Reveal complexity progressively</strong> — Keep the initial experience understandable while allowing deeper investigation where required.</p>
-      <p class="paragraph"><strong>Connect signals to evidence</strong> — Make it clear how a flagged relationship relates to the company and where users can find supporting information.</p>
-    </div>
-    <div class="container-7 w-container">
-      <h2 class="heading-6">Outcome</h2>
-      <p class="paragraph">The resulting experience supports a more visual, structured way to investigate company relationships and potential risk exposure within Maxsight. My work helped establish a framework that connects ownership data, network relationships, and risk indicators in a way that supports clearer compliance investigations.</p>
-      <p class="paragraph">Maxsight&#x27;s public documentation describes the Network graph as a visual map of ownership and control, covering indirect ownership, beneficial owners, and global ultimate owners. Its Risk Indicators experience uses network and firmographic views to help uncover direct and indirect exposure to sanctions and financial crime.</p>
-    </div>
-  </div>
+      <div class="container-7 w-container">
+        <h2 class="heading-6">Outcome</h2>
+        <p class="paragraph">The graph gave users a clearer way to explore ownership structures, trace connections between companies and people, and follow potential risk back to the organisation they were assessing.</p>
+        <p class="paragraph">My work brought ownership data, network relationships and risk indicators into one investigation flow, helping teams move from a broad view of the network to the supporting evidence behind it.</p>
+      </div>
+    </article>
+  </main>
   <div class="container is-hero bottom">
     <a href="mailto:hello@jamesp.co?subject=Get%20in%20touch!" class="link-block w-inline-block">
-      <h1 class="hero_heading link"><span class="text-span-4">Get in touch</span><span class="mid-grey">‍</span></h1>
+      <p class="hero_heading link"><span class="text-span-4">Get in touch</span><span class="mid-grey">‍</span></p>
     </a>
-    <h1 class="hero_heading link">or<span class="mid-grey"></span></h1>
+    <p class="hero_heading link">or<span class="mid-grey"></span></p>
     <a href="documents/James-Phillips-CV-2026.pdf" target="_blank" class="link-block-2 w-inline-block">
-      <h1 class="hero_heading link"><span class="text-span-5">download my resume</span><span class="mid-grey"></span></h1>
+      <p class="hero_heading link"><span class="text-span-5">download my resume</span><span class="mid-grey"></span></p>
     </a>
   </div>
   <footer class="site-footer">
