@@ -231,7 +231,18 @@ a {
 		font-size: 16px;
 	}
 }
-@media screen and (max-width: 479px) {
+/* Desktop scroll layout — more top space, thumbnails settle earlier */
+@media screen and (min-width: 992px) {
+	.trigger-wrapper {
+		padding-top: calc(100vh + 200px);
+	}
+	.trigger {
+		height: 75vh;
+	}
+	.work-section > .container {
+		padding-top: 200px;
+	}
+}
 	.highlights {
 		padding-top: 72px;
 	}
