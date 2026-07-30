@@ -107,10 +107,12 @@ body,
   flex-direction: column;
   height: 100dvh;
   min-height: 100dvh;
+  max-height: 100dvh;
   padding: var(--section-pad);
   padding-bottom: calc(var(--section-pad) + env(safe-area-inset-bottom, 0px));
   box-sizing: border-box;
   gap: clamp(0.75rem, 2vh, 1.25rem);
+  overflow: hidden;
 }
 
 .section-highlights {
@@ -161,14 +163,25 @@ body,
 }
 
 .projects-rail {
-  flex: 1;
+  flex: 1 1 0;
   min-height: 0;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
   align-items: stretch;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
 }
 
 .highlights-rail {
   flex: 0 0 auto;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
   align-items: stretch;
+  overflow-x: scroll;
+  overscroll-behavior-x: contain;
 }
 
 .projects-rail::-webkit-scrollbar,
@@ -180,6 +193,7 @@ body,
 .project-slide {
   flex: 0 0 min(92vw, calc(100dvh - 11rem));
   max-width: 720px;
+  min-width: 0;
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
