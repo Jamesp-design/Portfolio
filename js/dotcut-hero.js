@@ -1,22 +1,21 @@
 import { DotCut } from "./dotcut/engine.js";
 
 /**
- * Full-bleed dot-cut mesh for the landing hero.
- * Pauses offscreen / hidden tab; static frame under reduced motion.
+ * Full-bleed dot-cut mesh behind the Webflow hero (jamesp.co / main).
  */
 function initDotCutHero() {
   const host = document.querySelector("[data-dotcut-hero]");
   if (!host || !(host instanceof HTMLElement)) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const meshRegion = host.closest(".landing-dark") || host;
+  const meshRegion = host.closest(".page-wrapper") || document.body;
 
   /** @type {DotCut | null} */
   let engine = null;
 
   function mount() {
     if (engine) return;
-    engine = new DotCut(host, '"Bebas Neue", Impact, sans-serif');
+    engine = new DotCut(host, "Recoleta, Lato, sans-serif");
     if (!engine.ok) {
       engine = null;
       return;
@@ -74,7 +73,7 @@ function initDotCutHero() {
   if (document.fonts?.ready) {
     document.fonts.ready.then(() => {
       if (engine) engine.resize();
-      else if (host.getBoundingClientRect().height > 0) mount();
+      else mount();
     });
   } else {
     mount();
