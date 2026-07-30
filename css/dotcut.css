@@ -27,13 +27,6 @@
   max-height: 100%;
 }
 
-.landing-panel.is-hidden,
-.scroll-story--past .landing-panel,
-.scroll-story--past .landing-panel__mesh {
-  display: none !important;
-  visibility: hidden !important;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .landing-panel__mesh canvas {
     opacity: 0.92;
