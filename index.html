@@ -11,7 +11,7 @@
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/minimal-323cd5.webflow.css" rel="stylesheet" type="text/css">
   <link href="css/dotcut.css?v=20260731d" rel="stylesheet" type="text/css">
-  <link href="css/site-refresh.css?v=20260731d" rel="stylesheet" type="text/css">
+  <link href="css/site-refresh.css?v=20260731e" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -42,11 +42,11 @@
     </section>
 
     <section class="snap-section section-projects" id="section-projects" aria-label="Selected work">
-      <div class="section-projects__head">
+      <div class="section-rail-head">
         <h2 class="section-label">Selected work</h2>
-        <p class="section-projects__hint">Scroll sideways</p>
+        <p class="section-rail-hint">Scroll sideways</p>
       </div>
-      <div class="projects-rail" tabindex="0">
+      <div class="projects-rail" data-horizontal-rail tabindex="0">
         <a href="network-graphs.html" class="project-slide" aria-label="Network Graph — Moody's Analytics">
           <div class="project-slide__img">
             <img src="images/Network-Graph.png" loading="lazy" alt="Network graph visualisation">
@@ -96,70 +96,72 @@
       </div>
     </section>
 
-    <section class="snap-section section-highlights" id="section-highlights" aria-label="Highlights and experience">
-      <div class="section-highlights__inner">
-        <div>
-          <h2 class="section-label">Highlights</h2>
-          <div class="highlight-cards">
-            <article class="highlight-card">
-              <a class="highlight-card__link" href="https://www.prnewswire.com/news-releases/landrys-and-nydig-announce-bitcoin-loyalty-rewards-301420186.html" target="_blank" rel="noopener noreferrer">
-                <span class="highlight-card__eyebrow">Landry's · NYDIG</span>
-                <h3 class="highlight-card__title">Bitcoin loyalty rewards partnership</h3>
-                <p class="highlight-card__excerpt">Product design ahead of a public partnership — a bitcoin loyalty program for millions of guests across <strong>500+</strong> locations nationwide.</p>
-                <span class="highlight-card__meta">PR Newswire ↗</span>
-              </a>
-            </article>
-            <article class="highlight-card">
-              <a class="highlight-card__link" href="https://thefintechtimes.com/uk-leads-the-world-in-shell-company-risks-signifying-urgent-financial-vigilance/" target="_blank" rel="noopener noreferrer">
-                <span class="highlight-card__eyebrow">Moody's Analytics</span>
-                <h3 class="highlight-card__title">Shell company risk in the headlines</h3>
-                <p class="highlight-card__excerpt">Lead designer on <strong>Shell Company Indicator</strong> — helping businesses detect shell companies in supply chains.</p>
-                <span class="highlight-card__meta">The Fintech Times ↗</span>
-              </a>
-            </article>
-            <article class="highlight-card">
-              <a class="highlight-card__link" href="https://www.ign.com/articles/assassins-creed-nexus-vr-review" target="_blank" rel="noopener noreferrer">
-                <span class="highlight-card__eyebrow">Ubisoft Reflections</span>
-                <h3 class="highlight-card__title">Assassin's Creed Nexus VR — shipped</h3>
-                <p class="highlight-card__excerpt">UI art on the Quest campaign — HUD and in-headset interface craft.</p>
-                <span class="highlight-card__meta">IGN ↗</span>
-              </a>
-            </article>
-          </div>
-        </div>
-        <div>
-          <h2 class="section-label">Experience</h2>
-          <ul class="experience-list">
-            <li class="experience-item">
-              <span class="experience-item__when">Jul 2023 — present</span>
-              <h3 class="experience-item__title">Assistant Director, Experience Designer</h3>
-              <p class="experience-item__company">Moody's Analytics</p>
-              <div class="experience-pills"><span class="experience-pill">Financial risk UX</span><span class="experience-pill">Design systems</span></div>
-            </li>
-            <li class="experience-item">
-              <span class="experience-item__when">Dec 2021 — Jul 2023</span>
-              <h3 class="experience-item__title">Product Designer</h3>
-              <p class="experience-item__company">Bottlepay / NYDIG</p>
-              <div class="experience-pills"><span class="experience-pill">Consumer fintech</span><span class="experience-pill">Enterprise UX</span></div>
-            </li>
-            <li class="experience-item">
-              <span class="experience-item__when">Jun 2021 — Nov 2021</span>
-              <h3 class="experience-item__title">Junior UI Artist</h3>
-              <p class="experience-item__company">Ubisoft Reflections</p>
-              <div class="experience-pills"><span class="experience-pill">VR UI</span><span class="experience-pill">UI art</span></div>
-            </li>
-            <li class="experience-item">
-              <span class="experience-item__when">Aug 2020 — May 2021</span>
-              <h3 class="experience-item__title">Associate Digital Designer</h3>
-              <p class="experience-item__company">Komodo</p>
-            </li>
-            <li class="experience-item">
-              <span class="experience-item__when">Jun 2019 — Jul 2020</span>
-              <h3 class="experience-item__title">UX Design Placement</h3>
-              <p class="experience-item__company">Hive HR</p>
-            </li>
-          </ul>
-        </div>
+    <section class="snap-section section-highlights" id="section-highlights" aria-label="Highlights">
+      <div class="section-rail-head">
+        <h2 class="section-label">Highlights</h2>
+        <p class="section-rail-hint">Scroll sideways</p>
+      </div>
+      <div class="highlights-rail" data-horizontal-rail tabindex="0">
+        <article class="highlight-slide">
+          <a class="highlight-slide__link" href="https://www.prnewswire.com/news-releases/landrys-and-nydig-announce-bitcoin-loyalty-rewards-301420186.html" target="_blank" rel="noopener noreferrer">
+            <span class="highlight-slide__eyebrow">Landry's · NYDIG</span>
+            <h3 class="highlight-slide__title">Bitcoin loyalty rewards partnership</h3>
+            <p class="highlight-slide__excerpt">Product design ahead of a public partnership — a bitcoin loyalty program for millions of guests across <strong>500+</strong> locations nationwide.</p>
+            <span class="highlight-slide__meta">PR Newswire ↗</span>
+          </a>
+        </article>
+        <article class="highlight-slide">
+          <a class="highlight-slide__link" href="https://thefintechtimes.com/uk-leads-the-world-in-shell-company-risks-signifying-urgent-financial-vigilance/" target="_blank" rel="noopener noreferrer">
+            <span class="highlight-slide__eyebrow">Moody's Analytics</span>
+            <h3 class="highlight-slide__title">Shell company risk in the headlines</h3>
+            <p class="highlight-slide__excerpt">Lead designer on <strong>Shell Company Indicator</strong> — helping businesses detect shell companies in supply chains.</p>
+            <span class="highlight-slide__meta">The Fintech Times ↗</span>
+          </a>
+        </article>
+        <article class="highlight-slide">
+          <a class="highlight-slide__link" href="https://www.ign.com/articles/assassins-creed-nexus-vr-review" target="_blank" rel="noopener noreferrer">
+            <span class="highlight-slide__eyebrow">Ubisoft Reflections</span>
+            <h3 class="highlight-slide__title">Assassin's Creed Nexus VR — shipped</h3>
+            <p class="highlight-slide__excerpt">UI art on the Quest campaign — HUD and in-headset interface craft.</p>
+            <span class="highlight-slide__meta">IGN ↗</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="snap-section section-experience" id="section-experience" aria-label="Experience">
+      <h2 class="section-label section-experience__label">Experience</h2>
+      <div class="section-experience__inner">
+        <ul class="experience-list">
+          <li class="experience-item">
+            <span class="experience-item__when">Jul 2023 — present</span>
+            <h3 class="experience-item__title">Assistant Director, Experience Designer</h3>
+            <p class="experience-item__company">Moody's Analytics</p>
+            <div class="experience-pills"><span class="experience-pill">Financial risk UX</span><span class="experience-pill">Design systems</span></div>
+          </li>
+          <li class="experience-item">
+            <span class="experience-item__when">Dec 2021 — Jul 2023</span>
+            <h3 class="experience-item__title">Product Designer</h3>
+            <p class="experience-item__company">Bottlepay / NYDIG</p>
+            <div class="experience-pills"><span class="experience-pill">Consumer fintech</span><span class="experience-pill">Enterprise UX</span></div>
+          </li>
+          <li class="experience-item">
+            <span class="experience-item__when">Jun 2021 — Nov 2021</span>
+            <h3 class="experience-item__title">Junior UI Artist</h3>
+            <p class="experience-item__company">Ubisoft Reflections</p>
+            <div class="experience-pills"><span class="experience-pill">VR UI</span><span class="experience-pill">UI art</span></div>
+          </li>
+          <li class="experience-item">
+            <span class="experience-item__when">Aug 2020 — May 2021</span>
+            <h3 class="experience-item__title">Associate Digital Designer</h3>
+            <p class="experience-item__company">Komodo</p>
+          </li>
+          <li class="experience-item">
+            <span class="experience-item__when">Jun 2019 — Jul 2020</span>
+            <h3 class="experience-item__title">UX Design Placement</h3>
+            <p class="experience-item__company">Hive HR</p>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -181,6 +183,7 @@
     </section>
   </div>
 
-  <script type="module" src="js/dotcut-hero.js?v=20260731d"></script>
+  <script src="js/snap-scroll.js?v=20260731e" defer></script>
+  <script type="module" src="js/dotcut-hero.js?v=20260731e"></script>
 </body>
 </html>

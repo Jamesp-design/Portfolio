@@ -29,16 +29,17 @@ body,
   height: 100dvh;
   overflow-y: auto;
   overflow-x: hidden;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  scroll-behavior: auto;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
 }
 
 .snap-section {
   min-height: 100vh;
   min-height: 100dvh;
   scroll-snap-align: start;
-  scroll-snap-stop: always;
+  scroll-snap-stop: normal;
   box-sizing: border-box;
   position: relative;
   background: var(--surface);
@@ -110,16 +111,19 @@ body,
 }
 
 /* --- Projects: vertical snap + horizontal rail --- */
-.section-projects {
+.section-projects,
+.section-highlights {
   display: flex;
   flex-direction: column;
+  height: 100dvh;
+  min-height: 100dvh;
   padding: var(--section-pad);
   padding-bottom: calc(var(--section-pad) + env(safe-area-inset-bottom, 0px));
   box-sizing: border-box;
-  gap: 1rem;
+  gap: clamp(0.75rem, 2vh, 1.25rem);
 }
 
-.section-projects__head {
+.section-rail-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -127,7 +131,11 @@ body,
   flex-shrink: 0;
 }
 
-.section-projects__hint {
+.section-rail-head .section-label {
+  margin: 0;
+}
+
+.section-rail-hint {
   margin: 0;
   font-size: 11px;
   font-weight: 500;
@@ -136,38 +144,52 @@ body,
   color: var(--text-faint);
 }
 
-.projects-rail {
+.projects-rail,
+.highlights-rail {
   display: flex;
-  gap: clamp(1rem, 3vw, 1.75rem);
+  gap: clamp(1rem, 3vw, 2rem);
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  scroll-behavior: auto;
   -webkit-overflow-scrolling: touch;
   flex: 1;
-  align-items: center;
-  padding-block: 0.5rem 1rem;
+  min-height: 0;
+  align-items: stretch;
+  padding-block: 0.25rem 0.75rem;
   padding-inline: 0 0.5rem;
   scrollbar-width: thin;
 }
 
 .project-slide {
-  flex: 0 0 min(78vw, 340px);
+  flex: 0 0 min(92vw, calc(100dvh - 11rem));
+  max-width: 720px;
   scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   color: inherit;
+  min-height: 0;
 }
 
 .project-slide__img {
   position: relative;
+  flex: 1 1 0;
+  min-height: 12rem;
   width: 100%;
-  padding-top: 130%;
   margin-bottom: 0.85rem;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 12px;
   background: #f4f4f4;
   transition: clip-path 0.45s cubic-bezier(0.77, 0, 0.175, 1);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+@media (min-width: 768px) {
+  .project-slide {
+    flex-basis: min(78vw, calc(100dvh - 10rem));
+    max-width: 900px;
+  }
 }
 
 .project-slide:hover .project-slide__img {
@@ -207,80 +229,50 @@ body,
 .project-slide__title {
   margin: 0;
   font-family: var(--font-sans) !important;
-  font-size: 1.05rem;
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
   font-weight: 600;
   line-height: 1.3;
+  flex-shrink: 0;
 }
 
 .project-slide__sub {
   margin: 0.2rem 0 0;
   font-size: 0.88rem;
   color: var(--text-muted);
+  flex-shrink: 0;
 }
 
-/* --- Highlights + experience --- */
-.section-highlights {
-  padding: var(--section-pad);
-  box-sizing: border-box;
-  display: flex;
-  align-items: stretch;
-}
-
-.section-highlights__inner {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(1.5rem, 4vh, 2.5rem);
-  width: 100%;
-  max-width: 72rem;
-  margin-inline: auto;
-  overflow-y: auto;
-  max-height: calc(100dvh - 2 * var(--section-pad));
-  padding-right: 0.25rem;
-}
-
-@media (min-width: 900px) {
-  .section-highlights__inner {
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: start;
-  }
-}
-
-.highlight-cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-@media (min-width: 640px) {
-  .highlight-cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-.highlight-card {
+/* --- Highlights: horizontal rail --- */
+.highlight-slide {
+  flex: 0 0 min(88vw, 420px);
+  scroll-snap-align: center;
   margin: 0;
   border: 1px solid rgba(16, 16, 16, 0.1);
-  border-radius: 10px;
+  border-radius: 14px;
   background: #fff;
   transition: border-color 0.2s ease, box-shadow 0.25s ease;
+  display: flex;
+  min-height: 0;
 }
 
-.highlight-card:hover {
+.highlight-slide:hover {
   border-color: rgba(16, 16, 16, 0.2);
   box-shadow: 0 8px 28px rgba(16, 16, 16, 0.06);
 }
 
-.highlight-card__link {
+.highlight-slide__link {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 16px 18px;
+  gap: 8px;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
   text-decoration: none;
   color: inherit;
   margin-right: 0;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-.highlight-card__eyebrow {
+.highlight-slide__eyebrow {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -288,33 +280,64 @@ body,
   color: var(--text-muted);
 }
 
-.highlight-card__title {
+.highlight-slide__title {
   margin: 0;
   font-family: var(--font-sans) !important;
-  font-size: 16px;
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
   font-weight: 600;
   line-height: 1.35;
 }
 
-.highlight-card__excerpt {
+.highlight-slide__excerpt {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.55;
   color: var(--text-muted);
 }
 
-.highlight-card__excerpt strong {
+.highlight-slide__excerpt strong {
   color: var(--text);
   font-weight: 600;
 }
 
-.highlight-card__meta {
+.highlight-slide__meta {
   font-size: 13px;
   color: var(--text-faint);
 }
 
-.highlight-card__link:hover .highlight-card__meta {
+.highlight-slide__link:hover .highlight-slide__meta {
   color: var(--accent);
+}
+
+@media (min-width: 768px) {
+  .highlight-slide {
+    flex-basis: min(72vw, 480px);
+  }
+}
+
+/* --- Experience --- */
+.section-experience {
+  display: flex;
+  flex-direction: column;
+  padding: var(--section-pad);
+  box-sizing: border-box;
+  gap: clamp(1rem, 3vh, 1.5rem);
+}
+
+.section-experience__label {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.section-experience__inner {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  max-width: 42rem;
+  margin-inline: auto;
+  width: 100%;
+  padding-right: 0.25rem;
 }
 
 .experience-list {
@@ -482,7 +505,8 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (prefers-reduced-motion: reduce) {
   .snap-root,
-  .projects-rail {
+  .projects-rail,
+  .highlights-rail {
     scroll-behavior: auto;
     scroll-snap-type: none;
   }
