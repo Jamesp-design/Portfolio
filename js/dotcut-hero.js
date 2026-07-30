@@ -1,43 +1,42 @@
 import { DotCut } from "./dotcut/engine.js";
 
-/** Dot-cut mesh inside the landing card only; torn down once user scrolls past. */
+/** Dot-cut mesh inside the landing card; pauses off-screen, resumes on scroll back. */
 function initDotCutHero() {
   const host = document.querySelector("[data-dotcut-hero]");
   if (!host || !(host instanceof HTMLElement)) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const meshRegion = host.closest(".landing-panel__card") || host;
-  const scrollStory = host.closest("[data-scroll-stages]");
 
   /** @type {DotCut | null} */
   let engine = null;
-  let tornDown = false;
+  let shouldRun = true;
 
   function mount() {
-    if (tornDown || engine) return;
-    if (scrollStory?.classList.contains("scroll-story--past")) return;
-    if (host.closest(".landing-panel")?.classList.contains("is-hidden")) return;
+    if (!shouldRun) return;
 
-    engine = new DotCut(host, "Inter, system-ui, sans-serif");
-    engine.setParams({ hold: 2800, brush: 1.4 });
-    if (!engine.ok) {
-      engine = null;
-      return;
+    if (!engine) {
+      engine = new DotCut(host, "Inter, system-ui, sans-serif");
+      engine.setParams({ hold: 2800, brush: 1.4 });
+      if (!engine.ok) {
+        engine = null;
+        return;
+      }
     }
+
     if (reduceMotion) {
       engine.renderStill();
       return;
     }
+
     engine.start();
   }
 
-  function unmount() {
+  function pause() {
     engine?.stop();
   }
 
   function destroy() {
-    if (tornDown) return;
-    tornDown = true;
     engine?.destroy();
     engine = null;
     meshRegion.removeEventListener("pointermove", onPointerMove);
@@ -46,7 +45,7 @@ function initDotCutHero() {
 
   /** @param {PointerEvent} e */
   function onPointerMove(e) {
-    if (!engine || tornDown) return;
+    if (!engine || !shouldRun) return;
     const rect = host.getBoundingClientRect();
     engine.setPointer(engine.toCell(e.clientX - rect.left, e.clientY - rect.top));
   }
@@ -60,34 +59,25 @@ function initDotCutHero() {
     meshRegion.addEventListener("pointerleave", onPointerLeave, { passive: true });
   }
 
-  const io = new IntersectionObserver(
-    (entries) => {
-      if (tornDown) return;
-      const visible = entries.some((e) => e.isIntersecting && e.intersectionRatio > 0.05);
-      if (visible) mount();
-      else {
-        unmount();
-        if (!entries.some((e) => e.isIntersecting)) destroy();
-      }
-    },
-    { threshold: [0, 0.05, 0.2] },
-  );
-  io.observe(host);
-
-  window.addEventListener("dotcut:teardown", destroy, { once: true });
+  window.addEventListener("dotcut:active", (e) => {
+    const active = /** @type {CustomEvent<{ active: boolean }>} */ (e).detail?.active;
+    shouldRun = active !== false;
+    if (shouldRun) mount();
+    else pause();
+  });
 
   document.addEventListener("visibilitychange", () => {
-    if (!engine || reduceMotion || tornDown) return;
-    if (document.hidden) unmount();
-    else mount();
+    if (!engine || reduceMotion) return;
+    if (document.hidden) pause();
+    else if (shouldRun) mount();
   });
 
   if (document.fonts?.ready) {
     document.fonts.ready.then(() => {
-      if (!tornDown && engine) engine.resize();
-      else if (!tornDown) mount();
+      if (engine) engine.resize();
+      else if (shouldRun) mount();
     });
-  } else {
+  } else if (shouldRun) {
     mount();
   }
 

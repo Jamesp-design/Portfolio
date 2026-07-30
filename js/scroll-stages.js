@@ -6,59 +6,49 @@
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const pin = root.querySelector(".scroll-story__pin");
-  const landingPanel = root.querySelector('[data-stage="shapes"]');
   if (!pin) return;
 
   let ticking = false;
-  let dotcutTornDown = false;
 
   function clamp(v, lo, hi) {
     return Math.min(hi, Math.max(lo, v));
   }
 
-  function teardownDotcut() {
-    if (dotcutTornDown) return;
-    dotcutTornDown = true;
-    window.dispatchEvent(new CustomEvent("dotcut:teardown"));
+  function setDotcutActive(active) {
+    window.dispatchEvent(new CustomEvent("dotcut:active", { detail: { active } }));
   }
 
   function update() {
     ticking = false;
     const rect = root.getBoundingClientRect();
     const scrollRange = root.offsetHeight - window.innerHeight;
+    const inView = rect.bottom > 0 && rect.top < window.innerHeight;
 
-    /* Scroll-story fully above viewport — hide and kill mesh */
-    if (rect.bottom <= 0) {
-      root.classList.add("scroll-story--past");
-      if (landingPanel) landingPanel.classList.add("is-hidden");
-      teardownDotcut();
-      return;
-    }
-
-    root.classList.remove("scroll-story--past");
+    root.classList.toggle("scroll-story--past", rect.bottom <= 0);
+    root.classList.toggle("scroll-story--active", inView && rect.bottom > 0);
 
     if (scrollRange <= 0 || reduceMotion) {
       pin.style.setProperty("--shapes-opacity", "1");
       pin.style.setProperty("--intro-opacity", reduceMotion ? "1" : "0");
+      setDotcutActive(inView);
       return;
     }
 
-    const progress = clamp(-rect.top / scrollRange, 0, 1);
+    /* Only animate while scroll-story is on screen */
+    const progress = inView ? clamp(-rect.top / scrollRange, 0, 1) : rect.bottom <= 0 ? 1 : 0;
 
-    const shapesOpacity = progress < 0.42 ? 1 : clamp(1 - (progress - 0.42) / 0.28, 0, 1);
-    const introOpacity = progress < 0.38 ? 0 : clamp((progress - 0.38) / 0.28, 0, 1);
+    const shapesOpacity = progress < 0.4 ? 1 : clamp(1 - (progress - 0.4) / 0.25, 0, 1);
+    const introOpacity = progress < 0.35 ? 0 : clamp((progress - 0.35) / 0.25, 0, 1);
 
     pin.style.setProperty("--shapes-opacity", String(shapesOpacity));
     pin.style.setProperty("--intro-opacity", String(introOpacity));
     pin.style.setProperty("--shapes-shift", String(shapesOpacity));
-    pin.style.setProperty("--shapes-pointer", shapesOpacity > 0.15 ? "auto" : "none");
-    pin.style.setProperty("--intro-pointer", introOpacity > 0.85 ? "auto" : "none");
+    pin.style.setProperty("--shapes-pointer", shapesOpacity > 0.2 ? "auto" : "none");
+    pin.style.setProperty("--intro-pointer", introOpacity > 0.5 ? "auto" : "none");
+    pin.style.setProperty("--shapes-visibility", shapesOpacity > 0.02 ? "visible" : "hidden");
+    pin.style.setProperty("--intro-visibility", introOpacity > 0.02 ? "visible" : "hidden");
 
-    if (landingPanel) {
-      const hideShapes = shapesOpacity < 0.04;
-      landingPanel.classList.toggle("is-hidden", hideShapes);
-      if (hideShapes) teardownDotcut();
-    }
+    setDotcutActive(inView && shapesOpacity > 0.15);
   }
 
   function onScroll() {

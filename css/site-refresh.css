@@ -55,9 +55,18 @@ h1, h2, h3, h4, h5, h6,
   z-index: 1;
 }
 
+/* Stay above work section until scroll-story has fully cleared */
+.scroll-story--active {
+  z-index: 20;
+}
+
 .scroll-story--past {
-  visibility: hidden;
+  z-index: 0;
   pointer-events: none;
+}
+
+.scroll-story--past .scroll-story__pin {
+  visibility: hidden;
 }
 
 .scroll-story__pin {
@@ -87,12 +96,14 @@ h1, h2, h3, h4, h5, h6,
   opacity: var(--shapes-opacity, 1);
   transform: translateY(calc(var(--shapes-shift, 0) * -24px));
   pointer-events: var(--shapes-pointer, auto);
+  visibility: var(--shapes-visibility, visible);
 }
 
 .intro-panel {
   opacity: var(--intro-opacity, 0);
   transform: translateY(calc((1 - var(--intro-opacity, 0)) * 28px));
   pointer-events: var(--intro-pointer, none);
+  visibility: var(--intro-visibility, hidden);
 }
 
 /* Rounded card with white margin showing around mesh */
