@@ -1,11 +1,11 @@
 import { DotCut } from "./dotcut/engine.js";
 
-/** Dot-cut mesh inside the landing card; pauses off-screen, resumes on scroll back. */
 function initDotCutHero() {
   const host = document.querySelector("[data-dotcut-hero]");
   if (!host || !(host instanceof HTMLElement)) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const heroSection = host.closest(".section-hero");
   const meshRegion = host.closest(".landing-panel__card") || host;
 
   /** @type {DotCut | null} */
@@ -14,7 +14,6 @@ function initDotCutHero() {
 
   function mount() {
     if (!shouldRun) return;
-
     if (!engine) {
       engine = new DotCut(host, "Inter, system-ui, sans-serif");
       engine.setParams({ hold: 2800, brush: 1.4 });
@@ -23,12 +22,10 @@ function initDotCutHero() {
         return;
       }
     }
-
     if (reduceMotion) {
       engine.renderStill();
       return;
     }
-
     engine.start();
   }
 
@@ -43,7 +40,6 @@ function initDotCutHero() {
     meshRegion.removeEventListener("pointerleave", onPointerLeave);
   }
 
-  /** @param {PointerEvent} e */
   function onPointerMove(e) {
     if (!engine || !shouldRun) return;
     const rect = host.getBoundingClientRect();
@@ -59,12 +55,17 @@ function initDotCutHero() {
     meshRegion.addEventListener("pointerleave", onPointerLeave, { passive: true });
   }
 
-  window.addEventListener("dotcut:active", (e) => {
-    const active = /** @type {CustomEvent<{ active: boolean }>} */ (e).detail?.active;
-    shouldRun = active !== false;
-    if (shouldRun) mount();
-    else pause();
-  });
+  const observeTarget = heroSection || host;
+  const io = new IntersectionObserver(
+    (entries) => {
+      const visible = entries.some((e) => e.isIntersecting && e.intersectionRatio > 0.2);
+      shouldRun = visible;
+      if (visible) mount();
+      else pause();
+    },
+    { threshold: [0, 0.2, 0.5] },
+  );
+  io.observe(observeTarget);
 
   document.addEventListener("visibilitychange", () => {
     if (!engine || reduceMotion) return;

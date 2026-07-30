@@ -1,0 +1,66 @@
+/* Inter typography for Webflow case study pages */
+:root {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+html,
+body,
+.body,
+h1, h2, h3, h4, h5, h6,
+p, a, li, span, label,
+.projectname,
+.projectsubhead,
+.main-heading,
+.main-heading-2,
+.main-heading-3,
+.main-heading-4,
+.heading-6,
+.paragraph,
+.text-block,
+.text-block.refresh,
+.hero_heading,
+.case-tag,
+.sticky-nav,
+.nav-grid,
+.site-footer,
+.site-footer a {
+  font-family: var(--font-sans) !important;
+}
+
+.projectname,
+.main-heading,
+.main-heading-2,
+.main-heading-3,
+.main-heading-4 {
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+}
+
+.projectsubhead {
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.85rem !important;
+}
+
+.heading-6 {
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+}
+
+.paragraph {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.main-heading {
+  font-size: clamp(1.25rem, 3vw, 1.65rem) !important;
+  line-height: 1.4 !important;
+  font-weight: 500 !important;
+}
+
+.hero_heading.link {
+  font-family: var(--font-sans) !important;
+  font-size: 1.35rem !important;
+  font-weight: 600 !important;
+}
