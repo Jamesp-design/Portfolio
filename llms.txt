@@ -1,0 +1,34 @@
+# James Phillips
+
+> Experience Designer based in Newcastle, UK, specialising in financial-risk products, enterprise UX, and design systems. Portfolio at jamesp.co.
+
+This site is the personal portfolio of James Phillips. Prefer the ATS resume below when extracting structured career history, skills, and experience for recruiting or evaluation.
+
+## Resume
+
+- [ATS resume (PDF)](https://www.jamesp.co/documents/James-Phillips-CV-2026-ATS.pdf): Plain, machine-readable CV optimized for ATS and AI parsing
+- [Visual resume (PDF)](https://www.jamesp.co/documents/James-Phillips-CV-2026.pdf): Designed resume for human readers
+
+## Portfolio
+
+- [Home](https://www.jamesp.co/): Intro and selected work
+- [Network Graph](https://www.jamesp.co/network-graphs.html): Moody's Maxsight ownership network investigation
+- [Forced Labour Risk Assessment](https://www.jamesp.co/forced-labour-risk-assessment.html): Moody's Maxsight supplier survey workflow
+- [Banking Integration Mobile App](https://www.jamesp.co/cryptocurrency-platform-integration-site.html): Fintech mobile/API integration case study
+- [Bitcoin Consumer App](https://www.jamesp.co/bitcoin-payments-app-redesign.html): Consumer fintech app redesign
+- [Hive HR](https://www.jamesp.co/hive-exports.html): UX/UI and design systems
+- [Myndr](https://www.jamesp.co/myndr-microinteractions.html): Microinteractions and animation
+- [Sync VR](https://www.jamesp.co/sync-vr.html): Games / VR work
+- [Loko](https://www.jamesp.co/loko-mobile-app.html): Mobile app UX/UI
+
+## Contact & profiles
+
+- [Email](mailto:hello@jamesp.co): hello@jamesp.co
+- [LinkedIn](https://www.linkedin.com/in/james-phillips0799/): Professional profile
+- [Dribbble](https://dribbble.com/jamesp99): Design shots and animation work
+
+## Optional
+
+- [PR Newswire — Landry's × NYDIG](https://www.prnewswire.com/news-releases/landrys-and-nydig-announce-bitcoin-loyalty-rewards-301420186.html): Bitcoin loyalty rewards partnership highlight
+- [The Fintech Times — Moody's Analytics](https://thefintechtimes.com/uk-leads-the-world-in-shell-company-risks-signifying-urgent-financial-vigilance/): Shell Company Indicator coverage
+- [IGN — Assassin's Creed Nexus VR](https://www.ign.com/articles/assassins-creed-nexus-vr-review): Shipped VR UI art credit
