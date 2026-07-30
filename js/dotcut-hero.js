@@ -6,7 +6,7 @@ function initDotCutHero() {
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const heroSection = host.closest(".section-hero");
-  const meshRegion = host.closest(".landing-panel__card") || host;
+  const meshRegion = heroSection || host;
 
   /** @type {DotCut | null} */
   let engine = null;
@@ -16,7 +16,7 @@ function initDotCutHero() {
     if (!shouldRun) return;
     if (!engine) {
       engine = new DotCut(host, "Inter, system-ui, sans-serif");
-      engine.setParams({ hold: 2800, brush: 1.4 });
+      engine.setParams({ hold: 2800, brush: 2.4, cols: 22 });
       if (!engine.ok) {
         engine = null;
         return;
