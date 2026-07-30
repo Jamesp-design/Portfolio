@@ -151,10 +151,11 @@ body,
 .projects-rail,
 .highlights-rail {
   display: flex;
+  flex-wrap: nowrap;
   gap: clamp(1rem, 3vw, 2rem);
-  overflow-x: auto;
+  overflow-x: scroll;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   scroll-behavior: auto;
   -webkit-overflow-scrolling: touch;
   padding-block: 0.25rem 0.75rem;
@@ -192,9 +193,11 @@ body,
 }
 
 .project-slide {
-  flex: 0 0 min(92vw, calc(100dvh - 11rem));
+  --slide-w: min(92vw, calc(100dvh - 11rem));
+  flex: 0 0 var(--slide-w);
+  width: var(--slide-w);
   max-width: 720px;
-  min-width: 0;
+  flex-shrink: 0;
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
@@ -218,7 +221,7 @@ body,
 
 @media (min-width: 768px) {
   .project-slide {
-    flex-basis: min(78vw, calc(100dvh - 10rem));
+    --slide-w: min(78vw, calc(100dvh - 10rem));
     max-width: 900px;
   }
 }
@@ -275,7 +278,10 @@ body,
 
 /* --- Highlights: horizontal rail --- */
 .highlight-slide {
-  flex: 0 0 min(88vw, 420px);
+  --highlight-w: min(88vw, 420px);
+  flex: 0 0 var(--highlight-w);
+  width: var(--highlight-w);
+  flex-shrink: 0;
   scroll-snap-align: center;
   margin: 0;
   border: 1px solid rgba(16, 16, 16, 0.1);
@@ -340,7 +346,7 @@ body,
 
 @media (min-width: 768px) {
   .highlight-slide {
-    flex-basis: min(72vw, 480px);
+    --highlight-w: min(72vw, 480px);
   }
 }
 

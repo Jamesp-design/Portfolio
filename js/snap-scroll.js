@@ -32,8 +32,8 @@
     if (performance.now() < verticalPassThroughUntil) return false;
     const rect = section.getBoundingClientRect();
     const vh = window.innerHeight;
-    if (rect.top > vh * 0.2 || rect.bottom < vh * 0.5) return false;
-    return Math.abs(rect.top) <= Math.max(64, vh * 0.14);
+    const visible = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+    return visible >= vh * 0.55 && rect.top <= vh * 0.2 && rect.top >= -vh * 0.05;
   }
 
   /** @param {HTMLElement} rail */
@@ -106,7 +106,7 @@
           return;
         }
         e.preventDefault();
-        rail.scrollLeft = Math.min(railMaxScroll(rail), rail.scrollLeft + dy);
+        rail.scrollBy({ left: dy, behavior: "auto" });
         return;
       }
 
@@ -117,7 +117,7 @@
           return;
         }
         e.preventDefault();
-        rail.scrollLeft = Math.max(0, rail.scrollLeft + dy);
+        rail.scrollBy({ left: dy, behavior: "auto" });
       }
     },
     { passive: false, capture: true },
