@@ -28,6 +28,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .work_title {
+  font-family: var(--font-sans) !important;
   font-size: 1.15em;
   font-weight: 600;
   line-height: 1.35;
@@ -49,6 +50,14 @@ h1, h2, h3, h4, h5, h6,
   position: relative;
   height: 200vh;
   height: 200dvh;
+  overflow: hidden;
+  isolation: isolate;
+  z-index: 1;
+}
+
+.scroll-story--past {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .scroll-story__pin {
@@ -58,6 +67,7 @@ h1, h2, h3, h4, h5, h6,
   height: 100dvh;
   overflow: hidden;
   z-index: 1;
+  background: var(--surface);
 }
 
 .landing-panel,
@@ -133,6 +143,7 @@ h1, h2, h3, h4, h5, h6,
 
 .intro-heading {
   margin: 0;
+  font-family: var(--font-sans) !important;
   font-size: clamp(2.5rem, 8vw, 4.25rem);
   font-weight: 600;
   line-height: 1.05;
@@ -156,13 +167,24 @@ h1, h2, h3, h4, h5, h6,
 /* --- Work section follows third scroll beat --- */
 .main-wrapper {
   position: relative;
-  z-index: 2;
+  z-index: 10;
+  background: var(--surface);
+}
+
+.sticky-wrapper {
+  position: relative;
+  z-index: 10;
+  background: var(--surface);
 }
 
 .work-section {
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 10;
+  background: var(--surface);
+}
+
+.work-section > .container {
   background: var(--surface);
 }
 
