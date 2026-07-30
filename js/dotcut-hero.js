@@ -1,21 +1,20 @@
 import { DotCut } from "./dotcut/engine.js";
 
-/**
- * Full-bleed dot-cut mesh behind the Webflow hero (jamesp.co / main).
- */
+/** Dot-cut mesh inside the landing card; cycles J → A → M → E → S. */
 function initDotCutHero() {
   const host = document.querySelector("[data-dotcut-hero]");
   if (!host || !(host instanceof HTMLElement)) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const meshRegion = host.closest(".page-wrapper") || document.body;
+  const meshRegion = host.closest(".landing-panel__card") || host;
 
   /** @type {DotCut | null} */
   let engine = null;
 
   function mount() {
     if (engine) return;
-    engine = new DotCut(host, "Recoleta, Lato, sans-serif");
+    engine = new DotCut(host, "Inter, system-ui, sans-serif");
+    engine.setParams({ hold: 2800, brush: 1.4 });
     if (!engine.ok) {
       engine = null;
       return;
@@ -40,9 +39,7 @@ function initDotCutHero() {
   function onPointerMove(e) {
     if (!engine) return;
     const rect = host.getBoundingClientRect();
-    const px = e.clientX - rect.left;
-    const py = e.clientY - rect.top;
-    engine.setPointer(engine.toCell(px, py));
+    engine.setPointer(engine.toCell(e.clientX - rect.left, e.clientY - rect.top));
   }
 
   function onPointerLeave() {
@@ -60,7 +57,7 @@ function initDotCutHero() {
       if (visible) mount();
       else unmount();
     },
-    { threshold: 0.05 },
+    { threshold: 0.08 },
   );
   io.observe(host);
 

@@ -48,11 +48,10 @@ function hash2(x, y) {
 /** @type {Scene[]} */
 export const SCENES = [
   { kind: "text", value: "J", transition: "wipe", palette: 0, style: "drift" },
-  { kind: "rings", transition: "ripple", palette: 1, style: "grain" },
-  { kind: "columns", transition: "columns", palette: 2, style: "streak" },
-  { kind: "checker", transition: "scatter", palette: 3, style: "swell" },
-  { kind: "boxes", transition: "collapse", palette: 4, style: "grain" },
-  { kind: "bars", transition: "wipe", palette: 5, style: "drift" },
+  { kind: "text", value: "A", transition: "ripple", palette: 1, style: "grain" },
+  { kind: "text", value: "M", transition: "columns", palette: 2, style: "streak" },
+  { kind: "text", value: "E", transition: "scatter", palette: 3, style: "swell" },
+  { kind: "text", value: "S", transition: "collapse", palette: 4, style: "drift" },
 ];
 
 /**
@@ -127,14 +126,13 @@ export function styleField(scene, cols, rows, t, out, prev) {
   }
 }
 
-/** Brand-aligned two-tone pairs: [circle, background] */
+/** Vibrant two-tone pairs: [circle, background] — one per letter */
 export const PALETTES = [
-  ["#3dd4b0", "#0a2e26"],
-  ["#9b8cf0", "#2a1f5c"],
-  ["#7ee8c8", "#0f9d7d"],
-  ["#c4b5fd", "#4338ca"],
-  ["#f0ede4", "#16141f"],
-  ["#ffd166", "#3d2208"],
+  ["#6ea8ff", "#1e3a8a"],
+  ["#ff7b7b", "#991b1b"],
+  ["#ffd166", "#92400e"],
+  ["#5eead4", "#115e59"],
+  ["#c084fc", "#581c87"],
 ];
 
 /**
