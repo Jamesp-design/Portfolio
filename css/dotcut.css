@@ -1,34 +1,18 @@
-/* Dotcut hero mesh — layered behind Webflow hero (main / jamesp.co) */
-.hero-dotcut {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
+/* Dotcut mesh — contained inside landing card */
+.landing-panel__mesh {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
 }
 
-.hero-dotcut canvas {
+.landing-panel__mesh canvas {
   display: block;
   width: 100%;
   height: 100%;
-  opacity: 0.88;
-}
-
-.page-wrapper {
-  position: relative;
-}
-
-.hero-section {
-  z-index: 1;
-}
-
-.work-section {
-  position: relative;
-  z-index: 2;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-dotcut canvas {
-    opacity: 0.75;
+  .landing-panel__mesh canvas {
+    opacity: 0.92;
   }
 }
