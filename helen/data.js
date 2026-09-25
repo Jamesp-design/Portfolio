@@ -5,7 +5,7 @@ window.HELEN_CHECKLIST = {
   createdDate: "2026-09-25",
   facts: [
     ["Helen", "Helen Augsburger / Phillips"],
-    ["Executor", "James (son; executor named in will)"],
+    ["Executors", "James, Emily and Michele"],
     ["Home", "11 Beebys Way, Hampton Water, Peterborough PE7 8QU"],
     ["Current status", "Death is with the coroner; registration follows coroner clearance"],
     ["Embark pension", "A1072890 · 0344 544 0566"],
