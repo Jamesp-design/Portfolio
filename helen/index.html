@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f4f1eb">
+  <title>Arrangements · Helen Augsburger</title>
+  <meta name="description" content="James's private working checklist for Helen Augsburger's arrangements and estate.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%232e4942'/%3E%3Cpath d='M18 33l9 9 19-22' fill='none' stroke='%23f4f1eb' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#checklist">Skip to checklist</a>
+  <header class="topbar"><div class="shell topbar-inner"><span class="mark" aria-hidden="true">HA</span><span>Helen's arrangements</span><span id="saveState" class="save-state" role="status">Saved locally</span></div></header>
+  <main class="shell">
+    <section class="overview" aria-labelledby="pageTitle">
+      <div><p class="eyebrow">Executor's working record</p><h1 id="pageTitle">Arrangements</h1><p class="sub">One step at a time. Start with the first item under Next up.</p></div>
+      <button class="quiet-button" id="infoToggle" aria-expanded="false" aria-controls="infoPanel">Important information</button>
+    </section>
+    <section id="infoPanel" class="info-panel" hidden><div class="info-head"><div><h2>Important information</h2><p>Quick references from the handover. Verify unknown or historical details before relying on them.</p></div><span class="badge attention">Sensitive</span></div><dl id="facts"></dl></section>
+    <section class="progress-block" aria-label="Overall progress">
+      <div class="progress-copy"><strong id="progressText">Loading checklist…</strong><span id="percentText"></span></div>
+      <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+    </section>
+    <section class="next-up" aria-labelledby="nextTitle"><div class="section-heading"><div><p class="eyebrow">Focus here</p><h2 id="nextTitle">Next up</h2></div><span class="hint">Urgent first, then in order</span></div><div id="nextList"></div></section>
+    <section class="tools" aria-label="Checklist controls">
+      <label class="search"><span class="sr-only">Search checklist</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg><input id="search" type="search" placeholder="Search tasks, notes, contacts…"></label>
+      <div class="filters" id="filters" aria-label="Filter tasks"></div>
+      <button class="quiet-button" id="addSectionTask">Add task</button>
+      <details class="more"><summary>Backup & export</summary><div class="menu"><button id="exportJson">Export backup</button><label class="file-button">Import backup<input id="importJson" type="file" accept="application/json"></label><button id="exportSummary">Export summary</button><button id="exportImportant">Important decisions</button><button id="resetData" class="danger-text">Reset local data</button></div></details>
+    </section>
+    <div id="resultsNote" class="results-note" aria-live="polite"></div>
+    <section id="checklist" class="checklist" aria-label="Arrangements checklist"></section>
+    <p class="legal-note">This is an executor's working organiser, not legal advice or a legal determination. Confirm ownership, liability, entitlement, tax and probate treatment from appropriate evidence or advice.</p>
+  </main>
+  <dialog id="taskDialog"><form method="dialog" id="taskForm"><div class="dialog-head"><div><p class="eyebrow" id="dialogEyebrow">Task details</p><h2 id="dialogTitle">Edit task</h2></div><button value="cancel" class="icon-button" aria-label="Close">×</button></div><input type="hidden" id="taskId"><label>Task title<input id="taskTitle" required maxlength="140"></label><div class="form-grid"><label>Status<select id="taskStatus"><option value="incomplete">Incomplete</option><option value="complete">Complete</option></select></label><label>Priority<select id="taskPriority"><option value="normal">Normal</option><option value="attention">Attention</option><option value="urgent">Urgent</option></select></label><label>Section<select id="taskSection"></select></label><label>Due date<input id="taskDue" type="date"></label><label>Decision / value<input id="taskDecision"></label><label>Amount<input id="taskAmount" placeholder="e.g. £99.99 disputed"></label><label>Contact<input id="taskContact"></label><label>Reference<input id="taskReference"></label></div><label>Notes<textarea id="taskNotes" rows="4"></textarea></label><label>Evidence / document note<textarea id="taskEvidence" rows="2"></textarea></label><div class="dialog-actions"><button value="cancel" class="quiet-button">Cancel</button><button id="saveTask" value="default" class="primary-button">Save task</button></div></form></dialog>
+  <dialog id="confirmDialog"><form method="dialog"><h2 id="confirmTitle">Are you sure?</h2><p id="confirmText"></p><div class="dialog-actions"><button value="cancel" class="quiet-button">Cancel</button><button id="confirmYes" value="confirm" class="danger-button">Delete</button></div></form></dialog>
+  <input id="importConfirmFile" hidden>
+  <script src="data.js"></script><script src="app.js"></script>
+</body>
+</html>
