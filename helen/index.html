@@ -10,7 +10,20 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%232e4942'/%3E%3Cpath d='M18 33l9 9 19-22' fill='none' stroke='%23f4f1eb' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="locked">
+  <section id="lockScreen" class="lock-screen" aria-labelledby="lockTitle">
+    <form id="lockForm" class="lock-card">
+      <span class="lock-mark" aria-hidden="true">HA</span>
+      <p class="eyebrow">Private checklist</p>
+      <h1 id="lockTitle">Helen's arrangements</h1>
+      <p>Enter the four-digit code to continue.</p>
+      <label for="passcode">Passcode</label>
+      <input id="passcode" type="password" inputmode="numeric" autocomplete="current-password" maxlength="4" pattern="[0-9]{4}" required autofocus>
+      <p id="lockError" class="lock-error" role="alert" aria-live="polite"></p>
+      <button class="primary-button" type="submit">Open checklist</button>
+    </form>
+  </section>
+  <div id="appShell" hidden>
   <a class="skip" href="#checklist">Skip to checklist</a>
   <header class="topbar"><div class="shell topbar-inner"><span class="mark" aria-hidden="true">HA</span><span>Helen's arrangements</span><span id="saveState" class="save-state" role="status">Saved locally</span></div></header>
   <main class="shell">
@@ -37,6 +50,7 @@
   <dialog id="taskDialog"><form method="dialog" id="taskForm"><div class="dialog-head"><div><p class="eyebrow" id="dialogEyebrow">Task details</p><h2 id="dialogTitle">Edit task</h2></div><button value="cancel" class="icon-button" aria-label="Close">×</button></div><input type="hidden" id="taskId"><label>Task title<input id="taskTitle" required maxlength="140"></label><div class="form-grid"><label>Status<select id="taskStatus"><option value="incomplete">Incomplete</option><option value="complete">Complete</option></select></label><label>Priority<select id="taskPriority"><option value="normal">Normal</option><option value="attention">Attention</option><option value="urgent">Urgent</option></select></label><label>Section<select id="taskSection"></select></label><label>Due date<input id="taskDue" type="date"></label><label>Decision / value<input id="taskDecision"></label><label>Amount<input id="taskAmount" placeholder="e.g. £99.99 disputed"></label><label>Contact<input id="taskContact"></label><label>Reference<input id="taskReference"></label></div><label>Notes<textarea id="taskNotes" rows="4"></textarea></label><label>Evidence / document note<textarea id="taskEvidence" rows="2"></textarea></label><div class="dialog-actions"><button value="cancel" class="quiet-button">Cancel</button><button id="saveTask" value="default" class="primary-button">Save task</button></div></form></dialog>
   <dialog id="confirmDialog"><form method="dialog"><h2 id="confirmTitle">Are you sure?</h2><p id="confirmText"></p><div class="dialog-actions"><button value="cancel" class="quiet-button">Cancel</button><button id="confirmYes" value="confirm" class="danger-button">Delete</button></div></form></dialog>
   <input id="importConfirmFile" hidden>
+  </div>
   <script src="data.js"></script><script src="app.js"></script>
 </body>
 </html>

@@ -2,6 +2,8 @@
 
 Static single-page executor checklist served at `/helen/`. It has no build step and no backend.
 
+The page has a four-digit client-side privacy screen. This prevents casual access but is not equivalent to server-side authentication: static source files remain inspectable. Use Cloudflare Access or another host-level authentication layer if strong access control is required.
+
 ## Local development
 
 From the repository root, run any static server, for example `python3 -m http.server 8000`, then open `http://localhost:8000/helen/`.
