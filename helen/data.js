@@ -7,7 +7,10 @@ window.HELEN_CHECKLIST = {
     ["Helen", "Helen Augsburger / Phillips"],
     ["Executors", "James, Emily and Michele"],
     ["Home", "11 Beebys Way, Hampton Water, Peterborough PE7 8QU"],
-    ["Current status", "Death is with the coroner; registration follows coroner clearance"],
+    ["Current status", "Death formally registered on 29 September 2026"],
+    ["Death", "23 September 2026 · Addenbrooke's Hospital, Cambridge"],
+    ["Registration documents", "Certified death certificate, Green Certificate for Burial or Cremation, and Tell Us Once reference received"],
+    ["Known document", "Death Certificate and Docs.pdf"],
     ["Embark pension", "A1072890 · 0344 544 0566"],
     ["Council tax", "502658896 · 01733 452258"],
     ["British Gas", "A39097102"],
@@ -18,7 +21,7 @@ window.HELEN_CHECKLIST = {
     ["Volvo contact", "christopher.hills@marshall.co.uk"],
   ],
   sections: [
-    { id:"immediate", title:"Immediate & coroner", intro:"The death is with the coroner. Registration deadlines do not run in the normal way while clearance is outstanding.", tasks:[
+    { id:"immediate", title:"Immediate & coroner", intro:"Coroner release and the post-mortem decision are confirmed. Retain all correspondence and remaining hospital records.", tasks:[
       {t:"Record coroner case reference",p:"urgent"},{t:"Record coroner officer contact",p:"urgent"},{t:"Confirm post-mortem decision",p:"urgent"},{t:"Ask when body may release",p:"urgent"},{t:"Ask about interim certificate",p:"attention"},
       "Record coroner update dates","Save every coroner letter","Record Addenbrooke's contact","Collect remaining hospital paperwork","Confirm belongings already received","List hospital belongings received","Check valuables receipt","Choose family update contact","Create secure document folder","Start executor contact log","Record Helen's legal names","Record date and place of death","Record National Insurance number","Record NHS number","Identify immediate dependants","Secure medicines for return","Return medicines to pharmacy","Check pets and daily care","Tell close family personally","Identify people needing support"
     ]},

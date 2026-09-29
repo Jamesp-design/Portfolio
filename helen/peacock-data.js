@@ -11,6 +11,7 @@ window.PEACOCK_APPOINTMENT = {
     "Embalming and presentation wanted",
     "Upgrade from the included coffin; Northumberland currently preferred",
     "Personal tokens will be placed in Mum's coffin, subject to restrictions",
+    "Green Certificate for Burial or Cremation received and available for the funeral director",
     "Wake is being arranged separately",
     "Preferred ashes outcome: interment with Nan without affecting Grandad's future burial"
   ],
