@@ -9,6 +9,7 @@
   <meta name="description" content="James's private working checklist for Helen Augsburger's arrangements and estate.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%232e4942'/%3E%3Cpath d='M18 33l9 9 19-22' fill='none' stroke='%23f4f1eb' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="peacock.css">
 </head>
 <body class="locked">
   <section id="lockScreen" class="lock-screen" aria-labelledby="lockTitle">
@@ -31,6 +32,16 @@
       <button class="quiet-button" id="infoToggle" aria-expanded="false" aria-controls="infoPanel">Important information</button>
     </section>
     <section id="infoPanel" class="info-panel" hidden><div class="info-head"><div><h2>Important information</h2><p>Quick references from the handover. Verify unknown or historical details before relying on them.</p></div><span class="badge attention">Sensitive</span></div><dl id="facts"></dl></section>
+    <section id="peacockPanel" class="peacock-panel" aria-labelledby="peacockTitle">
+      <div class="peacock-head">
+        <div><p class="eyebrow">Funeral director appointment</p><h2 id="peacockTitle">Peacock &amp; Sons</h2><p>Appointment preparation and meeting record</p></div>
+        <div class="peacock-progress"><strong id="peacockProgress">0 / 0 resolved</strong><span class="mini-track"><span id="peacockProgressBar"></span></span></div>
+      </div>
+      <details class="peacock-decided"><summary>Decisions already made <span id="decisionCount"></span></summary><div id="peacockDecisions" class="decision-chips"></div></details>
+      <div class="peacock-section-head"><div><p class="eyebrow">Questions to resolve</p><h3>Use during the appointment</h3></div><span>Tick when answered · notes save automatically</span></div>
+      <div id="peacockGroups" class="peacock-groups"></div>
+      <p class="working-note">Prices shown in context are handwritten working notes only. Treat Peacock's written itemised estimate as authoritative.</p>
+    </section>
     <section class="progress-block" aria-label="Overall progress">
       <div class="progress-copy"><strong id="progressText">Loading checklist…</strong><span id="percentText"></span></div>
       <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
@@ -50,6 +61,6 @@
   <dialog id="confirmDialog"><form method="dialog"><h2 id="confirmTitle">Are you sure?</h2><p id="confirmText"></p><div class="dialog-actions"><button value="cancel" class="quiet-button">Cancel</button><button id="confirmYes" value="confirm" class="danger-button">Delete</button></div></form></dialog>
   <input id="importConfirmFile" hidden>
   </div>
-  <script src="data.js"></script><script src="app.js"></script>
+  <script src="data.js"></script><script src="peacock-data.js"></script><script src="app.js"></script>
 </body>
 </html>
